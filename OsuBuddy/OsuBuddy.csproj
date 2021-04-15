@@ -56,8 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AimAssist.cs" />
-    <Compile Include="AModule.cs" />
-    <Compile Include="Costura\AssemblyLoader.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,13 +202,6 @@
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Costura\costura\dll.compressed" />
-    <EmbeddedResource Include="Costura\costura\pdb.compressed" />
-    <EmbeddedResource Include="Costura\metadata" />
-    <EmbeddedResource Include="Costura\simpledependencyinjection\dll.compressed" />
-    <EmbeddedResource Include="Costura\system\diagnostics\diagnosticsource\dll.compressed" />
-    <EmbeddedResource Include="Costura\system\numerics\vectors\dll.compressed" />
-    <EmbeddedResource Include="Costura\windowsinput\dll.compressed" />
     <EmbeddedResource Include="GUI.resources" />
     <EmbeddedResource Include="Properties\Resources.resources" />
   </ItemGroup>
