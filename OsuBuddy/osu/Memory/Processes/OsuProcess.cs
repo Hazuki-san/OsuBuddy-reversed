@@ -16,6 +16,12 @@ namespace osu.Memory.Processes
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool WriteProcessMemory(IntPtr hProcess, UIntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, out UIntPtr lpNumberOfBytesWritten);
 
+        [DllImport("user32.dll")]
+        public static extern bool GetClientRect(IntPtr hwnd, ref Rect rectangle);
+
+        [DllImport("user32.dll")]
+        public static extern bool GetWindowRect(IntPtr hwnd, ref Rect rectangle);
+
         //TODO: x64 support
         [DllImport("kernel32.dll")]
         public static extern int VirtualQueryEx(IntPtr hProcess, UIntPtr lpAddress, out MEMORY_BASIC_INFORMATION_32 lpBuffer, uint dwLength);
@@ -25,6 +31,20 @@ namespace osu.Memory.Processes
         public OsuProcess(Process process) => Process = process;
 
         private List<MemoryRegion> cachedMemoryRegions;
+
+        public Rect getOsuClientRect()
+        {
+            Rect rectangle = default(Rect);
+            GetClientRect(Process.MainWindowHandle, ref rectangle);
+            return rectangle;
+        }
+
+        public Rect getOsuWindowRect()
+        {
+            Rect rectangle = default(Rect);
+            GetWindowRect(Process.MainWindowHandle, ref rectangle);
+            return rectangle;
+        }
 
         public bool FindPattern(string pattern, out UIntPtr result)
         {
