@@ -63,7 +63,6 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="OsuBuddy.cs" />
-    <Compile Include="OsuBuddy_ProcessedByFody.cs" />
     <Compile Include="OsuParsers\Beatmaps\Beatmap.cs" />
     <Compile Include="OsuParsers\Beatmaps\Objects\Catch\CatchBananaRain.cs" />
     <Compile Include="OsuParsers\Beatmaps\Objects\Catch\CatchFruit.cs" />
