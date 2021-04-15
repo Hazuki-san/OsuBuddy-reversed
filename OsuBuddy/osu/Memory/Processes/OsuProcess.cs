@@ -220,67 +220,36 @@ namespace osu.Memory.Processes
 			int num = pattern.Bytes.Length;
 			bufferLength = ((bufferLength != -1) ? bufferLength : buffer.Length);
 			int num2 = num - 1;
-			fixed (int[] array = lastOccurenceTable)
+			fixed (int* ptr4 = lastOccurenceTable)
 			{
-				int* ptr;
-				if (lastOccurenceTable == null || array.Length == 0)
+				fixed (byte* ptr3 = buffer)
 				{
-					ptr = null;
-				}
-				else
-				{
-					ptr = &array[0];
-				}
-				fixed (byte[] array2 = buffer)
-				{
-					byte* ptr2;
-					if (buffer == null || array2.Length == 0)
+					fixed (bool* ptr = pattern.Mask)
 					{
-						ptr2 = null;
-					}
-					else
-					{
-						ptr2 = &array2[0];
-					}
-					bool[] array3;
-					bool* ptr3;
-					if ((array3 = pattern.Mask) == null || array3.Length == 0)
-					{
-						ptr3 = null;
-					}
-					else
-					{
-						ptr3 = &array3[0];
-					}
-					byte[] array4;
-					byte* ptr4;
-					if ((array4 = pattern.Bytes) == null || array4.Length == 0)
-					{
-						ptr4 = null;
-					}
-					else
-					{
-						ptr4 = &array4[0];
-					}
-					int i = num2;
-					IL_119:
-					while (i < bufferLength)
-					{
-						for (int j = num2; j > 0; j--)
+						fixed (byte* ptr2 = pattern.Bytes)
 						{
-							bool flag = !ptr3[j] || ptr4[j] == ptr2[i];
-							if (!flag)
+							int num3 = num2;
+							for (int i = num2; i < bufferLength; i += num - Math.Min(num3, 1 + ptr4[(int)ptr3[i]]))
 							{
-								i += num - Math.Min(j, 1 + ptr[ptr2[i]]);
-								goto IL_119;
+								num3 = num2;
+								while (true)
+								{
+									if (num3 > 0)
+									{
+										if (ptr[num3] && ptr2[num3] != ptr3[i])
+										{
+											break;
+										}
+										i--;
+										num3--;
+										continue;
+									}
+									result = (UIntPtr)(ulong)i;
+									return true;
+								}
 							}
-							i--;
 						}
-						result = (UIntPtr)((ulong)((long)i));
-						return true;
 					}
-					array4 = null;
-					array3 = null;
 				}
 			}
 			return false;

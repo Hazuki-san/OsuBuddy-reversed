@@ -32,58 +32,51 @@ namespace OsuBuddy
 		// Token: 0x0600048C RID: 1164 RVA: 0x0001705C File Offset: 0x0001525C
 		public void Start(OsuBeatmap beatmap)
 		{
-			ReplayPlayer.Ac__DisplayClass11_0 ac__DisplayClass11_;
+			Ac__DisplayClass11_0 ac__DisplayClass11_ = default(Ac__DisplayClass11_0);
 			ac__DisplayClass11_.A4__this = this;
 			this.beatmap = beatmap;
-			this.enabled = true;
-			bool flag = this.replayFrames == null;
-			if (!flag)
+			enabled = true;
+			if (replayFrames == null)
 			{
-				ac__DisplayClass11_.key1 = this.osu.BindingManager.GetKeyCode(Bindings.OsuLeft);
-				ac__DisplayClass11_.key2 = this.osu.BindingManager.GetKeyCode(Bindings.OsuRight);
-				ac__DisplayClass11_.smoke = this.osu.BindingManager.GetKeyCode(Bindings.OsuSmoke);
-				ac__DisplayClass11_.osuWindowRect = this.osu.OsuProcess.getOsuWindowRect();
-				Rect osuClientRect = this.osu.OsuProcess.getOsuClientRect();
-				ac__DisplayClass11_.monitorWidth = Screen.PrimaryScreen.Bounds.Width;
-				ac__DisplayClass11_.monitorHeight = Screen.PrimaryScreen.Bounds.Height;
-				ac__DisplayClass11_.windowBorders = (ac__DisplayClass11_.osuWindowRect.Right - ac__DisplayClass11_.osuWindowRect.Left - osuClientRect.Right) / 2;
-				ac__DisplayClass11_.titleBarHeight = ac__DisplayClass11_.osuWindowRect.Bottom - ac__DisplayClass11_.osuWindowRect.Top - osuClientRect.Bottom - ac__DisplayClass11_.windowBorders;
-				ac__DisplayClass11_.frameIndex = 0;
-				ac__DisplayClass11_.frame = this.replayFrames[ac__DisplayClass11_.frameIndex];
-				ac__DisplayClass11_.totalElapsedFrameTime = 0;
-				ac__DisplayClass11_.currentTime = this.osu.CurrentTime;
-				this.AStartg__waitForMapStart11_2(ref ac__DisplayClass11_);
-				while (this.osu.CanPlay && this.enabled && ac__DisplayClass11_.frameIndex < this.replayFrames.Count + 1)
-				{
-					ac__DisplayClass11_.currentTime = this.osu.CurrentTime;
-					bool isPaused = this.osu.IsPaused;
-					if (isPaused)
-					{
-						Thread.Sleep(5);
-					}
-					else
-					{
-						bool flag2 = ac__DisplayClass11_.currentTime >= ac__DisplayClass11_.totalElapsedFrameTime;
-						if (flag2)
-						{
-							this.AStartg__doMouseInput11_0(ref ac__DisplayClass11_);
-							this.AStartg__doKeyboardInput11_1(ref ac__DisplayClass11_);
-							int frameIndex = ac__DisplayClass11_.frameIndex;
-							ac__DisplayClass11_.frameIndex = frameIndex + 1;
-							bool flag3 = ac__DisplayClass11_.frameIndex < this.replayFrames.Count;
-							if (flag3)
-							{
-								ac__DisplayClass11_.frame = this.replayFrames[ac__DisplayClass11_.frameIndex];
-							}
-							ac__DisplayClass11_.totalElapsedFrameTime += ac__DisplayClass11_.frame.TimeDiff;
-						}
-					}
-				}
-				Console.WriteLine("Replay Ended.");
-				while (this.osu.CanPlay && this.enabled)
+				return;
+			}
+			ac__DisplayClass11_.key1 = (VirtualKeyCode)osu.BindingManager.GetKeyCode(Bindings.OsuLeft);
+			ac__DisplayClass11_.key2 = (VirtualKeyCode)osu.BindingManager.GetKeyCode(Bindings.OsuRight);
+			ac__DisplayClass11_.smoke = (VirtualKeyCode)osu.BindingManager.GetKeyCode(Bindings.OsuSmoke);
+			ac__DisplayClass11_.osuWindowRect = osu.OsuProcess.getOsuWindowRect();
+			Rect osuClientRect = osu.OsuProcess.getOsuClientRect();
+			ac__DisplayClass11_.monitorWidth = Screen.PrimaryScreen.Bounds.Width;
+			ac__DisplayClass11_.monitorHeight = Screen.PrimaryScreen.Bounds.Height;
+			ac__DisplayClass11_.windowBorders = (ac__DisplayClass11_.osuWindowRect.Right - ac__DisplayClass11_.osuWindowRect.Left - osuClientRect.Right) / 2;
+			ac__DisplayClass11_.titleBarHeight = ac__DisplayClass11_.osuWindowRect.Bottom - ac__DisplayClass11_.osuWindowRect.Top - osuClientRect.Bottom - ac__DisplayClass11_.windowBorders;
+			ac__DisplayClass11_.frameIndex = 0;
+			ac__DisplayClass11_.frame = replayFrames[ac__DisplayClass11_.frameIndex];
+			ac__DisplayClass11_.totalElapsedFrameTime = 0;
+			ac__DisplayClass11_.currentTime = osu.CurrentTime;
+			AStartg__waitForMapStart11_2(ref ac__DisplayClass11_);
+			while (osu.CanPlay && enabled && ac__DisplayClass11_.frameIndex < replayFrames.Count + 1)
+			{
+				ac__DisplayClass11_.currentTime = osu.CurrentTime;
+				if (osu.IsPaused)
 				{
 					Thread.Sleep(5);
 				}
+				else if (ac__DisplayClass11_.currentTime >= ac__DisplayClass11_.totalElapsedFrameTime)
+				{
+					AStartg__doMouseInput11_0(ref ac__DisplayClass11_);
+					AStartg__doKeyboardInput11_1(ref ac__DisplayClass11_);
+					ac__DisplayClass11_.frameIndex++;
+					if (ac__DisplayClass11_.frameIndex < replayFrames.Count)
+					{
+						ac__DisplayClass11_.frame = replayFrames[ac__DisplayClass11_.frameIndex];
+					}
+					ac__DisplayClass11_.totalElapsedFrameTime += ac__DisplayClass11_.frame.TimeDiff;
+				}
+			}
+			Console.WriteLine("Replay Ended.");
+			while (osu.CanPlay && enabled)
+			{
+				Thread.Sleep(5);
 			}
 		}
 

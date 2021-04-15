@@ -36,7 +36,7 @@ namespace osu.Memory.Processes
 			// Token: 0x060003D3 RID: 979 RVA: 0x00003EAF File Offset: 0x000020AF
 			internal byte AParseb__2_0(string b)
 			{
-				return (b == "??") ? 0 : Convert.ToByte(b, 16);
+				return (b == "??") ? (byte)0 : Convert.ToByte(b, 16);
 			}
 
 			// Token: 0x060003D4 RID: 980 RVA: 0x00003EC9 File Offset: 0x000020C9

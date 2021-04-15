@@ -27,7 +27,7 @@ namespace OsuBuddy
 		// Token: 0x06000479 RID: 1145 RVA: 0x0001685C File Offset: 0x00014A5C
 		public void Start(OsuBeatmap beatmap)
 		{
-			Relax.Ac__DisplayClass18_0 ac__DisplayClass18_;
+			Relax.Ac__DisplayClass18_0 ac__DisplayClass18_ = new Ac__DisplayClass18_0();
 			ac__DisplayClass18_.A4__this = this;
 			ac__DisplayClass18_.beatmap = beatmap;
 			this.beatmap = ac__DisplayClass18_.beatmap;

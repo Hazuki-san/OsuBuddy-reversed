@@ -13,20 +13,7 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 		// Token: 0x1700013E RID: 318
 		// (get) Token: 0x0600042D RID: 1069 RVA: 0x0000439D File Offset: 0x0000259D
 		// (set) Token: 0x0600042E RID: 1070 RVA: 0x000043A5 File Offset: 0x000025A5
-		[TupleElementNames(new string[]
-		{
-			"p1",
-			"p2"
-		})]
-		public List<ValueTuple<Vector2, Vector2>> SliderCurveSmoothLines { [return: TupleElementNames(new string[]
-		{
-			"p1",
-			"p2"
-		})] get; [param: TupleElementNames(new string[]
-		{
-			"p1",
-			"p2"
-		})] set; }
+		public List<ValueTuple<Vector2, Vector2>> SliderCurveSmoothLines { get;  set; }
 
 		// Token: 0x1700013F RID: 319
 		// (get) Token: 0x0600042F RID: 1071 RVA: 0x000043AE File Offset: 0x000025AE
@@ -49,11 +36,7 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 		public CurveType CurveType { get; set; }
 
 		// Token: 0x06000437 RID: 1079 RVA: 0x000043F2 File Offset: 0x000025F2
-		public OsuSlider(int startTime, int endTime, Vector2 position, int repeats, double pixelLength, CurveType curveType, [TupleElementNames(new string[]
-		{
-			"p1",
-			"p2"
-		})] List<ValueTuple<Vector2, Vector2>> sliderCurveSmoothLines, List<double> cumulativeLengths) : base(startTime, endTime, position)
+		public OsuSlider(int startTime, int endTime, Vector2 position, int repeats, double pixelLength, CurveType curveType, List<ValueTuple<Vector2, Vector2>> sliderCurveSmoothLines, List<double> cumulativeLengths) : base(startTime, endTime, position)
 		{
 			this.Repeats = repeats;
 			this.PixelLength = pixelLength;
@@ -145,11 +128,6 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 		}
 
 		// Token: 0x04000358 RID: 856
-		[TupleElementNames(new string[]
-		{
-			"p1",
-			"p2"
-		})]
 		[CompilerGenerated]
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private List<ValueTuple<Vector2, Vector2>> ASliderCurveSmoothLinesk__BackingField;

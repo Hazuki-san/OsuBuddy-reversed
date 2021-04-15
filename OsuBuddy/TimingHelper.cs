@@ -28,7 +28,7 @@ namespace OsuBuddy
 		private static AutoResetEvent autoResetEvent = new AutoResetEvent(false);
 
 		// Token: 0x04000490 RID: 1168
-		private static TimingHelper.TimerCallback callback = new TimingHelper.TimerCallback(TimingHelper.Ac.A9.A.cctorb__7_0);
+		private static TimingHelper.TimerCallback callback = new TimingHelper.TimerCallback(TimingHelper.Ac.A9.cctorb__7_0);
 
 		// Token: 0x020000B7 RID: 183
 		// (Invoke) Token: 0x060004B4 RID: 1204

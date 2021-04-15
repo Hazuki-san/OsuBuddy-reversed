@@ -132,7 +132,7 @@ namespace osu.Memory.Objects.Player
 					int num2 = this.OsuProcess.ReadInt32(uintPtr2 + 12);
 					for (int j = 0; j < num; j++)
 					{
-						UIntPtr uintPtr4;
+						UIntPtr uintPtr4 = UIntPtr.Zero;
 						UIntPtr pointer = (UIntPtr)this.OsuProcess.ReadUInt32(uintPtr4 + 8 + 4 * j);
 						Vector2 item2 = new Vector2(this.OsuProcess.ReadFloat(pointer + 8), this.OsuProcess.ReadFloat(pointer + 12));
 						Vector2 item3 = new Vector2(this.OsuProcess.ReadFloat(pointer + 16), this.OsuProcess.ReadFloat(pointer + 20));
@@ -140,7 +140,7 @@ namespace osu.Memory.Objects.Player
 					}
 					for (int k = 0; k < num2; k++)
 					{
-						UIntPtr uintPtr5;
+						UIntPtr uintPtr5 = UIntPtr.Zero;
 						double item4 = this.OsuProcess.ReadDouble(uintPtr5 + 8 + 8 * k);
 						list3.Add(item4);
 					}
