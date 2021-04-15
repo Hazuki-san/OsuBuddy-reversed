@@ -5,14 +5,14 @@ namespace SevenZip.Compression.RangeCoder
 	// Token: 0x02000010 RID: 16
 	internal struct BitTreeDecoder
 	{
-		// Token: 0x06000037 RID: 55 RVA: 0x000021AD File Offset: 0x000021AD
+		// Token: 0x06000037 RID: 55 RVA: 0x000021AD File Offset: 0x000003AD
 		public BitTreeDecoder(int numBitLevels)
 		{
 			this.NumBitLevels = numBitLevels;
 			this.Models = new BitDecoder[1 << numBitLevels];
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00005274 File Offset: 0x00005274
+		// Token: 0x06000038 RID: 56 RVA: 0x00005274 File Offset: 0x00003474
 		public void Init()
 		{
 			uint num = 1U;
@@ -23,7 +23,7 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x000052B0 File Offset: 0x000052B0
+		// Token: 0x06000039 RID: 57 RVA: 0x000052B0 File Offset: 0x000034B0
 		public uint Decode(Decoder rangeDecoder)
 		{
 			uint num = 1U;
@@ -34,7 +34,7 @@ namespace SevenZip.Compression.RangeCoder
 			return num - (1U << this.NumBitLevels);
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x00005300 File Offset: 0x00005300
+		// Token: 0x0600003A RID: 58 RVA: 0x00005300 File Offset: 0x00003500
 		public uint ReverseDecode(Decoder rangeDecoder)
 		{
 			uint num = 1U;
@@ -49,7 +49,7 @@ namespace SevenZip.Compression.RangeCoder
 			return num2;
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x00005358 File Offset: 0x00005358
+		// Token: 0x0600003B RID: 59 RVA: 0x00005358 File Offset: 0x00003558
 		public static uint ReverseDecode(BitDecoder[] Models, uint startIndex, Decoder rangeDecoder, int NumBitLevels)
 		{
 			uint num = 1U;

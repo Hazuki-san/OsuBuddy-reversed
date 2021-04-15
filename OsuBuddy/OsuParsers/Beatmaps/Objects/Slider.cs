@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using OsuParsers.Enums.Beatmaps;
 
 namespace OsuParsers.Beatmaps.Objects
@@ -8,7 +10,7 @@ namespace OsuParsers.Beatmaps.Objects
 	// Token: 0x0200007A RID: 122
 	public class Slider : HitObject
 	{
-		// Token: 0x0600034C RID: 844 RVA: 0x000108C8 File Offset: 0x000108C8
+		// Token: 0x0600034C RID: 844 RVA: 0x000108C8 File Offset: 0x0000EAC8
 		public Slider(Vector2 position, int startTime, int endTime, HitSoundType hitSound, CurveType type, List<Vector2> points, int repeats, double pixelLength, bool isNewCombo, int comboOffset, List<HitSoundType> edgeHitSounds = null, List<Tuple<SampleSet, SampleSet>> edgeAdditions = null, Extras extras = null) : base(position, startTime, endTime, hitSound, extras, isNewCombo, comboOffset)
 		{
 			this.CurveType = type;
@@ -20,33 +22,63 @@ namespace OsuParsers.Beatmaps.Objects
 		}
 
 		// Token: 0x170000E8 RID: 232
-		// (get) Token: 0x0600034D RID: 845 RVA: 0x00003A6D File Offset: 0x00003A6D
-		// (set) Token: 0x0600034E RID: 846 RVA: 0x00003A75 File Offset: 0x00003A75
+		// (get) Token: 0x0600034D RID: 845 RVA: 0x00003A6D File Offset: 0x00001C6D
+		// (set) Token: 0x0600034E RID: 846 RVA: 0x00003A75 File Offset: 0x00001C75
 		public CurveType CurveType { get; set; }
 
 		// Token: 0x170000E9 RID: 233
-		// (get) Token: 0x0600034F RID: 847 RVA: 0x00003A7E File Offset: 0x00003A7E
-		// (set) Token: 0x06000350 RID: 848 RVA: 0x00003A86 File Offset: 0x00003A86
+		// (get) Token: 0x0600034F RID: 847 RVA: 0x00003A7E File Offset: 0x00001C7E
+		// (set) Token: 0x06000350 RID: 848 RVA: 0x00003A86 File Offset: 0x00001C86
 		public List<Vector2> SliderPoints { get; set; } = new List<Vector2>();
 
 		// Token: 0x170000EA RID: 234
-		// (get) Token: 0x06000351 RID: 849 RVA: 0x00003A8F File Offset: 0x00003A8F
-		// (set) Token: 0x06000352 RID: 850 RVA: 0x00003A97 File Offset: 0x00003A97
+		// (get) Token: 0x06000351 RID: 849 RVA: 0x00003A8F File Offset: 0x00001C8F
+		// (set) Token: 0x06000352 RID: 850 RVA: 0x00003A97 File Offset: 0x00001C97
 		public int Repeats { get; set; }
 
 		// Token: 0x170000EB RID: 235
-		// (get) Token: 0x06000353 RID: 851 RVA: 0x00003AA0 File Offset: 0x00003AA0
-		// (set) Token: 0x06000354 RID: 852 RVA: 0x00003AA8 File Offset: 0x00003AA8
+		// (get) Token: 0x06000353 RID: 851 RVA: 0x00003AA0 File Offset: 0x00001CA0
+		// (set) Token: 0x06000354 RID: 852 RVA: 0x00003AA8 File Offset: 0x00001CA8
 		public double PixelLength { get; set; }
 
 		// Token: 0x170000EC RID: 236
-		// (get) Token: 0x06000355 RID: 853 RVA: 0x00003AB1 File Offset: 0x00003AB1
-		// (set) Token: 0x06000356 RID: 854 RVA: 0x00003AB9 File Offset: 0x00003AB9
+		// (get) Token: 0x06000355 RID: 853 RVA: 0x00003AB1 File Offset: 0x00001CB1
+		// (set) Token: 0x06000356 RID: 854 RVA: 0x00003AB9 File Offset: 0x00001CB9
 		public List<HitSoundType> EdgeHitSounds { get; set; }
 
 		// Token: 0x170000ED RID: 237
-		// (get) Token: 0x06000357 RID: 855 RVA: 0x00003AC2 File Offset: 0x00003AC2
-		// (set) Token: 0x06000358 RID: 856 RVA: 0x00003ACA File Offset: 0x00003ACA
+		// (get) Token: 0x06000357 RID: 855 RVA: 0x00003AC2 File Offset: 0x00001CC2
+		// (set) Token: 0x06000358 RID: 856 RVA: 0x00003ACA File Offset: 0x00001CCA
 		public List<Tuple<SampleSet, SampleSet>> EdgeAdditions { get; set; }
+
+		// Token: 0x040002F2 RID: 754
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private CurveType ACurveTypek__BackingField;
+
+		// Token: 0x040002F3 RID: 755
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private List<Vector2> ASliderPointsk__BackingField;
+
+		// Token: 0x040002F4 RID: 756
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private int ARepeatsk__BackingField;
+
+		// Token: 0x040002F5 RID: 757
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private double APixelLengthk__BackingField;
+
+		// Token: 0x040002F6 RID: 758
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private List<HitSoundType> AEdgeHitSoundsk__BackingField;
+
+		// Token: 0x040002F7 RID: 759
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private List<Tuple<SampleSet, SampleSet>> AEdgeAdditionsk__BackingField;
 	}
 }

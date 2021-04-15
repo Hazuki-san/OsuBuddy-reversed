@@ -10,7 +10,7 @@ namespace OsuParsers.Storyboards
 	// Token: 0x02000023 RID: 35
 	public class Storyboard
 	{
-		// Token: 0x060000BE RID: 190 RVA: 0x0000A0D4 File Offset: 0x0000A0D4
+		// Token: 0x060000BE RID: 190 RVA: 0x0000A0D4 File Offset: 0x000082D4
 		public List<IStoryboardObject> GetLayer(StoryboardLayer layer)
 		{
 			List<IStoryboardObject> result;
@@ -41,7 +41,7 @@ namespace OsuParsers.Storyboards
 			return result;
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x00002468 File Offset: 0x00002468
+		// Token: 0x060000BF RID: 191 RVA: 0x00002468 File Offset: 0x00000668
 		public void Save(string path)
 		{
 			File.WriteAllLines(path, StoryboardEncoder.Encode(this));

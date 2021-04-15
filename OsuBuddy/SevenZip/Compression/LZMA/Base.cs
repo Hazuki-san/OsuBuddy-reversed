@@ -5,7 +5,7 @@ namespace SevenZip.Compression.LZMA
 	// Token: 0x02000016 RID: 22
 	internal abstract class Base
 	{
-		// Token: 0x0600006A RID: 106 RVA: 0x000064C0 File Offset: 0x000064C0
+		// Token: 0x0600006A RID: 106 RVA: 0x000064C0 File Offset: 0x000046C0
 		public static uint GetLenToPosState(uint len)
 		{
 			len -= 2U;
@@ -106,13 +106,13 @@ namespace SevenZip.Compression.LZMA
 		// Token: 0x02000017 RID: 23
 		public struct State
 		{
-			// Token: 0x0600006C RID: 108 RVA: 0x000022A5 File Offset: 0x000022A5
+			// Token: 0x0600006C RID: 108 RVA: 0x000022A5 File Offset: 0x000004A5
 			public void Init()
 			{
 				this.Index = 0U;
 			}
 
-			// Token: 0x0600006D RID: 109 RVA: 0x000064E4 File Offset: 0x000064E4
+			// Token: 0x0600006D RID: 109 RVA: 0x000064E4 File Offset: 0x000046E4
 			public void UpdateChar()
 			{
 				bool flag = this.Index < 4U;
@@ -134,25 +134,25 @@ namespace SevenZip.Compression.LZMA
 				}
 			}
 
-			// Token: 0x0600006E RID: 110 RVA: 0x000022AF File Offset: 0x000022AF
+			// Token: 0x0600006E RID: 110 RVA: 0x000022AF File Offset: 0x000004AF
 			public void UpdateMatch()
 			{
 				this.Index = ((this.Index < 7U) ? 7U : 10U);
 			}
 
-			// Token: 0x0600006F RID: 111 RVA: 0x000022C6 File Offset: 0x000022C6
+			// Token: 0x0600006F RID: 111 RVA: 0x000022C6 File Offset: 0x000004C6
 			public void UpdateRep()
 			{
 				this.Index = ((this.Index < 7U) ? 8U : 11U);
 			}
 
-			// Token: 0x06000070 RID: 112 RVA: 0x000022DD File Offset: 0x000022DD
+			// Token: 0x06000070 RID: 112 RVA: 0x000022DD File Offset: 0x000004DD
 			public void UpdateShortRep()
 			{
 				this.Index = ((this.Index < 7U) ? 9U : 11U);
 			}
 
-			// Token: 0x06000071 RID: 113 RVA: 0x00006534 File Offset: 0x00006534
+			// Token: 0x06000071 RID: 113 RVA: 0x00006534 File Offset: 0x00004734
 			public bool IsCharState()
 			{
 				return this.Index < 7U;

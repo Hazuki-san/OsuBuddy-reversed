@@ -8,7 +8,7 @@ namespace OsuBuddy
 	// Token: 0x020000B9 RID: 185
 	public class User
 	{
-		// Token: 0x060004BA RID: 1210 RVA: 0x00017DD8 File Offset: 0x00017DD8
+		// Token: 0x060004BA RID: 1210 RVA: 0x00017DD8 File Offset: 0x00015FD8
 		public User(string username, string password)
 		{
 			this.username = "user";
@@ -16,7 +16,7 @@ namespace OsuBuddy
 			this.client = "OsuBuddy";
 		}
 
-		// Token: 0x060004BB RID: 1211 RVA: 0x00017E34 File Offset: 0x00017E34
+		// Token: 0x060004BB RID: 1211 RVA: 0x00017E34 File Offset: 0x00016034
 		private bool connectToServer()
 		{
 			try
@@ -32,19 +32,19 @@ namespace OsuBuddy
 			return true;
 		}
 
-		// Token: 0x060004BC RID: 1212 RVA: 0x000047CF File Offset: 0x000047CF
+		// Token: 0x060004BC RID: 1212 RVA: 0x000047CF File Offset: 0x000029CF
 		public bool isSubscribed()
 		{
 			return true;
 		}
 
-		// Token: 0x060004BD RID: 1213 RVA: 0x000047CF File Offset: 0x000047CF
+		// Token: 0x060004BD RID: 1213 RVA: 0x000047CF File Offset: 0x000029CF
 		public bool login()
 		{
 			return true;
 		}
 
-		// Token: 0x060004BE RID: 1214 RVA: 0x00017E80 File Offset: 0x00017E80
+		// Token: 0x060004BE RID: 1214 RVA: 0x00017E80 File Offset: 0x00016080
 		private void sendToServer(string toSend)
 		{
 			int byteCount = Encoding.ASCII.GetByteCount(toSend);
@@ -57,7 +57,7 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x060004BF RID: 1215 RVA: 0x00017ED4 File Offset: 0x00017ED4
+		// Token: 0x060004BF RID: 1215 RVA: 0x00017ED4 File Offset: 0x000160D4
 		private string readFromServer()
 		{
 			byte[] array = new byte[4];
@@ -67,13 +67,13 @@ namespace OsuBuddy
 			return Encoding.ASCII.GetString(array2);
 		}
 
-		// Token: 0x060004C0 RID: 1216 RVA: 0x000047D2 File Offset: 0x000047D2
+		// Token: 0x060004C0 RID: 1216 RVA: 0x000047D2 File Offset: 0x000029D2
 		public string getUsername()
 		{
 			return this.username;
 		}
 
-		// Token: 0x060004C1 RID: 1217 RVA: 0x000047DA File Offset: 0x000047DA
+		// Token: 0x060004C1 RID: 1217 RVA: 0x000047DA File Offset: 0x000029DA
 		public string getSubscriptionExpirationDate()
 		{
 			return "never";

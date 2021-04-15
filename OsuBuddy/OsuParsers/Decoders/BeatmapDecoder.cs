@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using OsuParsers.Beatmaps;
 using OsuParsers.Beatmaps.Objects;
 using OsuParsers.Beatmaps.Objects.Catch;
@@ -19,7 +20,7 @@ namespace OsuParsers.Decoders
 	// Token: 0x02000060 RID: 96
 	public static class BeatmapDecoder
 	{
-		// Token: 0x060001AA RID: 426 RVA: 0x0000D9E8 File Offset: 0x0000D9E8
+		// Token: 0x060001AA RID: 426 RVA: 0x0000D9E8 File Offset: 0x0000BBE8
 		public static Beatmap Decode(string path)
 		{
 			bool flag = File.Exists(path);
@@ -30,7 +31,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001AB RID: 427 RVA: 0x0000DA18 File Offset: 0x0000DA18
+		// Token: 0x060001AB RID: 427 RVA: 0x0000DA18 File Offset: 0x0000BC18
 		public static Beatmap Decode(IEnumerable<string> lines)
 		{
 			BeatmapDecoder.Beatmap = new Beatmap();
@@ -57,20 +58,20 @@ namespace OsuParsers.Decoders
 				}
 			}
 			BeatmapDecoder.Beatmap.EventsSection.Storyboard = StoryboardDecoder.Decode(BeatmapDecoder.sbLines.ToArray());
-			BeatmapDecoder.Beatmap.GeneralSection.CirclesCount = BeatmapDecoder.Beatmap.HitObjects.Count((HitObject c) => c is HitCircle || c is TaikoHit || c is ManiaNote || c is CatchFruit);
-			BeatmapDecoder.Beatmap.GeneralSection.SlidersCount = BeatmapDecoder.Beatmap.HitObjects.Count((HitObject c) => c is Slider || c is TaikoDrumroll || c is ManiaHoldNote || c is CatchJuiceStream);
-			BeatmapDecoder.Beatmap.GeneralSection.SpinnersCount = BeatmapDecoder.Beatmap.HitObjects.Count((HitObject c) => c is Spinner || c is TaikoSpinner || c is CatchBananaRain);
+			BeatmapDecoder.Beatmap.GeneralSection.CirclesCount = BeatmapDecoder.Beatmap.HitObjects.Count(new Func<HitObject, bool>(BeatmapDecoder.Ac.A9.ADecodeb__4_0));
+			BeatmapDecoder.Beatmap.GeneralSection.SlidersCount = BeatmapDecoder.Beatmap.HitObjects.Count(new Func<HitObject, bool>(BeatmapDecoder.Ac.A9.ADecodeb__4_1));
+			BeatmapDecoder.Beatmap.GeneralSection.SpinnersCount = BeatmapDecoder.Beatmap.HitObjects.Count(new Func<HitObject, bool>(BeatmapDecoder.Ac.A9.ADecodeb__4_2));
 			BeatmapDecoder.Beatmap.GeneralSection.Length = (BeatmapDecoder.Beatmap.HitObjects.Any<HitObject>() ? BeatmapDecoder.Beatmap.HitObjects.Last<HitObject>().EndTime : 0);
 			return BeatmapDecoder.Beatmap;
 		}
 
-		// Token: 0x060001AC RID: 428 RVA: 0x00002C60 File Offset: 0x00002C60
+		// Token: 0x060001AC RID: 428 RVA: 0x00002C60 File Offset: 0x00000E60
 		public static Beatmap Decode(Stream stream)
 		{
 			return BeatmapDecoder.Decode(stream.ReadAllLines());
 		}
 
-		// Token: 0x060001AD RID: 429 RVA: 0x0000DBE8 File Offset: 0x0000DBE8
+		// Token: 0x060001AD RID: 429 RVA: 0x0000DBE8 File Offset: 0x0000BDE8
 		private static void ParseLine(string line)
 		{
 			switch (BeatmapDecoder.currentSection)
@@ -108,7 +109,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001AE RID: 430 RVA: 0x0000DCA0 File Offset: 0x0000DCA0
+		// Token: 0x060001AE RID: 430 RVA: 0x0000DCA0 File Offset: 0x0000BEA0
 		private static void ParseGeneral(string line)
 		{
 			int num = line.IndexOf(':');
@@ -116,7 +117,7 @@ namespace OsuParsers.Decoders
 			string text2 = line.Remove(0, num + 1).Trim();
 			string text3 = text;
 			string text4 = text3;
-			uint num2 = <PrivateImplementationDetails>.ComputeStringHash(text4);
+			uint num2 = APrivateImplementationDetails.ComputeStringHash(text4);
 			if (num2 <= 1454601404U)
 			{
 				if (num2 <= 1037595928U)
@@ -223,7 +224,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001AF RID: 431 RVA: 0x0000E054 File Offset: 0x0000E054
+		// Token: 0x060001AF RID: 431 RVA: 0x0000E054 File Offset: 0x0000C254
 		private static void ParseEditor(string line)
 		{
 			int num = line.IndexOf(':');
@@ -261,15 +262,14 @@ namespace OsuParsers.Decoders
 			}
 			else
 			{
-				BeatmapDecoder.Beatmap.EditorSection.Bookmarks = (from b in text2.Split(new char[]
+				BeatmapDecoder.Beatmap.EditorSection.Bookmarks = text2.Split(new char[]
 				{
 					','
-				}, StringSplitOptions.RemoveEmptyEntries)
-				select Convert.ToInt32(b)).ToArray<int>();
+				}, StringSplitOptions.RemoveEmptyEntries).Select(new Func<string, int>(BeatmapDecoder.Ac.A9.AParseEditorb__8_0)).ToArray<int>();
 			}
 		}
 
-		// Token: 0x060001B0 RID: 432 RVA: 0x0000E190 File Offset: 0x0000E190
+		// Token: 0x060001B0 RID: 432 RVA: 0x0000E190 File Offset: 0x0000C390
 		private static void ParseMetadata(string line)
 		{
 			int num = line.IndexOf(':');
@@ -277,7 +277,7 @@ namespace OsuParsers.Decoders
 			string text2 = line.Remove(0, num + 1).Trim();
 			string text3 = text;
 			string text4 = text3;
-			uint num2 = <PrivateImplementationDetails>.ComputeStringHash(text4);
+			uint num2 = APrivateImplementationDetails.ComputeStringHash(text4);
 			if (num2 <= 1992138944U)
 			{
 				if (num2 <= 1573770551U)
@@ -363,7 +363,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001B1 RID: 433 RVA: 0x0000E438 File Offset: 0x0000E438
+		// Token: 0x060001B1 RID: 433 RVA: 0x0000E438 File Offset: 0x0000C638
 		private static void ParseDifficulty(string line)
 		{
 			int num = line.IndexOf(':');
@@ -412,7 +412,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001B2 RID: 434 RVA: 0x0000E558 File Offset: 0x0000E558
+		// Token: 0x060001B2 RID: 434 RVA: 0x0000E558 File Offset: 0x0000C758
 		private static void ParseEvents(string line)
 		{
 			string[] array = line.Split(new char[]
@@ -462,7 +462,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001B3 RID: 435 RVA: 0x0000E69C File Offset: 0x0000E69C
+		// Token: 0x060001B3 RID: 435 RVA: 0x0000E69C File Offset: 0x0000C89C
 		private static void ParseTimingPoints(string line)
 		{
 			string[] array = line.Split(new char[]
@@ -520,7 +520,7 @@ namespace OsuParsers.Decoders
 			});
 		}
 
-		// Token: 0x060001B4 RID: 436 RVA: 0x0000E7D0 File Offset: 0x0000E7D0
+		// Token: 0x060001B4 RID: 436 RVA: 0x0000E7D0 File Offset: 0x0000C9D0
 		private static void ParseColours(string line)
 		{
 			int num = line.IndexOf(':');
@@ -545,7 +545,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001B5 RID: 437 RVA: 0x0000E874 File Offset: 0x0000E874
+		// Token: 0x060001B5 RID: 437 RVA: 0x0000E874 File Offset: 0x0000CA74
 		private static void ParseHitObjects(string line)
 		{
 			string[] array = line.Split(new char[]
@@ -609,7 +609,7 @@ namespace OsuParsers.Decoders
 							edgeHitSounds = Array.ConvertAll<string, HitSoundType>(array[8].Split(new char[]
 							{
 								'|'
-							}), (string s) => (HitSoundType)Convert.ToInt32(s)).ToList<HitSoundType>();
+							}), new Converter<string, HitSoundType>(BeatmapDecoder.Ac.A9.AParseHitObjectsb__14_0)).ToList<HitSoundType>();
 						}
 						List<Tuple<SampleSet, SampleSet>> list = null;
 						bool flag2 = array.Length > 9 && array[9].Length > 0;
@@ -742,5 +742,59 @@ namespace OsuParsers.Decoders
 
 		// Token: 0x0400023A RID: 570
 		private static List<string> sbLines = new List<string>();
+
+		// Token: 0x02000061 RID: 97
+		[CompilerGenerated]
+		[Serializable]
+		private sealed class Ac
+		{
+			// Token: 0x060001B9 RID: 441 RVA: 0x00002C8B File Offset: 0x00000E8B
+			internal bool ADecodeb__4_0(HitObject c)
+			{
+				return c is HitCircle || c is TaikoHit || c is ManiaNote || c is CatchFruit;
+			}
+
+			// Token: 0x060001BA RID: 442 RVA: 0x00002CB1 File Offset: 0x00000EB1
+			internal bool ADecodeb__4_1(HitObject c)
+			{
+				return c is Slider || c is TaikoDrumroll || c is ManiaHoldNote || c is CatchJuiceStream;
+			}
+
+			// Token: 0x060001BB RID: 443 RVA: 0x00002CD7 File Offset: 0x00000ED7
+			internal bool ADecodeb__4_2(HitObject c)
+			{
+				return c is Spinner || c is TaikoSpinner || c is CatchBananaRain;
+			}
+
+			// Token: 0x060001BC RID: 444 RVA: 0x00002A54 File Offset: 0x00000C54
+			internal int AParseEditorb__8_0(string b)
+			{
+				return Convert.ToInt32(b);
+			}
+
+			// Token: 0x060001BD RID: 445 RVA: 0x00002A54 File Offset: 0x00000C54
+			internal HitSoundType AParseHitObjectsb__14_0(string s)
+			{
+				return (HitSoundType)Convert.ToInt32(s);
+			}
+
+			// Token: 0x0400023B RID: 571
+			public static readonly BeatmapDecoder.Ac A9 = new BeatmapDecoder.Ac();
+
+			// Token: 0x0400023C RID: 572
+			public static Func<HitObject, bool> A9__4_0;
+
+			// Token: 0x0400023D RID: 573
+			public static Func<HitObject, bool> A9__4_1;
+
+			// Token: 0x0400023E RID: 574
+			public static Func<HitObject, bool> A9__4_2;
+
+			// Token: 0x0400023F RID: 575
+			public static Func<string, int> A9__8_0;
+
+			// Token: 0x04000240 RID: 576
+			public static Converter<string, HitSoundType> A9__14_0;
+		}
 	}
 }

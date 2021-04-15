@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using OsuParsers.Database;
 using OsuParsers.Database.Objects;
 using OsuParsers.Enums;
@@ -12,7 +13,7 @@ namespace OsuParsers.Encoders
 	// Token: 0x0200005D RID: 93
 	internal class DatabaseEncoder
 	{
-		// Token: 0x06000199 RID: 409 RVA: 0x0000CCB0 File Offset: 0x0000CCB0
+		// Token: 0x06000199 RID: 409 RVA: 0x0000CCB0 File Offset: 0x0000AEB0
 		public static void EncodeOsuDatabase(string path, OsuDatabase db)
 		{
 			using (SerializationWriter serializationWriter = new SerializationWriter(new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read)))
@@ -52,10 +53,10 @@ namespace OsuParsers.Encoders
 					bool flag2 = db.OsuVersion >= 20140609;
 					if (flag2)
 					{
-						serializationWriter.Write<int, double>(dbBeatmap.StandardStarRating.ToDictionary((KeyValuePair<Mods, double> d) => (int)d.Key, (KeyValuePair<Mods, double> d) => d.Value));
-						serializationWriter.Write<int, double>(dbBeatmap.TaikoStarRating.ToDictionary((KeyValuePair<Mods, double> d) => (int)d.Key, (KeyValuePair<Mods, double> d) => d.Value));
-						serializationWriter.Write<int, double>(dbBeatmap.CatchStarRating.ToDictionary((KeyValuePair<Mods, double> d) => (int)d.Key, (KeyValuePair<Mods, double> d) => d.Value));
-						serializationWriter.Write<int, double>(dbBeatmap.ManiaStarRating.ToDictionary((KeyValuePair<Mods, double> d) => (int)d.Key, (KeyValuePair<Mods, double> d) => d.Value));
+						serializationWriter.Write<int, double>(dbBeatmap.StandardStarRating.ToDictionary(new Func<KeyValuePair<Mods, double>, int>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_0), new Func<KeyValuePair<Mods, double>, double>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_1)));
+						serializationWriter.Write<int, double>(dbBeatmap.TaikoStarRating.ToDictionary(new Func<KeyValuePair<Mods, double>, int>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_2), new Func<KeyValuePair<Mods, double>, double>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_3)));
+						serializationWriter.Write<int, double>(dbBeatmap.CatchStarRating.ToDictionary(new Func<KeyValuePair<Mods, double>, int>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_4), new Func<KeyValuePair<Mods, double>, double>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_5)));
+						serializationWriter.Write<int, double>(dbBeatmap.ManiaStarRating.ToDictionary(new Func<KeyValuePair<Mods, double>, int>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_6), new Func<KeyValuePair<Mods, double>, double>(DatabaseEncoder.Ac.A9.AEncodeOsuDatabaseb__0_7)));
 					}
 					serializationWriter.Write(dbBeatmap.DrainTime);
 					serializationWriter.Write(dbBeatmap.TotalTime);
@@ -103,7 +104,7 @@ namespace OsuParsers.Encoders
 			}
 		}
 
-		// Token: 0x0600019A RID: 410 RVA: 0x0000D228 File Offset: 0x0000D228
+		// Token: 0x0600019A RID: 410 RVA: 0x0000D228 File Offset: 0x0000B428
 		public static void EncodeCollectionDatabase(string path, CollectionDatabase db)
 		{
 			using (SerializationWriter serializationWriter = new SerializationWriter(new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read)))
@@ -122,7 +123,7 @@ namespace OsuParsers.Encoders
 			}
 		}
 
-		// Token: 0x0600019B RID: 411 RVA: 0x0000D320 File Offset: 0x0000D320
+		// Token: 0x0600019B RID: 411 RVA: 0x0000D320 File Offset: 0x0000B520
 		public static void EncodeScoresDatabase(string path, ScoresDatabase db)
 		{
 			using (SerializationWriter serializationWriter = new SerializationWriter(new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read)))
@@ -159,7 +160,7 @@ namespace OsuParsers.Encoders
 			}
 		}
 
-		// Token: 0x0600019C RID: 412 RVA: 0x0000D54C File Offset: 0x0000D54C
+		// Token: 0x0600019C RID: 412 RVA: 0x0000D54C File Offset: 0x0000B74C
 		public static void EncodePresenceDatabase(string path, PresenceDatabase db)
 		{
 			using (SerializationWriter serializationWriter = new SerializationWriter(new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read)))
@@ -179,6 +180,87 @@ namespace OsuParsers.Encoders
 					serializationWriter.Write(player.LastUpdateTime);
 				}
 			}
+		}
+
+		// Token: 0x0200005E RID: 94
+		[CompilerGenerated]
+		[Serializable]
+		private sealed class Ac
+		{
+			// Token: 0x060001A0 RID: 416 RVA: 0x00002C4E File Offset: 0x00000E4E
+			internal int AEncodeOsuDatabaseb__0_0(KeyValuePair<Mods, double> d)
+			{
+				return (int)d.Key;
+			}
+
+			// Token: 0x060001A1 RID: 417 RVA: 0x00002C57 File Offset: 0x00000E57
+			internal double AEncodeOsuDatabaseb__0_1(KeyValuePair<Mods, double> d)
+			{
+				return d.Value;
+			}
+
+			// Token: 0x060001A2 RID: 418 RVA: 0x00002C4E File Offset: 0x00000E4E
+			internal int AEncodeOsuDatabaseb__0_2(KeyValuePair<Mods, double> d)
+			{
+				return (int)d.Key;
+			}
+
+			// Token: 0x060001A3 RID: 419 RVA: 0x00002C57 File Offset: 0x00000E57
+			internal double AEncodeOsuDatabaseb__0_3(KeyValuePair<Mods, double> d)
+			{
+				return d.Value;
+			}
+
+			// Token: 0x060001A4 RID: 420 RVA: 0x00002C4E File Offset: 0x00000E4E
+			internal int AEncodeOsuDatabaseb__0_4(KeyValuePair<Mods, double> d)
+			{
+				return (int)d.Key;
+			}
+
+			// Token: 0x060001A5 RID: 421 RVA: 0x00002C57 File Offset: 0x00000E57
+			internal double AEncodeOsuDatabaseb__0_5(KeyValuePair<Mods, double> d)
+			{
+				return d.Value;
+			}
+
+			// Token: 0x060001A6 RID: 422 RVA: 0x00002C4E File Offset: 0x00000E4E
+			internal int AEncodeOsuDatabaseb__0_6(KeyValuePair<Mods, double> d)
+			{
+				return (int)d.Key;
+			}
+
+			// Token: 0x060001A7 RID: 423 RVA: 0x00002C57 File Offset: 0x00000E57
+			internal double AEncodeOsuDatabaseb__0_7(KeyValuePair<Mods, double> d)
+			{
+				return d.Value;
+			}
+
+			// Token: 0x0400022F RID: 559
+			public static readonly DatabaseEncoder.Ac A9 = new DatabaseEncoder.Ac();
+
+			// Token: 0x04000230 RID: 560
+			public static Func<KeyValuePair<Mods, double>, int> A9__0_0;
+
+			// Token: 0x04000231 RID: 561
+			public static Func<KeyValuePair<Mods, double>, double> A9__0_1;
+
+			// Token: 0x04000232 RID: 562
+			public static Func<KeyValuePair<Mods, double>, int> A9__0_2;
+
+			// Token: 0x04000233 RID: 563
+			public static Func<KeyValuePair<Mods, double>, double> A9__0_3;
+
+			// Token: 0x04000234 RID: 564
+			public static Func<KeyValuePair<Mods, double>, int> A9__0_4;
+
+			// Token: 0x04000235 RID: 565
+			public static Func<KeyValuePair<Mods, double>, double> A9__0_5;
+
+			// Token: 0x04000236 RID: 566
+			public static Func<KeyValuePair<Mods, double>, int> A9__0_6;
+
+			// Token: 0x04000237 RID: 567
+			public static Func<KeyValuePair<Mods, double>, double> A9__0_7;
 		}
 	}
 }

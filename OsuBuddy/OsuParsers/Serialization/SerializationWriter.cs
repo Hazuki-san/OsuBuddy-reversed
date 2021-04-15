@@ -7,12 +7,12 @@ namespace OsuParsers.Serialization
 	// Token: 0x02000030 RID: 48
 	internal class SerializationWriter : BinaryWriter
 	{
-		// Token: 0x060000FE RID: 254 RVA: 0x00002740 File Offset: 0x00002740
+		// Token: 0x060000FE RID: 254 RVA: 0x00002740 File Offset: 0x00000940
 		public SerializationWriter(Stream s) : base(s)
 		{
 		}
 
-		// Token: 0x060000FF RID: 255 RVA: 0x0000A5B8 File Offset: 0x0000A5B8
+		// Token: 0x060000FF RID: 255 RVA: 0x0000A5B8 File Offset: 0x000087B8
 		public override void Write(string str)
 		{
 			bool flag = str == null;
@@ -27,13 +27,13 @@ namespace OsuParsers.Serialization
 			}
 		}
 
-		// Token: 0x06000100 RID: 256 RVA: 0x0000A5F0 File Offset: 0x0000A5F0
+		// Token: 0x06000100 RID: 256 RVA: 0x0000A5F0 File Offset: 0x000087F0
 		public void Write(DateTime dateTime)
 		{
 			this.Write(dateTime.ToUniversalTime().Ticks);
 		}
 
-		// Token: 0x06000101 RID: 257 RVA: 0x0000A614 File Offset: 0x0000A614
+		// Token: 0x06000101 RID: 257 RVA: 0x0000A614 File Offset: 0x00008814
 		public void Write<T, U>(IDictionary<T, U> d)
 		{
 			bool flag = d == null;
@@ -52,7 +52,7 @@ namespace OsuParsers.Serialization
 			}
 		}
 
-		// Token: 0x06000102 RID: 258 RVA: 0x0000A6A4 File Offset: 0x0000A6A4
+		// Token: 0x06000102 RID: 258 RVA: 0x0000A6A4 File Offset: 0x000088A4
 		public void WriteObject(object obj)
 		{
 			bool flag = obj == null;
@@ -64,7 +64,7 @@ namespace OsuParsers.Serialization
 			{
 				string name = obj.GetType().Name;
 				string text = name;
-				uint num = <PrivateImplementationDetails>.ComputeStringHash(text);
+				uint num = APrivateImplementationDetails.ComputeStringHash(text);
 				if (num <= 2386971688U)
 				{
 					if (num <= 765439473U)

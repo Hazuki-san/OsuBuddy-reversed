@@ -8,7 +8,7 @@ namespace OsuParsers.Replays.SevenZip
 	// Token: 0x02000032 RID: 50
 	internal class LZMAHelper
 	{
-		// Token: 0x0600012F RID: 303 RVA: 0x0000AB24 File Offset: 0x0000AB24
+		// Token: 0x0600012F RID: 303 RVA: 0x0000AB24 File Offset: 0x00008D24
 		public static MemoryStream Compress(Stream inStream)
 		{
 			inStream.Position = 0L;
@@ -42,7 +42,7 @@ namespace OsuParsers.Replays.SevenZip
 			return memoryStream;
 		}
 
-		// Token: 0x06000130 RID: 304 RVA: 0x0000ABF4 File Offset: 0x0000ABF4
+		// Token: 0x06000130 RID: 304 RVA: 0x0000ABF4 File Offset: 0x00008DF4
 		public static MemoryStream Decompress(Stream inStream)
 		{
 			Decoder decoder = new Decoder();
@@ -72,7 +72,7 @@ namespace OsuParsers.Replays.SevenZip
 			return memoryStream;
 		}
 
-		// Token: 0x06000131 RID: 305 RVA: 0x0000ACB4 File Offset: 0x0000ACB4
+		// Token: 0x06000131 RID: 305 RVA: 0x0000ACB4 File Offset: 0x00008EB4
 		public static byte[] Compress(byte[] inBytes)
 		{
 			byte[] result;
@@ -83,7 +83,7 @@ namespace OsuParsers.Replays.SevenZip
 			return result;
 		}
 
-		// Token: 0x06000132 RID: 306 RVA: 0x0000ACF4 File Offset: 0x0000ACF4
+		// Token: 0x06000132 RID: 306 RVA: 0x0000ACF4 File Offset: 0x00008EF4
 		public static byte[] Decompress(byte[] inBytes)
 		{
 			byte[] result;

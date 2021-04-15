@@ -6,7 +6,7 @@ namespace OsuParsers.Storyboards.Commands
 	// Token: 0x0200002B RID: 43
 	public class CommandGroup
 	{
-		// Token: 0x060000EF RID: 239 RVA: 0x0000A27C File Offset: 0x0000A27C
+		// Token: 0x060000EF RID: 239 RVA: 0x0000A27C File Offset: 0x0000847C
 		public TriggerCommand AddTrigger(string triggerName, int startTime, int endTime, int groupNumber)
 		{
 			TriggerCommand triggerCommand = new TriggerCommand(triggerName, startTime, endTime, groupNumber);
@@ -14,7 +14,7 @@ namespace OsuParsers.Storyboards.Commands
 			return triggerCommand;
 		}
 
-		// Token: 0x060000F0 RID: 240 RVA: 0x0000A2A8 File Offset: 0x0000A2A8
+		// Token: 0x060000F0 RID: 240 RVA: 0x0000A2A8 File Offset: 0x000084A8
 		public LoopCommand AddLoop(int startTime, int loopCount)
 		{
 			LoopCommand loopCommand = new LoopCommand(startTime, loopCount);

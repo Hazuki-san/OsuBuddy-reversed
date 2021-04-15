@@ -36,24 +36,25 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SimpleDependencyInjection">
-      <HintPath>..\..\stuff\OsuBuddy\Dumps\SimpleDependencyInjection.dll</HintPath>
+    <Reference Include="SimpleDependencyInjection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleDependencyInjection.1.0.0\lib\netstandard2.0\SimpleDependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="WindowsInput">
-      <HintPath>..\..\stuff\OsuBuddy\Dumps\WindowsInput.dll</HintPath>
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="-Module-.cs" />
     <Compile Include="AimAssist.cs" />
+    <Compile Include="AModule.cs" />
+    <Compile Include="APrivateImplementationDetails.cs" />
     <Compile Include="Costura\AssemblyLoader.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
@@ -223,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

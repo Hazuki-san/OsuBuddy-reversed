@@ -8,12 +8,12 @@ namespace OsuParsers.Serialization
 	// Token: 0x0200002F RID: 47
 	internal class SerializationReader : BinaryReader
 	{
-		// Token: 0x060000F6 RID: 246 RVA: 0x00002730 File Offset: 0x00002730
+		// Token: 0x060000F6 RID: 246 RVA: 0x00002730 File Offset: 0x00000930
 		public SerializationReader(Stream s) : base(s, Encoding.UTF8)
 		{
 		}
 
-		// Token: 0x060000F7 RID: 247 RVA: 0x0000A2D0 File Offset: 0x0000A2D0
+		// Token: 0x060000F7 RID: 247 RVA: 0x0000A2D0 File Offset: 0x000084D0
 		public override string ReadString()
 		{
 			bool flag = this.ReadByte() == 0;
@@ -29,7 +29,7 @@ namespace OsuParsers.Serialization
 			return result;
 		}
 
-		// Token: 0x060000F8 RID: 248 RVA: 0x0000A2FC File Offset: 0x0000A2FC
+		// Token: 0x060000F8 RID: 248 RVA: 0x0000A2FC File Offset: 0x000084FC
 		public byte[] ReadByteArray()
 		{
 			int num = this.ReadInt32();
@@ -54,7 +54,7 @@ namespace OsuParsers.Serialization
 			return result;
 		}
 
-		// Token: 0x060000F9 RID: 249 RVA: 0x0000A33C File Offset: 0x0000A33C
+		// Token: 0x060000F9 RID: 249 RVA: 0x0000A33C File Offset: 0x0000853C
 		public char[] ReadCharArray()
 		{
 			int num = this.ReadInt32();
@@ -79,13 +79,13 @@ namespace OsuParsers.Serialization
 			return result;
 		}
 
-		// Token: 0x060000FA RID: 250 RVA: 0x0000A37C File Offset: 0x0000A37C
+		// Token: 0x060000FA RID: 250 RVA: 0x0000A37C File Offset: 0x0000857C
 		public DateTime ReadDateTime()
 		{
 			return new DateTime(this.ReadInt64(), DateTimeKind.Utc);
 		}
 
-		// Token: 0x060000FB RID: 251 RVA: 0x0000A39C File Offset: 0x0000A39C
+		// Token: 0x060000FB RID: 251 RVA: 0x0000A39C File Offset: 0x0000859C
 		public List<T> ReadList<T>()
 		{
 			int num = this.ReadInt32();
@@ -107,7 +107,7 @@ namespace OsuParsers.Serialization
 			return result;
 		}
 
-		// Token: 0x060000FC RID: 252 RVA: 0x0000A3F4 File Offset: 0x0000A3F4
+		// Token: 0x060000FC RID: 252 RVA: 0x0000A3F4 File Offset: 0x000085F4
 		public Dictionary<T, U> ReadDictionary<T, U>()
 		{
 			int num = this.ReadInt32();
@@ -129,7 +129,7 @@ namespace OsuParsers.Serialization
 			return result;
 		}
 
-		// Token: 0x060000FD RID: 253 RVA: 0x0000A454 File Offset: 0x0000A454
+		// Token: 0x060000FD RID: 253 RVA: 0x0000A454 File Offset: 0x00008654
 		public object ReadObject()
 		{
 			object result;

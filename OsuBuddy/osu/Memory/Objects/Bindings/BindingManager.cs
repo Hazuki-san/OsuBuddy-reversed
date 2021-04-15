@@ -7,7 +7,7 @@ namespace osu.Memory.Objects.Bindings
 	public class BindingManager : OsuObject
 	{
 		// Token: 0x17000143 RID: 323
-		// (get) Token: 0x0600043B RID: 1083 RVA: 0x00012374 File Offset: 0x00012374
+		// (get) Token: 0x0600043B RID: 1083 RVA: 0x00012374 File Offset: 0x00010574
 		public Dictionary<Bindings, int> BindingDictionary
 		{
 			get
@@ -26,7 +26,7 @@ namespace osu.Memory.Objects.Bindings
 			}
 		}
 
-		// Token: 0x0600043C RID: 1084 RVA: 0x0001241C File Offset: 0x0001241C
+		// Token: 0x0600043C RID: 1084 RVA: 0x0001241C File Offset: 0x0001061C
 		public int GetKeyCode(Bindings binding)
 		{
 			int num;
@@ -43,7 +43,7 @@ namespace osu.Memory.Objects.Bindings
 			return result;
 		}
 
-		// Token: 0x0600043D RID: 1085 RVA: 0x0000401C File Offset: 0x0000401C
+		// Token: 0x0600043D RID: 1085 RVA: 0x0000401C File Offset: 0x0000221C
 		public BindingManager(UIntPtr pointerToBaseAddress) : base(new UIntPtr?(pointerToBaseAddress))
 		{
 		}

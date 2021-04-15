@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using osu;
@@ -21,40 +22,40 @@ namespace OsuBuddy
 	// Token: 0x020000B1 RID: 177
 	public class ReplayPlayer
 	{
-		// Token: 0x0600048B RID: 1163 RVA: 0x000045ED File Offset: 0x000045ED
+		// Token: 0x0600048B RID: 1163 RVA: 0x000045ED File Offset: 0x000027ED
 		public ReplayPlayer()
 		{
 			this.osu = DependencyContainer.Get<OsuManager>();
 			this.inputSimulator = new InputSimulator();
 		}
 
-		// Token: 0x0600048C RID: 1164 RVA: 0x0001705C File Offset: 0x0001705C
+		// Token: 0x0600048C RID: 1164 RVA: 0x0001705C File Offset: 0x0001525C
 		public void Start(OsuBeatmap beatmap)
 		{
-			ReplayPlayer.<>c__DisplayClass11_0 CS$<>8__locals1;
-			CS$<>8__locals1.<>4__this = this;
+			ReplayPlayer.Ac__DisplayClass11_0 ac__DisplayClass11_;
+			ac__DisplayClass11_.A4__this = this;
 			this.beatmap = beatmap;
 			this.enabled = true;
 			bool flag = this.replayFrames == null;
 			if (!flag)
 			{
-				CS$<>8__locals1.key1 = (VirtualKeyCode)this.osu.BindingManager.GetKeyCode(Bindings.OsuLeft);
-				CS$<>8__locals1.key2 = (VirtualKeyCode)this.osu.BindingManager.GetKeyCode(Bindings.OsuRight);
-				CS$<>8__locals1.smoke = (VirtualKeyCode)this.osu.BindingManager.GetKeyCode(Bindings.OsuSmoke);
-				CS$<>8__locals1.osuWindowRect = this.osu.OsuProcess.getOsuWindowRect();
+				ac__DisplayClass11_.key1 = this.osu.BindingManager.GetKeyCode(Bindings.OsuLeft);
+				ac__DisplayClass11_.key2 = this.osu.BindingManager.GetKeyCode(Bindings.OsuRight);
+				ac__DisplayClass11_.smoke = this.osu.BindingManager.GetKeyCode(Bindings.OsuSmoke);
+				ac__DisplayClass11_.osuWindowRect = this.osu.OsuProcess.getOsuWindowRect();
 				Rect osuClientRect = this.osu.OsuProcess.getOsuClientRect();
-				CS$<>8__locals1.monitorWidth = Screen.PrimaryScreen.Bounds.Width;
-				CS$<>8__locals1.monitorHeight = Screen.PrimaryScreen.Bounds.Height;
-				CS$<>8__locals1.windowBorders = (CS$<>8__locals1.osuWindowRect.Right - CS$<>8__locals1.osuWindowRect.Left - osuClientRect.Right) / 2;
-				CS$<>8__locals1.titleBarHeight = CS$<>8__locals1.osuWindowRect.Bottom - CS$<>8__locals1.osuWindowRect.Top - osuClientRect.Bottom - CS$<>8__locals1.windowBorders;
-				CS$<>8__locals1.frameIndex = 0;
-				CS$<>8__locals1.frame = this.replayFrames[CS$<>8__locals1.frameIndex];
-				CS$<>8__locals1.totalElapsedFrameTime = 0;
-				CS$<>8__locals1.currentTime = this.osu.CurrentTime;
-				this.<Start>g__waitForMapStart|11_2(ref CS$<>8__locals1);
-				while (this.osu.CanPlay && this.enabled && CS$<>8__locals1.frameIndex < this.replayFrames.Count + 1)
+				ac__DisplayClass11_.monitorWidth = Screen.PrimaryScreen.Bounds.Width;
+				ac__DisplayClass11_.monitorHeight = Screen.PrimaryScreen.Bounds.Height;
+				ac__DisplayClass11_.windowBorders = (ac__DisplayClass11_.osuWindowRect.Right - ac__DisplayClass11_.osuWindowRect.Left - osuClientRect.Right) / 2;
+				ac__DisplayClass11_.titleBarHeight = ac__DisplayClass11_.osuWindowRect.Bottom - ac__DisplayClass11_.osuWindowRect.Top - osuClientRect.Bottom - ac__DisplayClass11_.windowBorders;
+				ac__DisplayClass11_.frameIndex = 0;
+				ac__DisplayClass11_.frame = this.replayFrames[ac__DisplayClass11_.frameIndex];
+				ac__DisplayClass11_.totalElapsedFrameTime = 0;
+				ac__DisplayClass11_.currentTime = this.osu.CurrentTime;
+				this.AStartg__waitForMapStart11_2(ref ac__DisplayClass11_);
+				while (this.osu.CanPlay && this.enabled && ac__DisplayClass11_.frameIndex < this.replayFrames.Count + 1)
 				{
-					CS$<>8__locals1.currentTime = this.osu.CurrentTime;
+					ac__DisplayClass11_.currentTime = this.osu.CurrentTime;
 					bool isPaused = this.osu.IsPaused;
 					if (isPaused)
 					{
@@ -62,19 +63,19 @@ namespace OsuBuddy
 					}
 					else
 					{
-						bool flag2 = CS$<>8__locals1.currentTime >= CS$<>8__locals1.totalElapsedFrameTime;
+						bool flag2 = ac__DisplayClass11_.currentTime >= ac__DisplayClass11_.totalElapsedFrameTime;
 						if (flag2)
 						{
-							this.<Start>g__doMouseInput|11_0(ref CS$<>8__locals1);
-							this.<Start>g__doKeyboardInput|11_1(ref CS$<>8__locals1);
-							int frameIndex = CS$<>8__locals1.frameIndex;
-							CS$<>8__locals1.frameIndex = frameIndex + 1;
-							bool flag3 = CS$<>8__locals1.frameIndex < this.replayFrames.Count;
+							this.AStartg__doMouseInput11_0(ref ac__DisplayClass11_);
+							this.AStartg__doKeyboardInput11_1(ref ac__DisplayClass11_);
+							int frameIndex = ac__DisplayClass11_.frameIndex;
+							ac__DisplayClass11_.frameIndex = frameIndex + 1;
+							bool flag3 = ac__DisplayClass11_.frameIndex < this.replayFrames.Count;
 							if (flag3)
 							{
-								CS$<>8__locals1.frame = this.replayFrames[CS$<>8__locals1.frameIndex];
+								ac__DisplayClass11_.frame = this.replayFrames[ac__DisplayClass11_.frameIndex];
 							}
-							CS$<>8__locals1.totalElapsedFrameTime += CS$<>8__locals1.frame.TimeDiff;
+							ac__DisplayClass11_.totalElapsedFrameTime += ac__DisplayClass11_.frame.TimeDiff;
 						}
 					}
 				}
@@ -86,7 +87,7 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x0600048D RID: 1165 RVA: 0x000172F8 File Offset: 0x000172F8
+		// Token: 0x0600048D RID: 1165 RVA: 0x000172F8 File Offset: 0x000154F8
 		public void selectReplay(string replayPath)
 		{
 			bool flag = string.IsNullOrEmpty(replayPath);
@@ -108,7 +109,7 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x0600048E RID: 1166 RVA: 0x000173D8 File Offset: 0x000173D8
+		// Token: 0x0600048E RID: 1166 RVA: 0x000173D8 File Offset: 0x000155D8
 		public List<ReplayFrame> interpolateReplay()
 		{
 			bool flag = this.replayFrames == null;
@@ -177,7 +178,7 @@ namespace OsuBuddy
 			return result;
 		}
 
-		// Token: 0x0600048F RID: 1167 RVA: 0x000175D4 File Offset: 0x000175D4
+		// Token: 0x0600048F RID: 1167 RVA: 0x000175D4 File Offset: 0x000157D4
 		public List<ReplayFrame> flipReplay()
 		{
 			bool flag = this.replayFrames == null;
@@ -203,7 +204,7 @@ namespace OsuBuddy
 			return result;
 		}
 
-		// Token: 0x06000490 RID: 1168 RVA: 0x00017690 File Offset: 0x00017690
+		// Token: 0x06000490 RID: 1168 RVA: 0x00017690 File Offset: 0x00015890
 		public void printReplayFrames()
 		{
 			foreach (ReplayFrame replayFrame in this.replayFrames)
@@ -222,63 +223,63 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x06000491 RID: 1169 RVA: 0x00004622 File Offset: 0x00004622
+		// Token: 0x06000491 RID: 1169 RVA: 0x00004622 File Offset: 0x00002822
 		public List<ReplayFrame> getReplayFrames()
 		{
 			return this.replayFrames;
 		}
 
-		// Token: 0x06000492 RID: 1170 RVA: 0x0000462A File Offset: 0x0000462A
+		// Token: 0x06000492 RID: 1170 RVA: 0x0000462A File Offset: 0x0000282A
 		public string getReplayPath()
 		{
 			return this.replayPath;
 		}
 
-		// Token: 0x06000493 RID: 1171 RVA: 0x00004632 File Offset: 0x00004632
+		// Token: 0x06000493 RID: 1171 RVA: 0x00004632 File Offset: 0x00002832
 		public bool getPlayMouse()
 		{
 			return this.playMouse;
 		}
 
-		// Token: 0x06000494 RID: 1172 RVA: 0x0000463A File Offset: 0x0000463A
+		// Token: 0x06000494 RID: 1172 RVA: 0x0000463A File Offset: 0x0000283A
 		public bool getPlayKeyboard()
 		{
 			return this.playKeyboard;
 		}
 
-		// Token: 0x06000495 RID: 1173 RVA: 0x00004642 File Offset: 0x00004642
+		// Token: 0x06000495 RID: 1173 RVA: 0x00004642 File Offset: 0x00002842
 		public void setReplayFrames(List<ReplayFrame> newReplayFrames)
 		{
 			this.replayFrames = newReplayFrames;
 		}
 
-		// Token: 0x06000496 RID: 1174 RVA: 0x0000464C File Offset: 0x0000464C
+		// Token: 0x06000496 RID: 1174 RVA: 0x0000464C File Offset: 0x0000284C
 		public void setShouldInterpolateReplay(bool status)
 		{
 			this.shouldInterpolateReplay = status;
 		}
 
-		// Token: 0x06000497 RID: 1175 RVA: 0x00004656 File Offset: 0x00004656
+		// Token: 0x06000497 RID: 1175 RVA: 0x00004656 File Offset: 0x00002856
 		public void setPlayMouse(bool status)
 		{
 			this.playMouse = status;
 		}
 
-		// Token: 0x06000498 RID: 1176 RVA: 0x00004660 File Offset: 0x00004660
+		// Token: 0x06000498 RID: 1176 RVA: 0x00004660 File Offset: 0x00002860
 		public void setPlayKeyboard(bool status)
 		{
 			this.playKeyboard = status;
 		}
 
-		// Token: 0x06000499 RID: 1177 RVA: 0x0000466A File Offset: 0x0000466A
+		// Token: 0x06000499 RID: 1177 RVA: 0x0000466A File Offset: 0x0000286A
 		public void Stop()
 		{
 			this.enabled = false;
 		}
 
-		// Token: 0x0600049A RID: 1178 RVA: 0x00017764 File Offset: 0x00017764
+		// Token: 0x0600049A RID: 1178 RVA: 0x00017764 File Offset: 0x00015964
 		[CompilerGenerated]
-		private void <Start>g__doMouseInput|11_0(ref ReplayPlayer.<>c__DisplayClass11_0 A_1)
+		private void AStartg__doMouseInput11_0(ref ReplayPlayer.Ac__DisplayClass11_0 A_1)
 		{
 			bool flag = this.playMouse;
 			if (flag)
@@ -289,9 +290,9 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x0600049B RID: 1179 RVA: 0x00017828 File Offset: 0x00017828
+		// Token: 0x0600049B RID: 1179 RVA: 0x00017828 File Offset: 0x00015A28
 		[CompilerGenerated]
-		private void <Start>g__doKeyboardInput|11_1(ref ReplayPlayer.<>c__DisplayClass11_0 A_1)
+		private void AStartg__doKeyboardInput11_1(ref ReplayPlayer.Ac__DisplayClass11_0 A_1)
 		{
 			bool flag = this.playKeyboard;
 			if (flag)
@@ -326,9 +327,9 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x0600049C RID: 1180 RVA: 0x00017934 File Offset: 0x00017934
+		// Token: 0x0600049C RID: 1180 RVA: 0x00017934 File Offset: 0x00015B34
 		[CompilerGenerated]
-		private void <Start>g__waitForMapStart|11_2(ref ReplayPlayer.<>c__DisplayClass11_0 A_1)
+		private void AStartg__waitForMapStart11_2(ref ReplayPlayer.Ac__DisplayClass11_0 A_1)
 		{
 			while (A_1.currentTime >= A_1.totalElapsedFrameTime || A_1.frame.X < 0f || A_1.frame.X > 512f || A_1.frame.Y < 0f || A_1.frame.Y > 384f || A_1.frame.TimeDiff < 0)
 			{
@@ -341,7 +342,7 @@ namespace OsuBuddy
 				}
 				A_1.totalElapsedFrameTime += A_1.frame.TimeDiff;
 			}
-			this.<Start>g__doMouseInput|11_0(ref A_1);
+			this.AStartg__doMouseInput11_0(ref A_1);
 		}
 
 		// Token: 0x04000467 RID: 1127
@@ -373,5 +374,50 @@ namespace OsuBuddy
 
 		// Token: 0x04000470 RID: 1136
 		private bool playKeyboard = true;
+
+		// Token: 0x020000B2 RID: 178
+		[CompilerGenerated]
+		[StructLayout(LayoutKind.Auto)]
+		private struct Ac__DisplayClass11_0
+		{
+			// Token: 0x04000471 RID: 1137
+			public ReplayPlayer A4__this;
+
+			// Token: 0x04000472 RID: 1138
+			public ReplayFrame frame;
+
+			// Token: 0x04000473 RID: 1139
+			public Rect osuWindowRect;
+
+			// Token: 0x04000474 RID: 1140
+			public int windowBorders;
+
+			// Token: 0x04000475 RID: 1141
+			public int monitorWidth;
+
+			// Token: 0x04000476 RID: 1142
+			public int titleBarHeight;
+
+			// Token: 0x04000477 RID: 1143
+			public int monitorHeight;
+
+			// Token: 0x04000478 RID: 1144
+			public VirtualKeyCode key1;
+
+			// Token: 0x04000479 RID: 1145
+			public VirtualKeyCode key2;
+
+			// Token: 0x0400047A RID: 1146
+			public VirtualKeyCode smoke;
+
+			// Token: 0x0400047B RID: 1147
+			public int frameIndex;
+
+			// Token: 0x0400047C RID: 1148
+			public int totalElapsedFrameTime;
+
+			// Token: 0x0400047D RID: 1149
+			public int currentTime;
+		}
 	}
 }

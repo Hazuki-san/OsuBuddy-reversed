@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using osu.Enums;
 using osu.Helpers;
 using osu.Memory;
@@ -16,32 +17,32 @@ namespace osu
 	public class OsuManager
 	{
 		// Token: 0x170000FA RID: 250
-		// (get) Token: 0x0600037E RID: 894 RVA: 0x00003BBB File Offset: 0x00003BBB
-		// (set) Token: 0x0600037F RID: 895 RVA: 0x00003BC3 File Offset: 0x00003BC3
+		// (get) Token: 0x0600037E RID: 894 RVA: 0x00003BBB File Offset: 0x00001DBB
+		// (set) Token: 0x0600037F RID: 895 RVA: 0x00003BC3 File Offset: 0x00001DC3
 		public string DebugInfo { get; private set; }
 
 		// Token: 0x170000FB RID: 251
-		// (get) Token: 0x06000380 RID: 896 RVA: 0x00003BCC File Offset: 0x00003BCC
-		// (set) Token: 0x06000381 RID: 897 RVA: 0x00003BD4 File Offset: 0x00003BD4
+		// (get) Token: 0x06000380 RID: 896 RVA: 0x00003BCC File Offset: 0x00001DCC
+		// (set) Token: 0x06000381 RID: 897 RVA: 0x00003BD4 File Offset: 0x00001DD4
 		public OsuProcess OsuProcess { get; private set; }
 
 		// Token: 0x170000FC RID: 252
-		// (get) Token: 0x06000382 RID: 898 RVA: 0x00003BDD File Offset: 0x00003BDD
-		// (set) Token: 0x06000383 RID: 899 RVA: 0x00003BE5 File Offset: 0x00003BE5
+		// (get) Token: 0x06000382 RID: 898 RVA: 0x00003BDD File Offset: 0x00001DDD
+		// (set) Token: 0x06000383 RID: 899 RVA: 0x00003BE5 File Offset: 0x00001DE5
 		public OsuWindowManager WindowManager { get; private set; }
 
 		// Token: 0x170000FD RID: 253
-		// (get) Token: 0x06000384 RID: 900 RVA: 0x00003BEE File Offset: 0x00003BEE
-		// (set) Token: 0x06000385 RID: 901 RVA: 0x00003BF6 File Offset: 0x00003BF6
+		// (get) Token: 0x06000384 RID: 900 RVA: 0x00003BEE File Offset: 0x00001DEE
+		// (set) Token: 0x06000385 RID: 901 RVA: 0x00003BF6 File Offset: 0x00001DF6
 		public BindingManager BindingManager { get; private set; }
 
 		// Token: 0x170000FE RID: 254
-		// (get) Token: 0x06000386 RID: 902 RVA: 0x00003BFF File Offset: 0x00003BFF
-		// (set) Token: 0x06000387 RID: 903 RVA: 0x00003C07 File Offset: 0x00003C07
+		// (get) Token: 0x06000386 RID: 902 RVA: 0x00003BFF File Offset: 0x00001DFF
+		// (set) Token: 0x06000387 RID: 903 RVA: 0x00003C07 File Offset: 0x00001E07
 		public OsuPlayer Player { get; private set; }
 
 		// Token: 0x170000FF RID: 255
-		// (get) Token: 0x06000388 RID: 904 RVA: 0x00003C10 File Offset: 0x00003C10
+		// (get) Token: 0x06000388 RID: 904 RVA: 0x00003C10 File Offset: 0x00001E10
 		public int CurrentTime
 		{
 			get
@@ -51,7 +52,7 @@ namespace osu
 		}
 
 		// Token: 0x17000100 RID: 256
-		// (get) Token: 0x06000389 RID: 905 RVA: 0x00003C23 File Offset: 0x00003C23
+		// (get) Token: 0x06000389 RID: 905 RVA: 0x00003C23 File Offset: 0x00001E23
 		public bool IsPaused
 		{
 			get
@@ -61,7 +62,7 @@ namespace osu
 		}
 
 		// Token: 0x17000101 RID: 257
-		// (get) Token: 0x0600038A RID: 906 RVA: 0x00003C40 File Offset: 0x00003C40
+		// (get) Token: 0x0600038A RID: 906 RVA: 0x00003C40 File Offset: 0x00001E40
 		public OsuModes CurrentMode
 		{
 			get
@@ -71,7 +72,7 @@ namespace osu
 		}
 
 		// Token: 0x17000102 RID: 258
-		// (get) Token: 0x0600038B RID: 907 RVA: 0x00003C53 File Offset: 0x00003C53
+		// (get) Token: 0x0600038B RID: 907 RVA: 0x00003C53 File Offset: 0x00001E53
 		public bool CanLoad
 		{
 			get
@@ -81,7 +82,7 @@ namespace osu
 		}
 
 		// Token: 0x17000103 RID: 259
-		// (get) Token: 0x0600038C RID: 908 RVA: 0x00003C7C File Offset: 0x00003C7C
+		// (get) Token: 0x0600038C RID: 908 RVA: 0x00003C7C File Offset: 0x00001E7C
 		public bool CanPlay
 		{
 			get
@@ -90,44 +91,44 @@ namespace osu
 			}
 		}
 
-		// Token: 0x0600038D RID: 909 RVA: 0x00003C95 File Offset: 0x00003C95
+		// Token: 0x0600038D RID: 909 RVA: 0x00003C95 File Offset: 0x00001E95
 		public float HitObjectScalingFactor(float circleSize)
 		{
 			return 1f - 0.7f * (float)this.AdjustDifficulty((double)circleSize);
 		}
 
-		// Token: 0x0600038E RID: 910 RVA: 0x00010C00 File Offset: 0x00010C00
+		// Token: 0x0600038E RID: 910 RVA: 0x00010C00 File Offset: 0x0000EE00
 		public float HitObjectRadius(float circleSize)
 		{
 			float num = this.WindowManager.PlayfieldSize.X / 8f * this.HitObjectScalingFactor(circleSize);
 			return num / 2f / this.WindowManager.PlayfieldRatio * 1.00041f;
 		}
 
-		// Token: 0x0600038F RID: 911 RVA: 0x00003CAC File Offset: 0x00003CAC
+		// Token: 0x0600038F RID: 911 RVA: 0x00003CAC File Offset: 0x00001EAC
 		public int HitWindow300(double od)
 		{
 			return (int)this.DifficultyRange(od, 80.0, 50.0, 20.0);
 		}
 
-		// Token: 0x06000390 RID: 912 RVA: 0x00003CD1 File Offset: 0x00003CD1
+		// Token: 0x06000390 RID: 912 RVA: 0x00003CD1 File Offset: 0x00001ED1
 		public int HitWindow100(double od)
 		{
 			return (int)this.DifficultyRange(od, 140.0, 100.0, 60.0);
 		}
 
-		// Token: 0x06000391 RID: 913 RVA: 0x00003CF6 File Offset: 0x00003CF6
+		// Token: 0x06000391 RID: 913 RVA: 0x00003CF6 File Offset: 0x00001EF6
 		public int HitWindow50(double od)
 		{
 			return (int)this.DifficultyRange(od, 200.0, 150.0, 100.0);
 		}
 
-		// Token: 0x06000392 RID: 914 RVA: 0x00003D1B File Offset: 0x00003D1B
+		// Token: 0x06000392 RID: 914 RVA: 0x00003D1B File Offset: 0x00001F1B
 		public double AdjustDifficulty(double difficulty)
 		{
 			return (this.ApplyModsToDifficulty(difficulty, 1.3) - 5.0) / 5.0;
 		}
 
-		// Token: 0x06000393 RID: 915 RVA: 0x00010C50 File Offset: 0x00010C50
+		// Token: 0x06000393 RID: 915 RVA: 0x00010C50 File Offset: 0x0000EE50
 		public double ApplyModsToDifficulty(double difficulty, double hardrockFactor)
 		{
 			bool flag = this.Player.HitObjectManager.CurrentMods.HasFlag(Mods.Easy);
@@ -143,7 +144,7 @@ namespace osu
 			return difficulty;
 		}
 
-		// Token: 0x06000394 RID: 916 RVA: 0x00010CDC File Offset: 0x00010CDC
+		// Token: 0x06000394 RID: 916 RVA: 0x00010CDC File Offset: 0x0000EEDC
 		public double DifficultyRange(double difficulty, double min, double mid, double max)
 		{
 			difficulty = this.ApplyModsToDifficulty(difficulty, 1.4);
@@ -168,20 +169,17 @@ namespace osu
 			return result;
 		}
 
-		// Token: 0x06000395 RID: 917 RVA: 0x00010D60 File Offset: 0x00010D60
+		// Token: 0x06000395 RID: 917 RVA: 0x00010D60 File Offset: 0x0000EF60
 		public bool Initialize(Process osuProcess)
 		{
 			osuProcess.EnableRaisingEvents = true;
-			osuProcess.Exited += delegate(object o, EventArgs e)
-			{
-				Environment.Exit(0);
-			};
+			osuProcess.Exited += OsuManager.Ac.A9.AInitializeb__40_0;
 			this.OsuProcess = new OsuProcess(osuProcess);
 			DependencyContainer.Cache<OsuProcess>(this.OsuProcess);
 			return this.scanMemory();
 		}
 
-		// Token: 0x06000396 RID: 918 RVA: 0x00010DC0 File Offset: 0x00010DC0
+		// Token: 0x06000396 RID: 918 RVA: 0x00010DC0 File Offset: 0x0000EFC0
 		public Process tryGetProcess()
 		{
 			Process process = Process.GetProcessesByName("osu!").FirstOrDefault<Process>();
@@ -199,7 +197,7 @@ namespace osu
 			return null;
 		}
 
-		// Token: 0x06000397 RID: 919 RVA: 0x00010E24 File Offset: 0x00010E24
+		// Token: 0x06000397 RID: 919 RVA: 0x00010E24 File Offset: 0x0000F024
 		private bool scanMemory()
 		{
 			bool flag = false;
@@ -264,5 +262,48 @@ namespace osu
 
 		// Token: 0x04000301 RID: 769
 		private UIntPtr modeAddress;
+
+		// Token: 0x04000302 RID: 770
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private string ADebugInfok__BackingField;
+
+		// Token: 0x04000303 RID: 771
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private OsuProcess AOsuProcessk__BackingField;
+
+		// Token: 0x04000304 RID: 772
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private OsuWindowManager AWindowManagerk__BackingField;
+
+		// Token: 0x04000305 RID: 773
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private BindingManager ABindingManagerk__BackingField;
+
+		// Token: 0x04000306 RID: 774
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private OsuPlayer APlayerk__BackingField;
+
+		// Token: 0x02000086 RID: 134
+		[CompilerGenerated]
+		[Serializable]
+		private sealed class Ac
+		{
+			// Token: 0x0600039B RID: 923 RVA: 0x00003D4D File Offset: 0x00001F4D
+			internal void AInitializeb__40_0(object o, EventArgs e)
+			{
+				Environment.Exit(0);
+			}
+
+			// Token: 0x04000307 RID: 775
+			public static readonly OsuManager.Ac A9 = new OsuManager.Ac();
+
+			// Token: 0x04000308 RID: 776
+			public static EventHandler A9__40_0;
+		}
 	}
 }

@@ -14,13 +14,13 @@ namespace OsuBuddy.Properties
 	[CompilerGenerated]
 	internal class Resources
 	{
-		// Token: 0x060004C2 RID: 1218 RVA: 0x0000390A File Offset: 0x0000390A
+		// Token: 0x060004C2 RID: 1218 RVA: 0x0000390A File Offset: 0x00001B0A
 		internal Resources()
 		{
 		}
 
 		// Token: 0x17000144 RID: 324
-		// (get) Token: 0x060004C3 RID: 1219 RVA: 0x00017F1C File Offset: 0x00017F1C
+		// (get) Token: 0x060004C3 RID: 1219 RVA: 0x00017F1C File Offset: 0x0001611C
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		internal static ResourceManager ResourceManager
 		{
@@ -37,8 +37,8 @@ namespace OsuBuddy.Properties
 		}
 
 		// Token: 0x17000145 RID: 325
-		// (get) Token: 0x060004C4 RID: 1220 RVA: 0x00017F64 File Offset: 0x00017F64
-		// (set) Token: 0x060004C5 RID: 1221 RVA: 0x000047E1 File Offset: 0x000047E1
+		// (get) Token: 0x060004C4 RID: 1220 RVA: 0x00017F64 File Offset: 0x00016164
+		// (set) Token: 0x060004C5 RID: 1221 RVA: 0x000047E1 File Offset: 0x000029E1
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		internal static CultureInfo Culture
 		{

@@ -7,8 +7,8 @@ namespace osu.Memory.Objects.Player
 	public class OsuRuleset : OsuObject
 	{
 		// Token: 0x1700012D RID: 301
-		// (get) Token: 0x06000407 RID: 1031 RVA: 0x00011FAC File Offset: 0x00011FAC
-		// (set) Token: 0x06000408 RID: 1032 RVA: 0x0001205C File Offset: 0x0001205C
+		// (get) Token: 0x06000407 RID: 1031 RVA: 0x00011FAC File Offset: 0x000101AC
+		// (set) Token: 0x06000408 RID: 1032 RVA: 0x0001205C File Offset: 0x0001025C
 		public Vector2 MousePosition
 		{
 			get
@@ -35,7 +35,7 @@ namespace osu.Memory.Objects.Player
 			}
 		}
 
-		// Token: 0x06000409 RID: 1033 RVA: 0x00011D98 File Offset: 0x00011D98
+		// Token: 0x06000409 RID: 1033 RVA: 0x00011D98 File Offset: 0x0000FF98
 		public OsuRuleset() : base(null)
 		{
 		}

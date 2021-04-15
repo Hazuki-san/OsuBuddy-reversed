@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 using osu;
 using osu.Memory.Objects.Player.Beatmaps;
@@ -13,7 +14,7 @@ namespace OsuBuddy
 	// Token: 0x020000AC RID: 172
 	public class AimAssist
 	{
-		// Token: 0x0600046A RID: 1130 RVA: 0x00016128 File Offset: 0x00016128
+		// Token: 0x0600046A RID: 1130 RVA: 0x00016128 File Offset: 0x00014328
 		public AimAssist()
 		{
 			this.osu = DependencyContainer.Get<OsuManager>();
@@ -21,41 +22,41 @@ namespace OsuBuddy
 			this.lastMousePos = new Vector2(0f, 0f);
 		}
 
-		// Token: 0x0600046B RID: 1131 RVA: 0x000161B4 File Offset: 0x000161B4
+		// Token: 0x0600046B RID: 1131 RVA: 0x000161B4 File Offset: 0x000143B4
 		public void Start(OsuBeatmap beatmap)
 		{
-			AimAssist.<>c__DisplayClass15_0 CS$<>8__locals1;
-			CS$<>8__locals1.<>4__this = this;
-			CS$<>8__locals1.beatmap = beatmap;
-			this.beatmap = CS$<>8__locals1.beatmap;
+			AimAssist.Ac__DisplayClass15_0 ac__DisplayClass15_;
+			ac__DisplayClass15_.A4__this = this;
+			ac__DisplayClass15_.beatmap = beatmap;
+			this.beatmap = ac__DisplayClass15_.beatmap;
 			this.enabled = true;
-			CS$<>8__locals1.index = this.osu.Player.HitObjectManager.CurrentHitObjectIndex;
-			CS$<>8__locals1.currentHitObject = CS$<>8__locals1.beatmap.HitObjects[CS$<>8__locals1.index];
-			CS$<>8__locals1.hitObjectRadius = this.osu.HitObjectRadius(CS$<>8__locals1.beatmap.CircleSize);
-			while (this.osu.CanPlay && CS$<>8__locals1.index < CS$<>8__locals1.beatmap.HitObjects.Count && this.enabled)
+			ac__DisplayClass15_.index = this.osu.Player.HitObjectManager.CurrentHitObjectIndex;
+			ac__DisplayClass15_.currentHitObject = ac__DisplayClass15_.beatmap.HitObjects[ac__DisplayClass15_.index];
+			ac__DisplayClass15_.hitObjectRadius = this.osu.HitObjectRadius(ac__DisplayClass15_.beatmap.CircleSize);
+			while (this.osu.CanPlay && ac__DisplayClass15_.index < ac__DisplayClass15_.beatmap.HitObjects.Count && this.enabled)
 			{
 				Thread.Sleep(10);
 				bool isPaused = this.osu.IsPaused;
 				if (!isPaused)
 				{
 					int currentTime = this.osu.CurrentTime;
-					bool flag = currentTime <= CS$<>8__locals1.currentHitObject.EndTime;
+					bool flag = currentTime <= ac__DisplayClass15_.currentHitObject.EndTime;
 					if (flag)
 					{
-						CS$<>8__locals1.hitObjectPosition = ((CS$<>8__locals1.currentHitObject is OsuSlider) ? (CS$<>8__locals1.currentHitObject as OsuSlider).PositionAtTime(this.osu.CurrentTime) : CS$<>8__locals1.currentHitObject.Position);
-						bool flag2 = !(CS$<>8__locals1.currentHitObject is OsuSpinner);
+						ac__DisplayClass15_.hitObjectPosition = ((ac__DisplayClass15_.currentHitObject is OsuSlider) ? (ac__DisplayClass15_.currentHitObject as OsuSlider).PositionAtTime(this.osu.CurrentTime) : ac__DisplayClass15_.currentHitObject.Position);
+						bool flag2 = !(ac__DisplayClass15_.currentHitObject is OsuSpinner);
 						if (flag2)
 						{
-							this.<Start>g__aimAssist|15_0(this.osu.WindowManager.PlayfieldToScreen(CS$<>8__locals1.hitObjectPosition), ref CS$<>8__locals1);
+							this.AStartg__aimAssist15_0(this.osu.WindowManager.PlayfieldToScreen(ac__DisplayClass15_.hitObjectPosition), ref ac__DisplayClass15_);
 						}
 						this.lastMousePos = this.osu.Player.Ruleset.MousePosition;
 					}
-					bool flag3 = currentTime >= CS$<>8__locals1.currentHitObject.EndTime;
+					bool flag3 = currentTime >= ac__DisplayClass15_.currentHitObject.EndTime;
 					if (flag3)
 					{
-						this.<Start>g__getNextObject|15_2(ref CS$<>8__locals1);
+						this.AStartg__getNextObject15_2(ref ac__DisplayClass15_);
 					}
-					while (this.osu.CanPlay && CS$<>8__locals1.index >= CS$<>8__locals1.beatmap.HitObjects.Count && this.enabled)
+					while (this.osu.CanPlay && ac__DisplayClass15_.index >= ac__DisplayClass15_.beatmap.HitObjects.Count && this.enabled)
 					{
 						Thread.Sleep(5);
 					}
@@ -63,25 +64,25 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x0600046C RID: 1132 RVA: 0x00004572 File Offset: 0x00004572
+		// Token: 0x0600046C RID: 1132 RVA: 0x00004572 File Offset: 0x00002772
 		public int getAimSpeed()
 		{
 			return this.aimSpeed;
 		}
 
-		// Token: 0x0600046D RID: 1133 RVA: 0x0000457A File Offset: 0x0000457A
+		// Token: 0x0600046D RID: 1133 RVA: 0x0000457A File Offset: 0x0000277A
 		public int getAimStartingDistance()
 		{
 			return this.aimStartingDistance;
 		}
 
-		// Token: 0x0600046E RID: 1134 RVA: 0x00004582 File Offset: 0x00004582
+		// Token: 0x0600046E RID: 1134 RVA: 0x00004582 File Offset: 0x00002782
 		public int getAimStoppingDistance()
 		{
 			return this.aimStoppingDistance;
 		}
 
-		// Token: 0x0600046F RID: 1135 RVA: 0x000163AC File Offset: 0x000163AC
+		// Token: 0x0600046F RID: 1135 RVA: 0x000163AC File Offset: 0x000145AC
 		public void setAimSpeed(int speed)
 		{
 			this.aimSpeed = speed;
@@ -97,7 +98,7 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x06000470 RID: 1136 RVA: 0x00016404 File Offset: 0x00016404
+		// Token: 0x06000470 RID: 1136 RVA: 0x00016404 File Offset: 0x00014604
 		public void setAimStartingDistance(int distance)
 		{
 			this.aimStartingDistance = distance;
@@ -113,7 +114,7 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x06000471 RID: 1137 RVA: 0x0001645C File Offset: 0x0001645C
+		// Token: 0x06000471 RID: 1137 RVA: 0x0001645C File Offset: 0x0001465C
 		public void setAimStoppingDistance(int distance)
 		{
 			this.aimStoppingDistance = distance;
@@ -129,27 +130,27 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x06000472 RID: 1138 RVA: 0x000164B4 File Offset: 0x000164B4
+		// Token: 0x06000472 RID: 1138 RVA: 0x000164B4 File Offset: 0x000146B4
 		public double distance(Vector2 p1, Vector2 p2)
 		{
 			return Math.Sqrt(Math.Pow((double)(p1.X - p2.X), 2.0) + Math.Pow((double)(p1.Y - p2.Y), 2.0));
 		}
 
-		// Token: 0x06000473 RID: 1139 RVA: 0x00016504 File Offset: 0x00016504
+		// Token: 0x06000473 RID: 1139 RVA: 0x00016504 File Offset: 0x00014704
 		public double distance(double p1, double p2)
 		{
 			return Math.Abs(p1 - p2);
 		}
 
-		// Token: 0x06000474 RID: 1140 RVA: 0x0000458A File Offset: 0x0000458A
+		// Token: 0x06000474 RID: 1140 RVA: 0x0000458A File Offset: 0x0000278A
 		public void Stop()
 		{
 			this.enabled = false;
 		}
 
-		// Token: 0x06000475 RID: 1141 RVA: 0x00016520 File Offset: 0x00016520
+		// Token: 0x06000475 RID: 1141 RVA: 0x00016520 File Offset: 0x00014720
 		[CompilerGenerated]
-		private void <Start>g__aimAssist|15_0(Vector2 position, ref AimAssist.<>c__DisplayClass15_0 A_2)
+		private void AStartg__aimAssist15_0(Vector2 position, ref AimAssist.Ac__DisplayClass15_0 A_2)
 		{
 			double num = 0.0;
 			double num2 = 0.0;
@@ -157,7 +158,7 @@ namespace OsuBuddy
 			bool flag = this.distance(mousePosition, position) < (double)this.aimStartingDistance;
 			if (flag)
 			{
-				bool flag2 = !this.<Start>g__isMouseOnNote|15_1(ref A_2);
+				bool flag2 = !this.AStartg__isMouseOnNote15_1(ref A_2);
 				if (flag2)
 				{
 					bool flag3 = this.distance(mousePosition, position) < this.distance(this.lastMousePos, position);
@@ -185,17 +186,17 @@ namespace OsuBuddy
 			this.inputSimulator.Mouse.MoveMouseBy((int)Math.Round(num), (int)Math.Round(num2));
 		}
 
-		// Token: 0x06000476 RID: 1142 RVA: 0x00016704 File Offset: 0x00016704
+		// Token: 0x06000476 RID: 1142 RVA: 0x00016704 File Offset: 0x00014904
 		[CompilerGenerated]
-		private bool <Start>g__isMouseOnNote|15_1(ref AimAssist.<>c__DisplayClass15_0 A_1)
+		private bool AStartg__isMouseOnNote15_1(ref AimAssist.Ac__DisplayClass15_0 A_1)
 		{
 			Vector2 p = this.osu.WindowManager.ScreenToPlayfield(this.osu.Player.Ruleset.MousePosition);
 			return this.distance(A_1.hitObjectPosition, p) - (double)A_1.hitObjectRadius * ((double)((float)this.aimStoppingDistance) / 100.0) <= 0.0;
 		}
 
-		// Token: 0x06000477 RID: 1143 RVA: 0x00016774 File Offset: 0x00016774
+		// Token: 0x06000477 RID: 1143 RVA: 0x00016774 File Offset: 0x00014974
 		[CompilerGenerated]
-		private void <Start>g__getNextObject|15_2(ref AimAssist.<>c__DisplayClass15_0 A_1)
+		private void AStartg__getNextObject15_2(ref AimAssist.Ac__DisplayClass15_0 A_1)
 		{
 			int index = A_1.index;
 			A_1.index = index + 1;
@@ -247,5 +248,29 @@ namespace OsuBuddy
 
 		// Token: 0x04000440 RID: 1088
 		private int aimStoppingDistance = 30;
+
+		// Token: 0x020000AD RID: 173
+		[CompilerGenerated]
+		[StructLayout(LayoutKind.Auto)]
+		private struct Ac__DisplayClass15_0
+		{
+			// Token: 0x04000441 RID: 1089
+			public AimAssist A4__this;
+
+			// Token: 0x04000442 RID: 1090
+			public Vector2 hitObjectPosition;
+
+			// Token: 0x04000443 RID: 1091
+			public float hitObjectRadius;
+
+			// Token: 0x04000444 RID: 1092
+			public int index;
+
+			// Token: 0x04000445 RID: 1093
+			public OsuBeatmap beatmap;
+
+			// Token: 0x04000446 RID: 1094
+			public OsuHitObject currentHitObject;
+		}
 	}
 }

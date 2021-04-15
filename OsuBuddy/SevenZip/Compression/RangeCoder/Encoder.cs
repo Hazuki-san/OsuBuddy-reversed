@@ -6,19 +6,19 @@ namespace SevenZip.Compression.RangeCoder
 	// Token: 0x0200000C RID: 12
 	internal class Encoder
 	{
-		// Token: 0x06000019 RID: 25 RVA: 0x00002113 File Offset: 0x00002113
+		// Token: 0x06000019 RID: 25 RVA: 0x00002113 File Offset: 0x00000313
 		public void SetStream(Stream stream)
 		{
 			this.Stream = stream;
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x0000211D File Offset: 0x0000211D
+		// Token: 0x0600001A RID: 26 RVA: 0x0000211D File Offset: 0x0000031D
 		public void ReleaseStream()
 		{
 			this.Stream = null;
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002127 File Offset: 0x00002127
+		// Token: 0x0600001B RID: 27 RVA: 0x00002127 File Offset: 0x00000327
 		public void Init()
 		{
 			this.StartPosition = this.Stream.Position;
@@ -28,7 +28,7 @@ namespace SevenZip.Compression.RangeCoder
 			this._cache = 0;
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00004AC8 File Offset: 0x00004AC8
+		// Token: 0x0600001C RID: 28 RVA: 0x00004AC8 File Offset: 0x00002CC8
 		public void FlushData()
 		{
 			for (int i = 0; i < 5; i++)
@@ -37,19 +37,19 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002158 File Offset: 0x00002158
+		// Token: 0x0600001D RID: 29 RVA: 0x00002158 File Offset: 0x00000358
 		public void FlushStream()
 		{
 			this.Stream.Flush();
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002167 File Offset: 0x00002167
+		// Token: 0x0600001E RID: 30 RVA: 0x00002167 File Offset: 0x00000367
 		public void CloseStream()
 		{
 			this.Stream.Close();
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00004AF0 File Offset: 0x00004AF0
+		// Token: 0x0600001F RID: 31 RVA: 0x00004AF0 File Offset: 0x00002CF0
 		public void Encode(uint start, uint size, uint total)
 		{
 			this.Low += (ulong)(start * (this.Range /= total));
@@ -61,7 +61,7 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00004B58 File Offset: 0x00004B58
+		// Token: 0x06000020 RID: 32 RVA: 0x00004B58 File Offset: 0x00002D58
 		public void ShiftLow()
 		{
 			bool flag = (uint)this.Low < 4278190080U || (uint)(this.Low >> 32) == 1U;
@@ -83,7 +83,7 @@ namespace SevenZip.Compression.RangeCoder
 			this.Low = (ulong)((ulong)((uint)this.Low) << 8);
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00004BFC File Offset: 0x00004BFC
+		// Token: 0x06000021 RID: 33 RVA: 0x00004BFC File Offset: 0x00002DFC
 		public void EncodeDirectBits(uint v, int numTotalBits)
 		{
 			for (int i = numTotalBits - 1; i >= 0; i--)
@@ -103,7 +103,7 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00004C7C File Offset: 0x00004C7C
+		// Token: 0x06000022 RID: 34 RVA: 0x00004C7C File Offset: 0x00002E7C
 		public void EncodeBit(uint size0, int numTotalBits, uint symbol)
 		{
 			uint num = (this.Range >> numTotalBits) * size0;
@@ -124,7 +124,7 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x00004CF4 File Offset: 0x00004CF4
+		// Token: 0x06000023 RID: 35 RVA: 0x00004CF4 File Offset: 0x00002EF4
 		public long GetProcessedSizeAdd()
 		{
 			return (long)((ulong)this._cacheSize + (ulong)this.Stream.Position - (ulong)this.StartPosition + 4UL);

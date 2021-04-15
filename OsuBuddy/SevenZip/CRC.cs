@@ -5,7 +5,7 @@ namespace SevenZip
 	// Token: 0x02000002 RID: 2
 	internal class CRC
 	{
-		// Token: 0x06000002 RID: 2 RVA: 0x000047FC File Offset: 0x000047FC
+		// Token: 0x06000002 RID: 2 RVA: 0x000047FC File Offset: 0x000029FC
 		static CRC()
 		{
 			for (uint num = 0U; num < 256U; num += 1U)
@@ -27,19 +27,19 @@ namespace SevenZip
 			}
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x0000206B File Offset: 0x0000206B
+		// Token: 0x06000003 RID: 3 RVA: 0x0000206B File Offset: 0x0000026B
 		public void Init()
 		{
 			this._value = uint.MaxValue;
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x00002075 File Offset: 0x00002075
+		// Token: 0x06000004 RID: 4 RVA: 0x00002075 File Offset: 0x00000275
 		public void UpdateByte(byte b)
 		{
 			this._value = (CRC.Table[(int)((byte)this._value ^ b)] ^ this._value >> 8);
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00004868 File Offset: 0x00004868
+		// Token: 0x06000005 RID: 5 RVA: 0x00004868 File Offset: 0x00002A68
 		public void Update(byte[] data, uint offset, uint size)
 		{
 			for (uint num = 0U; num < size; num += 1U)
@@ -48,7 +48,7 @@ namespace SevenZip
 			}
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x000048A8 File Offset: 0x000048A8
+		// Token: 0x06000006 RID: 6 RVA: 0x000048A8 File Offset: 0x00002AA8
 		public uint GetDigest()
 		{
 			return this._value ^ uint.MaxValue;

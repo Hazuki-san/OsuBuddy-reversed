@@ -4,9 +4,9 @@ using System.IO;
 namespace SevenZip.Compression.LZ
 {
 	// Token: 0x02000013 RID: 19
-	internal class BinTree : InWindow, IMatchFinder, IInWindowStream
+	internal class BinTree : InWindow, IInWindowStream, IMatchFinder
 	{
-		// Token: 0x06000045 RID: 69 RVA: 0x000053A8 File Offset: 0x000053A8
+		// Token: 0x06000045 RID: 69 RVA: 0x000053A8 File Offset: 0x000035A8
 		public void SetType(int numHashBytes)
 		{
 			this.HASH_ARRAY = (numHashBytes > 2);
@@ -25,19 +25,19 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x000021C8 File Offset: 0x000021C8
+		// Token: 0x06000046 RID: 70 RVA: 0x000021C8 File Offset: 0x000003C8
 		public new void SetStream(Stream stream)
 		{
 			base.SetStream(stream);
 		}
 
-		// Token: 0x06000047 RID: 71 RVA: 0x000021D3 File Offset: 0x000021D3
+		// Token: 0x06000047 RID: 71 RVA: 0x000021D3 File Offset: 0x000003D3
 		public new void ReleaseStream()
 		{
 			base.ReleaseStream();
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x00005400 File Offset: 0x00005400
+		// Token: 0x06000048 RID: 72 RVA: 0x00005400 File Offset: 0x00003600
 		public new void Init()
 		{
 			base.Init();
@@ -49,7 +49,7 @@ namespace SevenZip.Compression.LZ
 			base.ReduceOffsets(-1);
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x00005444 File Offset: 0x00005444
+		// Token: 0x06000049 RID: 73 RVA: 0x00005444 File Offset: 0x00003644
 		public new void MovePos()
 		{
 			uint num = this._cyclicBufferPos + 1U;
@@ -67,25 +67,25 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x00005498 File Offset: 0x00005498
+		// Token: 0x0600004A RID: 74 RVA: 0x00005498 File Offset: 0x00003698
 		public new byte GetIndexByte(int index)
 		{
 			return base.GetIndexByte(index);
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x000054B4 File Offset: 0x000054B4
+		// Token: 0x0600004B RID: 75 RVA: 0x000054B4 File Offset: 0x000036B4
 		public new uint GetMatchLen(int index, uint distance, uint limit)
 		{
 			return base.GetMatchLen(index, distance, limit);
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x000054D0 File Offset: 0x000054D0
+		// Token: 0x0600004C RID: 76 RVA: 0x000054D0 File Offset: 0x000036D0
 		public new uint GetNumAvailableBytes()
 		{
 			return base.GetNumAvailableBytes();
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x000054E8 File Offset: 0x000054E8
+		// Token: 0x0600004D RID: 77 RVA: 0x000054E8 File Offset: 0x000036E8
 		public void Create(uint historySize, uint keepAddBufferBefore, uint matchMaxLen, uint keepAddBufferAfter)
 		{
 			bool flag = historySize > 2147483391U;
@@ -130,7 +130,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x000055F8 File Offset: 0x000055F8
+		// Token: 0x0600004E RID: 78 RVA: 0x000055F8 File Offset: 0x000037F8
 		public uint GetMatches(uint[] distances)
 		{
 			bool flag = this._pos + this._matchMaxLen <= this._streamPos;
@@ -291,7 +291,7 @@ namespace SevenZip.Compression.LZ
 			return num2;
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00005AA8 File Offset: 0x00005AA8
+		// Token: 0x0600004F RID: 79 RVA: 0x00005AA8 File Offset: 0x00003CA8
 		public void Skip(uint num)
 		{
 			for (;;)
@@ -400,7 +400,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00005DCC File Offset: 0x00005DCC
+		// Token: 0x06000050 RID: 80 RVA: 0x00005DCC File Offset: 0x00003FCC
 		private void NormalizeLinks(uint[] items, uint numItems, uint subValue)
 		{
 			for (uint num = 0U; num < numItems; num += 1U)
@@ -419,7 +419,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00005E08 File Offset: 0x00005E08
+		// Token: 0x06000051 RID: 81 RVA: 0x00005E08 File Offset: 0x00004008
 		private void Normalize()
 		{
 			uint subValue = this._pos - this._cyclicBufferSize;
@@ -428,7 +428,7 @@ namespace SevenZip.Compression.LZ
 			base.ReduceOffsets((int)subValue);
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x000021DD File Offset: 0x000021DD
+		// Token: 0x06000052 RID: 82 RVA: 0x000021DD File Offset: 0x000003DD
 		public void SetCutValue(uint cutValue)
 		{
 			this._cutValue = cutValue;

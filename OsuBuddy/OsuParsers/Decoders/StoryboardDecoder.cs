@@ -16,7 +16,7 @@ namespace OsuParsers.Decoders
 	// Token: 0x02000064 RID: 100
 	public static class StoryboardDecoder
 	{
-		// Token: 0x060001C9 RID: 457 RVA: 0x0000FB7C File Offset: 0x0000FB7C
+		// Token: 0x060001C9 RID: 457 RVA: 0x0000FB7C File Offset: 0x0000DD7C
 		public static Storyboard Decode(string path)
 		{
 			bool flag = File.Exists(path);
@@ -27,7 +27,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001CA RID: 458 RVA: 0x0000FBAC File Offset: 0x0000FBAC
+		// Token: 0x060001CA RID: 458 RVA: 0x0000FBAC File Offset: 0x0000DDAC
 		public static Storyboard Decode(IEnumerable<string> lines)
 		{
 			StoryboardDecoder.storyboard = new Storyboard();
@@ -68,13 +68,13 @@ namespace OsuParsers.Decoders
 			return StoryboardDecoder.storyboard;
 		}
 
-		// Token: 0x060001CB RID: 459 RVA: 0x00002CF5 File Offset: 0x00002CF5
+		// Token: 0x060001CB RID: 459 RVA: 0x00002CF5 File Offset: 0x00000EF5
 		public static Storyboard Decode(Stream stream)
 		{
 			return StoryboardDecoder.Decode(stream.ReadAllLines());
 		}
 
-		// Token: 0x060001CC RID: 460 RVA: 0x0000FCD8 File Offset: 0x0000FCD8
+		// Token: 0x060001CC RID: 460 RVA: 0x0000FCD8 File Offset: 0x0000DED8
 		private static string ParseVariables(string line)
 		{
 			bool flag = StoryboardDecoder.storyboard.Variables == null || line.IndexOf('$') < 0;
@@ -94,7 +94,7 @@ namespace OsuParsers.Decoders
 			return result;
 		}
 
-		// Token: 0x060001CD RID: 461 RVA: 0x0000FD68 File Offset: 0x0000FD68
+		// Token: 0x060001CD RID: 461 RVA: 0x0000FD68 File Offset: 0x0000DF68
 		private static void ParseSbObject(string line)
 		{
 			string[] array = line.Split(new char[]
@@ -152,7 +152,7 @@ namespace OsuParsers.Decoders
 			}
 		}
 
-		// Token: 0x060001CE RID: 462 RVA: 0x0000FF64 File Offset: 0x0000FF64
+		// Token: 0x060001CE RID: 462 RVA: 0x0000FF64 File Offset: 0x0000E164
 		private static void ParseSbCommand(string line)
 		{
 			int num = 0;
@@ -192,7 +192,7 @@ namespace OsuParsers.Decoders
 					int endTime = Convert.ToInt32(array[3]);
 					string text3 = text;
 					string text4 = text3;
-					uint num2 = <PrivateImplementationDetails>.ComputeStringHash(text4);
+					uint num2 = APrivateImplementationDetails.ComputeStringHash(text4);
 					if (num2 <= 3322673650U)
 					{
 						if (num2 <= 736079187U)

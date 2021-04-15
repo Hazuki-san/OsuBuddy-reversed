@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace OsuBuddy
 	// Token: 0x020000B3 RID: 179
 	public class OsuBuddy
 	{
-		// Token: 0x0600049D RID: 1181 RVA: 0x00017A18 File Offset: 0x00017A18
+		// Token: 0x0600049D RID: 1181 RVA: 0x00017A18 File Offset: 0x00015C18
 		public void run()
 		{
 			OsuBuddy.osu = new OsuManager();
@@ -26,16 +27,13 @@ namespace OsuBuddy
 			this.user = new User("", "");
 			this.gui.Text = "OsuBuddyCrack - " + this.user.getUsername();
 			this.gui.updateLoginGui(this.user.getUsername(), this.user.getSubscriptionExpirationDate());
-			Thread thread = new Thread(delegate()
-			{
-				this.gui.ShowDialog();
-			});
+			Thread thread = new Thread(new ThreadStart(this.Arunb__0_0));
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.Start();
 			this.StartTasks();
 		}
 
-		// Token: 0x0600049E RID: 1182 RVA: 0x00017AE8 File Offset: 0x00017AE8
+		// Token: 0x0600049E RID: 1182 RVA: 0x00017AE8 File Offset: 0x00015CE8
 		private void getOsu()
 		{
 			Process process = OsuBuddy.osu.tryGetProcess();
@@ -64,12 +62,14 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x0600049F RID: 1183 RVA: 0x00017B74 File Offset: 0x00017B74
+		// Token: 0x0600049F RID: 1183 RVA: 0x00017B74 File Offset: 0x00015D74
 		private void StartTasks()
 		{
 			bool flag = true;
 			while (flag)
 			{
+				OsuBuddy.Ac__DisplayClass2_0 ac__DisplayClass2_ = new OsuBuddy.Ac__DisplayClass2_0();
+				ac__DisplayClass2_.A4__this = this;
 				this.gui.setStatus("Waiting for beatmap selection...");
 				Console.WriteLine("Waiting for beatmap selection...");
 				while (!OsuBuddy.osu.CanLoad && flag)
@@ -80,28 +80,28 @@ namespace OsuBuddy
 				{
 					break;
 				}
-				OsuBeatmap beatmap = OsuBuddy.osu.Player.Beatmap;
+				ac__DisplayClass2_.beatmap = OsuBuddy.osu.Player.Beatmap;
 				this.gui.setStatus(string.Concat(new string[]
 				{
 					"Playing ",
-					beatmap.Artist,
+					ac__DisplayClass2_.beatmap.Artist,
 					" - ",
-					beatmap.Title,
+					ac__DisplayClass2_.beatmap.Title,
 					" [",
-					beatmap.Version,
+					ac__DisplayClass2_.beatmap.Version,
 					"] Mapped by ",
-					beatmap.Creator
+					ac__DisplayClass2_.beatmap.Creator
 				}));
 				Console.WriteLine(string.Concat(new string[]
 				{
 					"Playing ",
-					beatmap.Artist,
+					ac__DisplayClass2_.beatmap.Artist,
 					" - ",
-					beatmap.Title,
+					ac__DisplayClass2_.beatmap.Title,
 					" [",
-					beatmap.Version,
+					ac__DisplayClass2_.beatmap.Version,
 					"] Mapped by ",
-					beatmap.Creator
+					ac__DisplayClass2_.beatmap.Creator
 				}));
 				while (!this.aimAssistEnabled && !this.relaxEnabled && (!this.replayPlayerEnabled || this.replayPlayer.getReplayFrames() == null))
 				{
@@ -125,27 +125,9 @@ namespace OsuBuddy
 				{
 					OsuBuddy.exit();
 				}
-				Task task = Task.Factory.StartNew(delegate()
-				{
-					if (this.aimAssistEnabled && OsuBuddy.osu.Player.CurrentRuleset == Ruleset.Standard)
-					{
-						this.aimAssist.Start(beatmap);
-					}
-				});
-				Task task2 = Task.Factory.StartNew(delegate()
-				{
-					if (this.relaxEnabled && OsuBuddy.osu.Player.CurrentRuleset == Ruleset.Standard)
-					{
-						this.relax.Start(beatmap);
-					}
-				});
-				Task task3 = Task.Factory.StartNew(delegate()
-				{
-					if (this.replayPlayerEnabled && OsuBuddy.osu.Player.CurrentRuleset == Ruleset.Standard)
-					{
-						this.replayPlayer.Start(beatmap);
-					}
-				});
+				Task task = Task.Factory.StartNew(new Action(ac__DisplayClass2_.AStartTasksb__0));
+				Task task2 = Task.Factory.StartNew(new Action(ac__DisplayClass2_.AStartTasksb__1));
+				Task task3 = Task.Factory.StartNew(new Action(ac__DisplayClass2_.AStartTasksb__2));
 				Task.WaitAll(new Task[]
 				{
 					task,
@@ -155,40 +137,47 @@ namespace OsuBuddy
 			}
 		}
 
-		// Token: 0x060004A0 RID: 1184 RVA: 0x00004673 File Offset: 0x00004673
+		// Token: 0x060004A0 RID: 1184 RVA: 0x00004673 File Offset: 0x00002873
 		public void login(string username, string password)
 		{
 		}
 
-		// Token: 0x060004A1 RID: 1185 RVA: 0x00004675 File Offset: 0x00004675
+		// Token: 0x060004A1 RID: 1185 RVA: 0x00004675 File Offset: 0x00002875
 		public static void exit()
 		{
 			Application.Exit();
 			Environment.Exit(1);
 		}
 
-		// Token: 0x060004A2 RID: 1186 RVA: 0x00004682 File Offset: 0x00004682
+		// Token: 0x060004A2 RID: 1186 RVA: 0x00004682 File Offset: 0x00002882
 		public User getUser()
 		{
 			return this.user;
 		}
 
-		// Token: 0x060004A3 RID: 1187 RVA: 0x0000468A File Offset: 0x0000468A
+		// Token: 0x060004A3 RID: 1187 RVA: 0x0000468A File Offset: 0x0000288A
 		public AimAssist getAimAssist()
 		{
 			return this.aimAssist;
 		}
 
-		// Token: 0x060004A4 RID: 1188 RVA: 0x00004692 File Offset: 0x00004692
+		// Token: 0x060004A4 RID: 1188 RVA: 0x00004692 File Offset: 0x00002892
 		public Relax getRelax()
 		{
 			return this.relax;
 		}
 
-		// Token: 0x060004A5 RID: 1189 RVA: 0x0000469A File Offset: 0x0000469A
+		// Token: 0x060004A5 RID: 1189 RVA: 0x0000469A File Offset: 0x0000289A
 		public ReplayPlayer getReplayPlayer()
 		{
 			return this.replayPlayer;
+		}
+
+		// Token: 0x060004A7 RID: 1191 RVA: 0x000046B2 File Offset: 0x000028B2
+		[CompilerGenerated]
+		private void Arunb__0_0()
+		{
+			this.gui.ShowDialog();
 		}
 
 		// Token: 0x0400047E RID: 1150
@@ -232,5 +221,43 @@ namespace OsuBuddy
 
 		// Token: 0x0400048B RID: 1163
 		public bool replayPlayerEnabled;
+
+		// Token: 0x020000B4 RID: 180
+		[CompilerGenerated]
+		private sealed class Ac__DisplayClass2_0
+		{
+			// Token: 0x060004A9 RID: 1193 RVA: 0x000046C8 File Offset: 0x000028C8
+			internal void AStartTasksb__0()
+			{
+				if (this.A4__this.aimAssistEnabled && OsuBuddy.osu.Player.CurrentRuleset == Ruleset.Standard)
+				{
+					this.A4__this.aimAssist.Start(this.beatmap);
+				}
+			}
+
+			// Token: 0x060004AA RID: 1194 RVA: 0x00004704 File Offset: 0x00002904
+			internal void AStartTasksb__1()
+			{
+				if (this.A4__this.relaxEnabled && OsuBuddy.osu.Player.CurrentRuleset == Ruleset.Standard)
+				{
+					this.A4__this.relax.Start(this.beatmap);
+				}
+			}
+
+			// Token: 0x060004AB RID: 1195 RVA: 0x00004740 File Offset: 0x00002940
+			internal void AStartTasksb__2()
+			{
+				if (this.A4__this.replayPlayerEnabled && OsuBuddy.osu.Player.CurrentRuleset == Ruleset.Standard)
+				{
+					this.A4__this.replayPlayer.Start(this.beatmap);
+				}
+			}
+
+			// Token: 0x0400048C RID: 1164
+			public OsuBeatmap beatmap;
+
+			// Token: 0x0400048D RID: 1165
+			public OsuBuddy A4__this;
+		}
 	}
 }

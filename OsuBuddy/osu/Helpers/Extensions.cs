@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -26,34 +27,27 @@ namespace osu.Helpers
 		[DllImport("user32.dll")]
 		private static extern bool EnumThreadWindows(int dwThreadId, Extensions.EnumThreadDelegate lpfn, IntPtr lParam);
 
-		// Token: 0x06000442 RID: 1090 RVA: 0x0001244C File Offset: 0x0001244C
+		// Token: 0x06000442 RID: 1090 RVA: 0x0001244C File Offset: 0x0001064C
 		public static List<IntPtr> GetWindowHandles(this Process process, bool ignoreInvisible = true)
 		{
-			List<IntPtr> handles = new List<IntPtr>();
-			Extensions.EnumThreadDelegate <>9__0;
+			Extensions.Ac__DisplayClass5_0 ac__DisplayClass5_ = new Extensions.Ac__DisplayClass5_0();
+			ac__DisplayClass5_.ignoreInvisible = ignoreInvisible;
+			ac__DisplayClass5_.handles = new List<IntPtr>();
 			foreach (object obj in process.Threads)
 			{
 				ProcessThread processThread = (ProcessThread)obj;
 				int id = processThread.Id;
 				Extensions.EnumThreadDelegate lpfn;
-				if ((lpfn = <>9__0) == null)
+				if ((lpfn = ac__DisplayClass5_.A9__0) == null)
 				{
-					lpfn = (<>9__0 = delegate(IntPtr hWnd, IntPtr lParam)
-					{
-						bool flag = !ignoreInvisible || Extensions.IsWindowVisible(hWnd);
-						if (flag)
-						{
-							handles.Add(hWnd);
-						}
-						return true;
-					});
+					lpfn = (ac__DisplayClass5_.A9__0 = new Extensions.EnumThreadDelegate(ac__DisplayClass5_.AGetWindowHandlesb__0));
 				}
 				Extensions.EnumThreadWindows(id, lpfn, IntPtr.Zero);
 			}
-			return handles;
+			return ac__DisplayClass5_.handles;
 		}
 
-		// Token: 0x06000443 RID: 1091 RVA: 0x000124FC File Offset: 0x000124FC
+		// Token: 0x06000443 RID: 1091 RVA: 0x000124FC File Offset: 0x000106FC
 		public static string GetWindowTitleByHandle(this Process process, IntPtr handle)
 		{
 			int num = Extensions.GetWindowTextLength(handle) + 1;
@@ -65,5 +59,30 @@ namespace osu.Helpers
 		// Token: 0x020000A2 RID: 162
 		// (Invoke) Token: 0x06000445 RID: 1093
 		private delegate bool EnumThreadDelegate(IntPtr hWnd, IntPtr lParam);
+
+		// Token: 0x020000A3 RID: 163
+		[CompilerGenerated]
+		private sealed class Ac__DisplayClass5_0
+		{
+			// Token: 0x06000449 RID: 1097 RVA: 0x00012530 File Offset: 0x00010730
+			internal bool AGetWindowHandlesb__0(IntPtr hWnd, IntPtr lParam)
+			{
+				bool flag = !this.ignoreInvisible || Extensions.IsWindowVisible(hWnd);
+				if (flag)
+				{
+					this.handles.Add(hWnd);
+				}
+				return true;
+			}
+
+			// Token: 0x040003A4 RID: 932
+			public bool ignoreInvisible;
+
+			// Token: 0x040003A5 RID: 933
+			public List<IntPtr> handles;
+
+			// Token: 0x040003A6 RID: 934
+			public Extensions.EnumThreadDelegate A9__0;
+		}
 	}
 }

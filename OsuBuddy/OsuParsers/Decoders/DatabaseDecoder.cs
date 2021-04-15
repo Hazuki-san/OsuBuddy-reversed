@@ -12,7 +12,7 @@ namespace OsuParsers.Decoders
 	// Token: 0x02000062 RID: 98
 	public static class DatabaseDecoder
 	{
-		// Token: 0x060001BE RID: 446 RVA: 0x0000EDEC File Offset: 0x0000EDEC
+		// Token: 0x060001BE RID: 446 RVA: 0x0000EDEC File Offset: 0x0000CFEC
 		public static OsuDatabase DecodeOsu(string path)
 		{
 			Stream stream;
@@ -24,7 +24,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001BF RID: 447 RVA: 0x0000EE18 File Offset: 0x0000EE18
+		// Token: 0x060001BF RID: 447 RVA: 0x0000EE18 File Offset: 0x0000D018
 		public static OsuDatabase DecodeOsu(Stream stream)
 		{
 			OsuDatabase osuDatabase = new OsuDatabase();
@@ -122,7 +122,7 @@ namespace OsuParsers.Decoders
 			return osuDatabase;
 		}
 
-		// Token: 0x060001C0 RID: 448 RVA: 0x0000F2E0 File Offset: 0x0000F2E0
+		// Token: 0x060001C0 RID: 448 RVA: 0x0000F2E0 File Offset: 0x0000D4E0
 		public static CollectionDatabase DecodeCollection(string path)
 		{
 			Stream stream;
@@ -134,7 +134,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001C1 RID: 449 RVA: 0x0000F30C File Offset: 0x0000F30C
+		// Token: 0x060001C1 RID: 449 RVA: 0x0000F30C File Offset: 0x0000D50C
 		public static CollectionDatabase DecodeCollection(Stream stream)
 		{
 			CollectionDatabase collectionDatabase = new CollectionDatabase();
@@ -159,7 +159,7 @@ namespace OsuParsers.Decoders
 			return collectionDatabase;
 		}
 
-		// Token: 0x060001C2 RID: 450 RVA: 0x0000F3DC File Offset: 0x0000F3DC
+		// Token: 0x060001C2 RID: 450 RVA: 0x0000F3DC File Offset: 0x0000D5DC
 		public static ScoresDatabase DecodeScores(string path)
 		{
 			Stream stream;
@@ -171,7 +171,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001C3 RID: 451 RVA: 0x0000F408 File Offset: 0x0000F408
+		// Token: 0x060001C3 RID: 451 RVA: 0x0000F408 File Offset: 0x0000D608
 		public static ScoresDatabase DecodeScores(Stream stream)
 		{
 			ScoresDatabase scoresDatabase = new ScoresDatabase();
@@ -214,7 +214,7 @@ namespace OsuParsers.Decoders
 			return scoresDatabase;
 		}
 
-		// Token: 0x060001C4 RID: 452 RVA: 0x0000F5E4 File Offset: 0x0000F5E4
+		// Token: 0x060001C4 RID: 452 RVA: 0x0000F5E4 File Offset: 0x0000D7E4
 		public static PresenceDatabase DecodePresence(string path)
 		{
 			Stream stream;
@@ -226,7 +226,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001C5 RID: 453 RVA: 0x0000F610 File Offset: 0x0000F610
+		// Token: 0x060001C5 RID: 453 RVA: 0x0000F610 File Offset: 0x0000D810
 		public static PresenceDatabase DecodePresence(Stream stream)
 		{
 			PresenceDatabase presenceDatabase = new PresenceDatabase();
@@ -254,7 +254,7 @@ namespace OsuParsers.Decoders
 			return presenceDatabase;
 		}
 
-		// Token: 0x060001C6 RID: 454 RVA: 0x0000F740 File Offset: 0x0000F740
+		// Token: 0x060001C6 RID: 454 RVA: 0x0000F740 File Offset: 0x0000D940
 		private static bool TryOpenReadFile(string path, out Stream stream)
 		{
 			bool flag = File.Exists(path);

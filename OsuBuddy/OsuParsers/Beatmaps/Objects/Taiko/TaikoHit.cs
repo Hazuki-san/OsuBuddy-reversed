@@ -8,8 +8,8 @@ namespace OsuParsers.Beatmaps.Objects.Taiko
 	public class TaikoHit : HitCircle
 	{
 		// Token: 0x170000F7 RID: 247
-		// (get) Token: 0x0600036F RID: 879 RVA: 0x0001092C File Offset: 0x0001092C
-		// (set) Token: 0x06000370 RID: 880 RVA: 0x00010954 File Offset: 0x00010954
+		// (get) Token: 0x0600036F RID: 879 RVA: 0x0001092C File Offset: 0x0000EB2C
+		// (set) Token: 0x06000370 RID: 880 RVA: 0x00010954 File Offset: 0x0000EB54
 		public bool IsBig
 		{
 			get
@@ -35,8 +35,8 @@ namespace OsuParsers.Beatmaps.Objects.Taiko
 		}
 
 		// Token: 0x170000F8 RID: 248
-		// (get) Token: 0x06000371 RID: 881 RVA: 0x00010A18 File Offset: 0x00010A18
-		// (set) Token: 0x06000372 RID: 882 RVA: 0x00010A64 File Offset: 0x00010A64
+		// (get) Token: 0x06000371 RID: 881 RVA: 0x00010A18 File Offset: 0x0000EC18
+		// (set) Token: 0x06000372 RID: 882 RVA: 0x00010A64 File Offset: 0x0000EC64
 		public TaikoColor Color
 		{
 			get
@@ -94,7 +94,7 @@ namespace OsuParsers.Beatmaps.Objects.Taiko
 			}
 		}
 
-		// Token: 0x06000373 RID: 883 RVA: 0x00003B5B File Offset: 0x00003B5B
+		// Token: 0x06000373 RID: 883 RVA: 0x00003B5B File Offset: 0x00001D5B
 		public TaikoHit(Vector2 position, int startTime, int endTime, HitSoundType hitSound, Extras extras, bool isNewCombo, int comboOffset) : base(position, startTime, endTime, hitSound, extras, isNewCombo, comboOffset)
 		{
 		}

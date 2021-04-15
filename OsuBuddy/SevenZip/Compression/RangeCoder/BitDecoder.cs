@@ -5,7 +5,7 @@ namespace SevenZip.Compression.RangeCoder
 	// Token: 0x0200000E RID: 14
 	internal struct BitDecoder
 	{
-		// Token: 0x0600002C RID: 44 RVA: 0x00004F08 File Offset: 0x00004F08
+		// Token: 0x0600002C RID: 44 RVA: 0x00004F08 File Offset: 0x00003108
 		public void UpdateModel(int numMoveBits, uint symbol)
 		{
 			bool flag = symbol == 0U;
@@ -19,13 +19,13 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002184 File Offset: 0x00002184
+		// Token: 0x0600002D RID: 45 RVA: 0x00002184 File Offset: 0x00000384
 		public void Init()
 		{
 			this.Prob = 1024U;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00004F58 File Offset: 0x00004F58
+		// Token: 0x0600002E RID: 46 RVA: 0x00004F58 File Offset: 0x00003158
 		public uint Decode(Decoder rangeDecoder)
 		{
 			uint num = (rangeDecoder.Range >> 11) * this.Prob;

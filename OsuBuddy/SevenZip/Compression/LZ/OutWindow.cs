@@ -6,7 +6,7 @@ namespace SevenZip.Compression.LZ
 	// Token: 0x02000015 RID: 21
 	internal class OutWindow
 	{
-		// Token: 0x06000061 RID: 97 RVA: 0x000061C8 File Offset: 0x000061C8
+		// Token: 0x06000061 RID: 97 RVA: 0x000061C8 File Offset: 0x000043C8
 		public void Create(uint windowSize)
 		{
 			bool flag = this._windowSize != windowSize;
@@ -19,7 +19,7 @@ namespace SevenZip.Compression.LZ
 			this._streamPos = 0U;
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x0000620C File Offset: 0x0000620C
+		// Token: 0x06000062 RID: 98 RVA: 0x0000620C File Offset: 0x0000440C
 		public void Init(Stream stream, bool solid)
 		{
 			this.ReleaseStream();
@@ -33,7 +33,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x00006248 File Offset: 0x00006248
+		// Token: 0x06000063 RID: 99 RVA: 0x00006248 File Offset: 0x00004448
 		public bool Train(Stream stream)
 		{
 			long length = stream.Length;
@@ -67,14 +67,14 @@ namespace SevenZip.Compression.LZ
 			return true;
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00002276 File Offset: 0x00002276
+		// Token: 0x06000064 RID: 100 RVA: 0x00002276 File Offset: 0x00000476
 		public void ReleaseStream()
 		{
 			this.Flush();
 			this._stream = null;
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00006338 File Offset: 0x00006338
+		// Token: 0x06000065 RID: 101 RVA: 0x00006338 File Offset: 0x00004538
 		public void Flush()
 		{
 			uint num = this._pos - this._streamPos;
@@ -91,7 +91,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x000063A0 File Offset: 0x000063A0
+		// Token: 0x06000066 RID: 102 RVA: 0x000063A0 File Offset: 0x000045A0
 		public void CopyBlock(uint distance, uint len)
 		{
 			uint num = this._pos - distance - 1U;
@@ -120,7 +120,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x0000643C File Offset: 0x0000643C
+		// Token: 0x06000067 RID: 103 RVA: 0x0000643C File Offset: 0x0000463C
 		public void PutByte(byte b)
 		{
 			byte[] buffer = this._buffer;
@@ -134,7 +134,7 @@ namespace SevenZip.Compression.LZ
 			}
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00006480 File Offset: 0x00006480
+		// Token: 0x06000068 RID: 104 RVA: 0x00006480 File Offset: 0x00004680
 		public byte GetByte(uint distance)
 		{
 			uint num = this._pos - distance - 1U;

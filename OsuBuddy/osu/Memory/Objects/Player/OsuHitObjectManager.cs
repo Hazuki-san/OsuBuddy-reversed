@@ -12,7 +12,7 @@ namespace osu.Memory.Objects.Player
 	public class OsuHitObjectManager : OsuObject
 	{
 		// Token: 0x17000120 RID: 288
-		// (get) Token: 0x060003F2 RID: 1010 RVA: 0x000040EA File Offset: 0x000040EA
+		// (get) Token: 0x060003F2 RID: 1010 RVA: 0x000040EA File Offset: 0x000022EA
 		public override bool IsLoaded
 		{
 			get
@@ -22,7 +22,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000121 RID: 289
-		// (get) Token: 0x060003F3 RID: 1011 RVA: 0x000118D0 File Offset: 0x000118D0
+		// (get) Token: 0x060003F3 RID: 1011 RVA: 0x000118D0 File Offset: 0x0000FAD0
 		public Mods CurrentMods
 		{
 			get
@@ -35,7 +35,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000122 RID: 290
-		// (get) Token: 0x060003F4 RID: 1012 RVA: 0x00004100 File Offset: 0x00004100
+		// (get) Token: 0x060003F4 RID: 1012 RVA: 0x00004100 File Offset: 0x00002300
 		public int CurrentHitObjectIndex
 		{
 			get
@@ -45,7 +45,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000123 RID: 291
-		// (get) Token: 0x060003F5 RID: 1013 RVA: 0x0000411D File Offset: 0x0000411D
+		// (get) Token: 0x060003F5 RID: 1013 RVA: 0x0000411D File Offset: 0x0000231D
 		public int HitObjectsCount
 		{
 			get
@@ -55,7 +55,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000124 RID: 292
-		// (get) Token: 0x060003F6 RID: 1014 RVA: 0x0001192C File Offset: 0x0001192C
+		// (get) Token: 0x060003F6 RID: 1014 RVA: 0x0001192C File Offset: 0x0000FB2C
 		public List<OsuHitObject> HitObjects
 		{
 			get
@@ -76,8 +76,8 @@ namespace osu.Memory.Objects.Player
 					for (;;)
 					{
 						item = null;
-						uintPtr = (UIntPtr)this.OsuProcess.ReadUInt32(this.<get_HitObjects>g__hitObjectListItemsPointer|9_1() + 8 + 4 * i);
-						bool flag = !this.<get_HitObjects>g__isAddressValid|9_0(uintPtr);
+						uintPtr = (UIntPtr)this.OsuProcess.ReadUInt32(this.Aget_HitObjectsg__hitObjectListItemsPointer9_1() + 8 + 4 * i);
+						bool flag = !this.Aget_HitObjectsg__isAddressValid9_0(uintPtr);
 						if (!flag)
 						{
 							HitObjectType hitObjectType = (HitObjectType)this.OsuProcess.ReadInt32(uintPtr + 24);
@@ -100,12 +100,12 @@ namespace osu.Memory.Objects.Player
 							list3 = new List<double>();
 							uintPtr2 = (UIntPtr)this.OsuProcess.ReadUInt32(uintPtr + 196);
 							UIntPtr uintPtr3 = (UIntPtr)this.OsuProcess.ReadUInt32(uintPtr + 200);
-							bool flag2 = !this.<get_HitObjects>g__isAddressValid|9_0(uintPtr2) || !this.<get_HitObjects>g__isAddressValid|9_0(uintPtr3);
+							bool flag2 = !this.Aget_HitObjectsg__isAddressValid9_0(uintPtr2) || !this.Aget_HitObjectsg__isAddressValid9_0(uintPtr3);
 							if (!flag2)
 							{
 								UIntPtr uintPtr4 = (UIntPtr)this.OsuProcess.ReadUInt32(uintPtr2 + 4);
 								UIntPtr uintPtr5 = (UIntPtr)this.OsuProcess.ReadUInt32(uintPtr3 + 4);
-								bool flag3 = !this.<get_HitObjects>g__isAddressValid|9_0(uintPtr4) || !this.<get_HitObjects>g__isAddressValid|9_0(uintPtr5);
+								bool flag3 = !this.Aget_HitObjectsg__isAddressValid9_0(uintPtr4) || !this.Aget_HitObjectsg__isAddressValid9_0(uintPtr5);
 								if (!flag3)
 								{
 									goto IL_1BB;
@@ -154,7 +154,7 @@ namespace osu.Memory.Objects.Player
 			}
 		}
 
-		// Token: 0x060003F7 RID: 1015 RVA: 0x00011CA0 File Offset: 0x00011CA0
+		// Token: 0x060003F7 RID: 1015 RVA: 0x00011CA0 File Offset: 0x0000FEA0
 		public HitState GetHitState(int index)
 		{
 			UIntPtr pointer = (UIntPtr)this.OsuProcess.ReadUInt32(this.BaseAddress + 72);
@@ -179,21 +179,21 @@ namespace osu.Memory.Objects.Player
 			return result;
 		}
 
-		// Token: 0x060003F8 RID: 1016 RVA: 0x00011D98 File Offset: 0x00011D98
+		// Token: 0x060003F8 RID: 1016 RVA: 0x00011D98 File Offset: 0x0000FF98
 		public OsuHitObjectManager() : base(null)
 		{
 		}
 
-		// Token: 0x060003F9 RID: 1017 RVA: 0x0000413A File Offset: 0x0000413A
+		// Token: 0x060003F9 RID: 1017 RVA: 0x0000413A File Offset: 0x0000233A
 		[CompilerGenerated]
-		private bool <get_HitObjects>g__isAddressValid|9_0(UIntPtr address)
+		private bool Aget_HitObjectsg__isAddressValid9_0(UIntPtr address)
 		{
 			return address != UIntPtr.Zero && this.OsuProcess.ReadInt32(address) != 0;
 		}
 
-		// Token: 0x060003FA RID: 1018 RVA: 0x0000415B File Offset: 0x0000415B
+		// Token: 0x060003FA RID: 1018 RVA: 0x0000415B File Offset: 0x0000235B
 		[CompilerGenerated]
-		private UIntPtr <get_HitObjects>g__hitObjectListItemsPointer|9_1()
+		private UIntPtr Aget_HitObjectsg__hitObjectListItemsPointer9_1()
 		{
 			return (UIntPtr)this.OsuProcess.ReadUInt32((UIntPtr)this.OsuProcess.ReadUInt32(this.BaseAddress + 72) + 4);
 		}

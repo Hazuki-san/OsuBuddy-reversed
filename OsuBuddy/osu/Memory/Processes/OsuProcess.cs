@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using osu.Memory.Processes.Enums;
@@ -31,17 +32,17 @@ namespace osu.Memory.Processes
 		public static extern bool GetWindowRect(IntPtr hwnd, ref Rect rectangle);
 
 		// Token: 0x1700010F RID: 271
-		// (get) Token: 0x060003BB RID: 955 RVA: 0x00003E11 File Offset: 0x00003E11
-		// (set) Token: 0x060003BC RID: 956 RVA: 0x00003E19 File Offset: 0x00003E19
+		// (get) Token: 0x060003BB RID: 955 RVA: 0x00003E11 File Offset: 0x00002011
+		// (set) Token: 0x060003BC RID: 956 RVA: 0x00003E19 File Offset: 0x00002019
 		public Process Process { get; private set; }
 
-		// Token: 0x060003BD RID: 957 RVA: 0x00003E22 File Offset: 0x00003E22
+		// Token: 0x060003BD RID: 957 RVA: 0x00003E22 File Offset: 0x00002022
 		public OsuProcess(Process process)
 		{
 			this.Process = process;
 		}
 
-		// Token: 0x060003BE RID: 958 RVA: 0x000111B4 File Offset: 0x000111B4
+		// Token: 0x060003BE RID: 958 RVA: 0x000111B4 File Offset: 0x0000F3B4
 		public Rect getOsuClientRect()
 		{
 			Rect result = default(Rect);
@@ -49,7 +50,7 @@ namespace osu.Memory.Processes
 			return result;
 		}
 
-		// Token: 0x060003BF RID: 959 RVA: 0x000111E4 File Offset: 0x000111E4
+		// Token: 0x060003BF RID: 959 RVA: 0x000111E4 File Offset: 0x0000F3E4
 		public Rect getOsuWindowRect()
 		{
 			Rect result = default(Rect);
@@ -57,7 +58,7 @@ namespace osu.Memory.Processes
 			return result;
 		}
 
-		// Token: 0x060003C0 RID: 960 RVA: 0x00011214 File Offset: 0x00011214
+		// Token: 0x060003C0 RID: 960 RVA: 0x00011214 File Offset: 0x0000F414
 		public bool FindPattern(string pattern, out UIntPtr result)
 		{
 			Pattern pattern2 = Pattern.Parse(pattern);
@@ -95,7 +96,7 @@ namespace osu.Memory.Processes
 			return false;
 		}
 
-		// Token: 0x060003C1 RID: 961 RVA: 0x0001138C File Offset: 0x0001138C
+		// Token: 0x060003C1 RID: 961 RVA: 0x0001138C File Offset: 0x0000F58C
 		public List<MemoryRegion> EnumerateMemoryRegions()
 		{
 			List<MemoryRegion> list = new List<MemoryRegion>();
@@ -118,7 +119,7 @@ namespace osu.Memory.Processes
 			return list;
 		}
 
-		// Token: 0x060003C2 RID: 962 RVA: 0x0001143C File Offset: 0x0001143C
+		// Token: 0x060003C2 RID: 962 RVA: 0x0001143C File Offset: 0x0000F63C
 		public byte[] ReadMemory(UIntPtr address, uint size)
 		{
 			byte[] array = new byte[size];
@@ -127,7 +128,7 @@ namespace osu.Memory.Processes
 			return array;
 		}
 
-		// Token: 0x060003C3 RID: 963 RVA: 0x0001146C File Offset: 0x0001146C
+		// Token: 0x060003C3 RID: 963 RVA: 0x0001146C File Offset: 0x0000F66C
 		public UIntPtr ReadMemory(UIntPtr address, byte[] buffer, uint size)
 		{
 			UIntPtr result;
@@ -135,56 +136,56 @@ namespace osu.Memory.Processes
 			return result;
 		}
 
-		// Token: 0x060003C4 RID: 964 RVA: 0x00011498 File Offset: 0x00011498
+		// Token: 0x060003C4 RID: 964 RVA: 0x00011498 File Offset: 0x0000F698
 		public void WriteMemory(UIntPtr address, byte[] data, uint length)
 		{
 			UIntPtr uintPtr;
 			OsuProcess.WriteProcessMemory(this.Process.Handle, address, data, length, out uintPtr);
 		}
 
-		// Token: 0x060003C5 RID: 965 RVA: 0x00003E33 File Offset: 0x00003E33
+		// Token: 0x060003C5 RID: 965 RVA: 0x00003E33 File Offset: 0x00002033
 		public int ReadInt32(UIntPtr address)
 		{
 			return BitConverter.ToInt32(this.ReadMemory(address, 4U), 0);
 		}
 
-		// Token: 0x060003C6 RID: 966 RVA: 0x00003E43 File Offset: 0x00003E43
+		// Token: 0x060003C6 RID: 966 RVA: 0x00003E43 File Offset: 0x00002043
 		public uint ReadUInt32(UIntPtr address)
 		{
 			return BitConverter.ToUInt32(this.ReadMemory(address, 4U), 0);
 		}
 
-		// Token: 0x060003C7 RID: 967 RVA: 0x00003E53 File Offset: 0x00003E53
+		// Token: 0x060003C7 RID: 967 RVA: 0x00003E53 File Offset: 0x00002053
 		public long ReadInt64(UIntPtr address)
 		{
 			return BitConverter.ToInt64(this.ReadMemory(address, 8U), 0);
 		}
 
-		// Token: 0x060003C8 RID: 968 RVA: 0x00003E63 File Offset: 0x00003E63
+		// Token: 0x060003C8 RID: 968 RVA: 0x00003E63 File Offset: 0x00002063
 		public ulong ReadUInt64(UIntPtr address)
 		{
 			return BitConverter.ToUInt64(this.ReadMemory(address, 8U), 0);
 		}
 
-		// Token: 0x060003C9 RID: 969 RVA: 0x00003E73 File Offset: 0x00003E73
+		// Token: 0x060003C9 RID: 969 RVA: 0x00003E73 File Offset: 0x00002073
 		public float ReadFloat(UIntPtr address)
 		{
 			return BitConverter.ToSingle(this.ReadMemory(address, 4U), 0);
 		}
 
-		// Token: 0x060003CA RID: 970 RVA: 0x00003E83 File Offset: 0x00003E83
+		// Token: 0x060003CA RID: 970 RVA: 0x00003E83 File Offset: 0x00002083
 		public double ReadDouble(UIntPtr address)
 		{
 			return BitConverter.ToDouble(this.ReadMemory(address, 8U), 0);
 		}
 
-		// Token: 0x060003CB RID: 971 RVA: 0x00003E93 File Offset: 0x00003E93
+		// Token: 0x060003CB RID: 971 RVA: 0x00003E93 File Offset: 0x00002093
 		public bool ReadBool(UIntPtr address)
 		{
 			return BitConverter.ToBoolean(this.ReadMemory(address, 1U), 0);
 		}
 
-		// Token: 0x060003CC RID: 972 RVA: 0x000114BC File Offset: 0x000114BC
+		// Token: 0x060003CC RID: 972 RVA: 0x000114BC File Offset: 0x0000F6BC
 		public string ReadString(UIntPtr address, bool multiply = false, Encoding encoding = null)
 		{
 			encoding = (encoding ?? Encoding.UTF8);
@@ -193,7 +194,7 @@ namespace osu.Memory.Processes
 			return encoding.GetString(this.ReadMemory(pointer + 8, (uint)size)).Replace("\0", string.Empty);
 		}
 
-		// Token: 0x060003CD RID: 973 RVA: 0x00011520 File Offset: 0x00011520
+		// Token: 0x060003CD RID: 973 RVA: 0x00011520 File Offset: 0x0000F720
 		private int[] generateLastOccurenceTable(Pattern pattern)
 		{
 			int[] array = new int[256];
@@ -212,7 +213,7 @@ namespace osu.Memory.Processes
 			return array;
 		}
 
-		// Token: 0x060003CE RID: 974 RVA: 0x00011588 File Offset: 0x00011588
+		// Token: 0x060003CE RID: 974 RVA: 0x00011588 File Offset: 0x0000F788
 		private unsafe bool findMatch(Pattern pattern, byte[] buffer, int[] lastOccurenceTable, out UIntPtr result, int bufferLength = -1)
 		{
 			result = UIntPtr.Zero;
@@ -284,6 +285,11 @@ namespace osu.Memory.Processes
 			}
 			return false;
 		}
+
+		// Token: 0x04000323 RID: 803
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private Process AProcessk__BackingField;
 
 		// Token: 0x04000324 RID: 804
 		private List<MemoryRegion> cachedMemoryRegions;

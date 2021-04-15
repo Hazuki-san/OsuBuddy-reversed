@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using OsuParsers.Storyboards.Interfaces;
 
 namespace OsuParsers.Storyboards.Commands
@@ -7,10 +9,10 @@ namespace OsuParsers.Storyboards.Commands
 	public class LoopCommand : IHasCommands
 	{
 		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x060000F2 RID: 242 RVA: 0x000026CB File Offset: 0x000026CB
+		// (get) Token: 0x060000F2 RID: 242 RVA: 0x000026CB File Offset: 0x000008CB
 		public CommandGroup Commands { get; } = new CommandGroup();
 
-		// Token: 0x060000F3 RID: 243 RVA: 0x000026D3 File Offset: 0x000026D3
+		// Token: 0x060000F3 RID: 243 RVA: 0x000026D3 File Offset: 0x000008D3
 		public LoopCommand(int startTime, int loopCount)
 		{
 			this.LoopStartTime = startTime;
@@ -22,5 +24,10 @@ namespace OsuParsers.Storyboards.Commands
 
 		// Token: 0x04000105 RID: 261
 		public int LoopCount;
+
+		// Token: 0x04000106 RID: 262
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private readonly CommandGroup ACommandsk__BackingField;
 	}
 }

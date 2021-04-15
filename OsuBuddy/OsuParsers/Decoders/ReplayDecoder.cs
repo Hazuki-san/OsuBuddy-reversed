@@ -15,7 +15,7 @@ namespace OsuParsers.Decoders
 	// Token: 0x02000063 RID: 99
 	public static class ReplayDecoder
 	{
-		// Token: 0x060001C7 RID: 455 RVA: 0x0000F770 File Offset: 0x0000F770
+		// Token: 0x060001C7 RID: 455 RVA: 0x0000F770 File Offset: 0x0000D970
 		public static Replay Decode(string path)
 		{
 			bool flag = File.Exists(path);
@@ -26,7 +26,7 @@ namespace OsuParsers.Decoders
 			throw new FileNotFoundException();
 		}
 
-		// Token: 0x060001C8 RID: 456 RVA: 0x0000F7A0 File Offset: 0x0000F7A0
+		// Token: 0x060001C8 RID: 456 RVA: 0x0000F7A0 File Offset: 0x0000D9A0
 		public static Replay Decode(Stream stream)
 		{
 			Replay replay = new Replay();

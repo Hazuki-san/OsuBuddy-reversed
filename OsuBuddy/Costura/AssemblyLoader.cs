@@ -13,7 +13,7 @@ namespace Costura
 	[CompilerGenerated]
 	internal static class AssemblyLoader
 	{
-		// Token: 0x060004C7 RID: 1223 RVA: 0x000047EA File Offset: 0x000047EA
+		// Token: 0x060004C7 RID: 1223 RVA: 0x000047EA File Offset: 0x000029EA
 		private static string CultureToString(CultureInfo culture)
 		{
 			if (culture == null)
@@ -23,7 +23,7 @@ namespace Costura
 			return culture.Name;
 		}
 
-		// Token: 0x060004C8 RID: 1224 RVA: 0x00017FB8 File Offset: 0x00017FB8
+		// Token: 0x060004C8 RID: 1224 RVA: 0x00017FB8 File Offset: 0x000161B8
 		private static Assembly ReadExistingAssembly(AssemblyName name)
 		{
 			AppDomain currentDomain = AppDomain.CurrentDomain;
@@ -39,7 +39,7 @@ namespace Costura
 			return null;
 		}
 
-		// Token: 0x060004C9 RID: 1225 RVA: 0x00018028 File Offset: 0x00018028
+		// Token: 0x060004C9 RID: 1225 RVA: 0x00018028 File Offset: 0x00016228
 		private static void CopyTo(Stream source, Stream destination)
 		{
 			byte[] array = new byte[81920];
@@ -50,7 +50,7 @@ namespace Costura
 			}
 		}
 
-		// Token: 0x060004CA RID: 1226 RVA: 0x0001805C File Offset: 0x0001805C
+		// Token: 0x060004CA RID: 1226 RVA: 0x0001805C File Offset: 0x0001625C
 		private static Stream LoadStream(string fullName)
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
@@ -70,7 +70,7 @@ namespace Costura
 			return executingAssembly.GetManifestResourceStream(fullName);
 		}
 
-		// Token: 0x060004CB RID: 1227 RVA: 0x000180E0 File Offset: 0x000180E0
+		// Token: 0x060004CB RID: 1227 RVA: 0x000180E0 File Offset: 0x000162E0
 		private static Stream LoadStream(Dictionary<string, string> resourceNames, string name)
 		{
 			string fullName;
@@ -81,7 +81,7 @@ namespace Costura
 			return null;
 		}
 
-		// Token: 0x060004CC RID: 1228 RVA: 0x00018100 File Offset: 0x00018100
+		// Token: 0x060004CC RID: 1228 RVA: 0x00018100 File Offset: 0x00016300
 		private static byte[] ReadStream(Stream stream)
 		{
 			byte[] array = new byte[stream.Length];
@@ -89,7 +89,7 @@ namespace Costura
 			return array;
 		}
 
-		// Token: 0x060004CD RID: 1229 RVA: 0x00018128 File Offset: 0x00018128
+		// Token: 0x060004CD RID: 1229 RVA: 0x00018128 File Offset: 0x00016328
 		private static Assembly ReadFromEmbeddedResources(Dictionary<string, string> assemblyNames, Dictionary<string, string> symbolNames, AssemblyName requestedAssemblyName)
 		{
 			string text = requestedAssemblyName.Name.ToLowerInvariant();
@@ -117,7 +117,7 @@ namespace Costura
 			return Assembly.Load(rawAssembly);
 		}
 
-		// Token: 0x060004CE RID: 1230 RVA: 0x000181E8 File Offset: 0x000181E8
+		// Token: 0x060004CE RID: 1230 RVA: 0x000181E8 File Offset: 0x000163E8
 		public static Assembly ResolveAssembly(object sender, ResolveEventArgs e)
 		{
 			object obj = AssemblyLoader.nullCacheLock;
@@ -150,7 +150,7 @@ namespace Costura
 			return assembly;
 		}
 
-		// Token: 0x060004CF RID: 1231 RVA: 0x000182CC File Offset: 0x000182CC
+		// Token: 0x060004CF RID: 1231 RVA: 0x000182CC File Offset: 0x000164CC
 		// Note: this type is marked as 'beforefieldinit'.
 		static AssemblyLoader()
 		{
@@ -162,7 +162,7 @@ namespace Costura
 			AssemblyLoader.assemblyNames.Add("windowsinput", "costura.windowsinput.dll.compressed");
 		}
 
-		// Token: 0x060004D0 RID: 1232 RVA: 0x0001837C File Offset: 0x0001837C
+		// Token: 0x060004D0 RID: 1232 RVA: 0x0001837C File Offset: 0x0001657C
 		public static void Attach()
 		{
 			if (Interlocked.Exchange(ref AssemblyLoader.isAttached, 1) == 1)

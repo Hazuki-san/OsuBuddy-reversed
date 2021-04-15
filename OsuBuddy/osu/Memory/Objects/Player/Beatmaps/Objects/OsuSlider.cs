@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using osu.Enums.Beatmaps;
@@ -10,8 +11,8 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 	public class OsuSlider : OsuHitObject
 	{
 		// Token: 0x1700013E RID: 318
-		// (get) Token: 0x0600042D RID: 1069 RVA: 0x0000439D File Offset: 0x0000439D
-		// (set) Token: 0x0600042E RID: 1070 RVA: 0x000043A5 File Offset: 0x000043A5
+		// (get) Token: 0x0600042D RID: 1069 RVA: 0x0000439D File Offset: 0x0000259D
+		// (set) Token: 0x0600042E RID: 1070 RVA: 0x000043A5 File Offset: 0x000025A5
 		[TupleElementNames(new string[]
 		{
 			"p1",
@@ -28,26 +29,26 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 		})] set; }
 
 		// Token: 0x1700013F RID: 319
-		// (get) Token: 0x0600042F RID: 1071 RVA: 0x000043AE File Offset: 0x000043AE
-		// (set) Token: 0x06000430 RID: 1072 RVA: 0x000043B6 File Offset: 0x000043B6
+		// (get) Token: 0x0600042F RID: 1071 RVA: 0x000043AE File Offset: 0x000025AE
+		// (set) Token: 0x06000430 RID: 1072 RVA: 0x000043B6 File Offset: 0x000025B6
 		public List<double> CumulativeLengths { get; set; }
 
 		// Token: 0x17000140 RID: 320
-		// (get) Token: 0x06000431 RID: 1073 RVA: 0x000043BF File Offset: 0x000043BF
-		// (set) Token: 0x06000432 RID: 1074 RVA: 0x000043C7 File Offset: 0x000043C7
+		// (get) Token: 0x06000431 RID: 1073 RVA: 0x000043BF File Offset: 0x000025BF
+		// (set) Token: 0x06000432 RID: 1074 RVA: 0x000043C7 File Offset: 0x000025C7
 		public int Repeats { get; set; }
 
 		// Token: 0x17000141 RID: 321
-		// (get) Token: 0x06000433 RID: 1075 RVA: 0x000043D0 File Offset: 0x000043D0
-		// (set) Token: 0x06000434 RID: 1076 RVA: 0x000043D8 File Offset: 0x000043D8
+		// (get) Token: 0x06000433 RID: 1075 RVA: 0x000043D0 File Offset: 0x000025D0
+		// (set) Token: 0x06000434 RID: 1076 RVA: 0x000043D8 File Offset: 0x000025D8
 		public double PixelLength { get; set; }
 
 		// Token: 0x17000142 RID: 322
-		// (get) Token: 0x06000435 RID: 1077 RVA: 0x000043E1 File Offset: 0x000043E1
-		// (set) Token: 0x06000436 RID: 1078 RVA: 0x000043E9 File Offset: 0x000043E9
+		// (get) Token: 0x06000435 RID: 1077 RVA: 0x000043E1 File Offset: 0x000025E1
+		// (set) Token: 0x06000436 RID: 1078 RVA: 0x000043E9 File Offset: 0x000025E9
 		public CurveType CurveType { get; set; }
 
-		// Token: 0x06000437 RID: 1079 RVA: 0x000043F2 File Offset: 0x000043F2
+		// Token: 0x06000437 RID: 1079 RVA: 0x000043F2 File Offset: 0x000025F2
 		public OsuSlider(int startTime, int endTime, Vector2 position, int repeats, double pixelLength, CurveType curveType, [TupleElementNames(new string[]
 		{
 			"p1",
@@ -61,7 +62,7 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 			this.CumulativeLengths = cumulativeLengths;
 		}
 
-		// Token: 0x06000438 RID: 1080 RVA: 0x00012150 File Offset: 0x00012150
+		// Token: 0x06000438 RID: 1080 RVA: 0x00012150 File Offset: 0x00010350
 		public Vector2 PositionAtTime(int time)
 		{
 			bool flag = this.SliderCurveSmoothLines.Count == 0;
@@ -96,7 +97,7 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 			return result;
 		}
 
-		// Token: 0x06000439 RID: 1081 RVA: 0x00012204 File Offset: 0x00012204
+		// Token: 0x06000439 RID: 1081 RVA: 0x00012204 File Offset: 0x00010404
 		private Vector2 positionAtLength(float length)
 		{
 			bool flag = this.SliderCurveSmoothLines.Count == 0 || this.CumulativeLengths.Count == 0;
@@ -142,5 +143,35 @@ namespace osu.Memory.Objects.Player.Beatmaps.Objects
 			}
 			return result;
 		}
+
+		// Token: 0x04000358 RID: 856
+		[TupleElementNames(new string[]
+		{
+			"p1",
+			"p2"
+		})]
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private List<ValueTuple<Vector2, Vector2>> ASliderCurveSmoothLinesk__BackingField;
+
+		// Token: 0x04000359 RID: 857
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private List<double> ACumulativeLengthsk__BackingField;
+
+		// Token: 0x0400035A RID: 858
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private int ARepeatsk__BackingField;
+
+		// Token: 0x0400035B RID: 859
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private double APixelLengthk__BackingField;
+
+		// Token: 0x0400035C RID: 860
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private CurveType ACurveTypek__BackingField;
 	}
 }

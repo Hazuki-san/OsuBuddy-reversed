@@ -5,13 +5,13 @@ namespace SevenZip.Compression.RangeCoder
 	// Token: 0x0200000D RID: 13
 	internal struct BitEncoder
 	{
-		// Token: 0x06000025 RID: 37 RVA: 0x00002176 File Offset: 0x00002176
+		// Token: 0x06000025 RID: 37 RVA: 0x00002176 File Offset: 0x00000376
 		public void Init()
 		{
 			this.Prob = 1024U;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00004D24 File Offset: 0x00004D24
+		// Token: 0x06000026 RID: 38 RVA: 0x00004D24 File Offset: 0x00002F24
 		public void UpdateModel(uint symbol)
 		{
 			bool flag = symbol == 0U;
@@ -25,7 +25,7 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00004D6C File Offset: 0x00004D6C
+		// Token: 0x06000027 RID: 39 RVA: 0x00004D6C File Offset: 0x00002F6C
 		public void Encode(Encoder encoder, uint symbol)
 		{
 			uint num = (encoder.Range >> 11) * this.Prob;
@@ -49,7 +49,7 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00004E18 File Offset: 0x00004E18
+		// Token: 0x06000028 RID: 40 RVA: 0x00004E18 File Offset: 0x00003018
 		static BitEncoder()
 		{
 			for (int i = 8; i >= 0; i--)
@@ -63,19 +63,19 @@ namespace SevenZip.Compression.RangeCoder
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00004E90 File Offset: 0x00004E90
+		// Token: 0x06000029 RID: 41 RVA: 0x00004E90 File Offset: 0x00003090
 		public uint GetPrice(uint symbol)
 		{
 			return BitEncoder.ProbPrices[(int)(checked((IntPtr)((unchecked((ulong)(this.Prob - symbol) ^ (ulong)((long)(-(long)symbol))) & 2047UL) >> 2)))];
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00004EC0 File Offset: 0x00004EC0
+		// Token: 0x0600002A RID: 42 RVA: 0x00004EC0 File Offset: 0x000030C0
 		public uint GetPrice0()
 		{
 			return BitEncoder.ProbPrices[(int)(this.Prob >> 2)];
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00004EE0 File Offset: 0x00004EE0
+		// Token: 0x0600002B RID: 43 RVA: 0x00004EE0 File Offset: 0x000030E0
 		public uint GetPrice1()
 		{
 			return BitEncoder.ProbPrices[(int)(2048U - this.Prob >> 2)];

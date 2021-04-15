@@ -8,7 +8,7 @@ namespace SevenZip.Compression.LZMA
 	// Token: 0x0200001C RID: 28
 	internal class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
 	{
-		// Token: 0x06000088 RID: 136 RVA: 0x00007078 File Offset: 0x00007078
+		// Token: 0x06000088 RID: 136 RVA: 0x00007078 File Offset: 0x00005278
 		static Encoder()
 		{
 			int num = 2;
@@ -27,7 +27,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x06000089 RID: 137 RVA: 0x00007104 File Offset: 0x00007104
+		// Token: 0x06000089 RID: 137 RVA: 0x00007104 File Offset: 0x00005304
 		private static uint GetPosSlot(uint pos)
 		{
 			bool flag = pos < 2048U;
@@ -51,7 +51,7 @@ namespace SevenZip.Compression.LZMA
 			return result;
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x00007158 File Offset: 0x00007158
+		// Token: 0x0600008A RID: 138 RVA: 0x00007158 File Offset: 0x00005358
 		private static uint GetPosSlot2(uint pos)
 		{
 			bool flag = pos < 131072U;
@@ -75,7 +75,7 @@ namespace SevenZip.Compression.LZMA
 			return result;
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x000071B0 File Offset: 0x000071B0
+		// Token: 0x0600008B RID: 139 RVA: 0x000071B0 File Offset: 0x000053B0
 		private void BaseInit()
 		{
 			this._state.Init();
@@ -86,7 +86,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x0600008C RID: 140 RVA: 0x000071EC File Offset: 0x000071EC
+		// Token: 0x0600008C RID: 140 RVA: 0x000071EC File Offset: 0x000053EC
 		private void Create()
 		{
 			bool flag = this._matchFinder == null;
@@ -112,7 +112,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x000072A8 File Offset: 0x000072A8
+		// Token: 0x0600008D RID: 141 RVA: 0x000072A8 File Offset: 0x000054A8
 		public Encoder()
 		{
 			int num = 0;
@@ -129,13 +129,13 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x0600008E RID: 142 RVA: 0x00002362 File Offset: 0x00002362
+		// Token: 0x0600008E RID: 142 RVA: 0x00002362 File Offset: 0x00000562
 		private void SetWriteEndMarkerMode(bool writeEndMarker)
 		{
 			this._writeEndMark = writeEndMarker;
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x000074A4 File Offset: 0x000074A4
+		// Token: 0x0600008F RID: 143 RVA: 0x000074A4 File Offset: 0x000056A4
 		private void Init()
 		{
 			this.BaseInit();
@@ -171,7 +171,7 @@ namespace SevenZip.Compression.LZMA
 			this._additionalOffset = 0U;
 		}
 
-		// Token: 0x06000090 RID: 144 RVA: 0x00007618 File Offset: 0x00007618
+		// Token: 0x06000090 RID: 144 RVA: 0x00007618 File Offset: 0x00005818
 		private void ReadMatchDistances(out uint lenRes, out uint numDistancePairs)
 		{
 			lenRes = 0U;
@@ -189,7 +189,7 @@ namespace SevenZip.Compression.LZMA
 			this._additionalOffset += 1U;
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x00007698 File Offset: 0x00007698
+		// Token: 0x06000091 RID: 145 RVA: 0x00007698 File Offset: 0x00005898
 		private void MovePos(uint num)
 		{
 			bool flag = num > 0U;
@@ -200,13 +200,13 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x06000092 RID: 146 RVA: 0x000076CC File Offset: 0x000076CC
+		// Token: 0x06000092 RID: 146 RVA: 0x000076CC File Offset: 0x000058CC
 		private uint GetRepLen1Price(Base.State state, uint posState)
 		{
 			return this._isRepG0[(int)state.Index].GetPrice0() + this._isRep0Long[(int)((state.Index << 4) + posState)].GetPrice0();
 		}
 
-		// Token: 0x06000093 RID: 147 RVA: 0x00007710 File Offset: 0x00007710
+		// Token: 0x06000093 RID: 147 RVA: 0x00007710 File Offset: 0x00005910
 		private uint GetPureRepPrice(uint repIndex, Base.State state, uint posState)
 		{
 			bool flag = repIndex == 0U;
@@ -233,14 +233,14 @@ namespace SevenZip.Compression.LZMA
 			return num;
 		}
 
-		// Token: 0x06000094 RID: 148 RVA: 0x000077D8 File Offset: 0x000077D8
+		// Token: 0x06000094 RID: 148 RVA: 0x000077D8 File Offset: 0x000059D8
 		private uint GetRepPrice(uint repIndex, uint len, Base.State state, uint posState)
 		{
 			uint price = this._repMatchLenEncoder.GetPrice(len - 2U, posState);
 			return price + this.GetPureRepPrice(repIndex, state, posState);
 		}
 
-		// Token: 0x06000095 RID: 149 RVA: 0x00007808 File Offset: 0x00007808
+		// Token: 0x06000095 RID: 149 RVA: 0x00007808 File Offset: 0x00005A08
 		private uint GetPosLenPrice(uint pos, uint len, uint posState)
 		{
 			uint lenToPosState = Base.GetLenToPosState(len);
@@ -257,7 +257,7 @@ namespace SevenZip.Compression.LZMA
 			return num + this._lenEncoder.GetPrice(len - 2U, posState);
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x00007870 File Offset: 0x00007870
+		// Token: 0x06000096 RID: 150 RVA: 0x00007870 File Offset: 0x00005A70
 		private uint Backward(out uint backRes, uint cur)
 		{
 			this._optimumEndIndex = cur;
@@ -292,7 +292,7 @@ namespace SevenZip.Compression.LZMA
 			return this._optimumCurrentIndex;
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x000079B0 File Offset: 0x000079B0
+		// Token: 0x06000097 RID: 151 RVA: 0x000079B0 File Offset: 0x00005BB0
 		private uint GetOptimum(uint position, out uint backRes)
 		{
 			bool flag = this._optimumEndIndex != this._optimumCurrentIndex;
@@ -853,7 +853,7 @@ namespace SevenZip.Compression.LZMA
 			return result;
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x00008C54 File Offset: 0x00008C54
+		// Token: 0x06000098 RID: 152 RVA: 0x00008C54 File Offset: 0x00006E54
 		private void WriteEndMarker(uint posState)
 		{
 			bool flag = !this._writeEndMark;
@@ -874,7 +874,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x0000236C File Offset: 0x0000236C
+		// Token: 0x06000099 RID: 153 RVA: 0x0000236C File Offset: 0x0000056C
 		private void Flush(uint nowPos)
 		{
 			this.ReleaseMFStream();
@@ -883,7 +883,7 @@ namespace SevenZip.Compression.LZMA
 			this._rangeEncoder.FlushStream();
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x00008D40 File Offset: 0x00008D40
+		// Token: 0x0600009A RID: 154 RVA: 0x00008D40 File Offset: 0x00006F40
 		public void CodeOneBlock(out long inSize, out long outSize, out bool finished)
 		{
 			inSize = 0L;
@@ -1091,7 +1091,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x00009438 File Offset: 0x00009438
+		// Token: 0x0600009B RID: 155 RVA: 0x00009438 File Offset: 0x00007638
 		private void ReleaseMFStream()
 		{
 			bool flag = this._matchFinder != null && this._needReleaseMFStream;
@@ -1102,26 +1102,26 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x0000239D File Offset: 0x0000239D
+		// Token: 0x0600009C RID: 156 RVA: 0x0000239D File Offset: 0x0000059D
 		private void SetOutStream(Stream outStream)
 		{
 			this._rangeEncoder.SetStream(outStream);
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x000023AD File Offset: 0x000023AD
+		// Token: 0x0600009D RID: 157 RVA: 0x000023AD File Offset: 0x000005AD
 		private void ReleaseOutStream()
 		{
 			this._rangeEncoder.ReleaseStream();
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x000023BC File Offset: 0x000023BC
+		// Token: 0x0600009E RID: 158 RVA: 0x000023BC File Offset: 0x000005BC
 		private void ReleaseStreams()
 		{
 			this.ReleaseMFStream();
 			this.ReleaseOutStream();
 		}
 
-		// Token: 0x0600009F RID: 159 RVA: 0x00009470 File Offset: 0x00009470
+		// Token: 0x0600009F RID: 159 RVA: 0x00009470 File Offset: 0x00007670
 		private void SetStreams(Stream inStream, Stream outStream, long inSize, long outSize)
 		{
 			this._inStream = inStream;
@@ -1138,7 +1138,7 @@ namespace SevenZip.Compression.LZMA
 			this.nowPos64 = 0L;
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00009514 File Offset: 0x00009514
+		// Token: 0x060000A0 RID: 160 RVA: 0x00009514 File Offset: 0x00007714
 		public void Code(Stream inStream, Stream outStream, long inSize, long outSize, ICodeProgress progress)
 		{
 			this._needReleaseMFStream = false;
@@ -1169,7 +1169,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00009584 File Offset: 0x00009584
+		// Token: 0x060000A1 RID: 161 RVA: 0x00009584 File Offset: 0x00007784
 		public void WriteCoderProperties(Stream outStream)
 		{
 			this.properties[0] = (byte)((this._posStateBits * 5 + this._numLiteralPosStateBits) * 9 + this._numLiteralContextBits);
@@ -1180,7 +1180,7 @@ namespace SevenZip.Compression.LZMA
 			outStream.Write(this.properties, 0, 5);
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x000095F4 File Offset: 0x000095F4
+		// Token: 0x060000A2 RID: 162 RVA: 0x000095F4 File Offset: 0x000077F4
 		private void FillDistancesPrices()
 		{
 			for (uint num = 4U; num < 128U; num += 1U)
@@ -1217,7 +1217,7 @@ namespace SevenZip.Compression.LZMA
 			this._matchPriceCount = 0U;
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00009768 File Offset: 0x00009768
+		// Token: 0x060000A3 RID: 163 RVA: 0x00009768 File Offset: 0x00007968
 		private void FillAlignPrices()
 		{
 			for (uint num = 0U; num < 16U; num += 1U)
@@ -1227,7 +1227,7 @@ namespace SevenZip.Compression.LZMA
 			this._alignPriceCount = 0U;
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x000097A4 File Offset: 0x000097A4
+		// Token: 0x060000A4 RID: 164 RVA: 0x000097A4 File Offset: 0x000079A4
 		private static int FindMatchFinder(string s)
 		{
 			for (int i = 0; i < Encoder.kMatchFinderIDs.Length; i++)
@@ -1241,7 +1241,7 @@ namespace SevenZip.Compression.LZMA
 			return -1;
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x000097E4 File Offset: 0x000097E4
+		// Token: 0x060000A5 RID: 165 RVA: 0x000097E4 File Offset: 0x000079E4
 		public void SetCoderProperties(CoderPropID[] propIDs, object[] properties)
 		{
 			uint num = 0U;
@@ -1394,7 +1394,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x000023CD File Offset: 0x000023CD
+		// Token: 0x060000A6 RID: 166 RVA: 0x000023CD File Offset: 0x000005CD
 		public void SetTrainSize(uint trainSize)
 		{
 			this._trainSize = trainSize;
@@ -1587,7 +1587,7 @@ namespace SevenZip.Compression.LZMA
 		// Token: 0x0200001E RID: 30
 		internal class LiteralEncoder
 		{
-			// Token: 0x060000A7 RID: 167 RVA: 0x00009AD4 File Offset: 0x00009AD4
+			// Token: 0x060000A7 RID: 167 RVA: 0x00009AD4 File Offset: 0x00007CD4
 			public void Create(int numPosBits, int numPrevBits)
 			{
 				bool flag = this.m_Coders != null && this.m_NumPrevBits == numPrevBits && this.m_NumPosBits == numPosBits;
@@ -1605,7 +1605,7 @@ namespace SevenZip.Compression.LZMA
 				}
 			}
 
-			// Token: 0x060000A8 RID: 168 RVA: 0x00009B64 File Offset: 0x00009B64
+			// Token: 0x060000A8 RID: 168 RVA: 0x00009B64 File Offset: 0x00007D64
 			public void Init()
 			{
 				uint num = 1U << this.m_NumPrevBits + this.m_NumPosBits;
@@ -1615,7 +1615,7 @@ namespace SevenZip.Compression.LZMA
 				}
 			}
 
-			// Token: 0x060000A9 RID: 169 RVA: 0x00009BA8 File Offset: 0x00009BA8
+			// Token: 0x060000A9 RID: 169 RVA: 0x00009BA8 File Offset: 0x00007DA8
 			public Encoder.LiteralEncoder.Encoder2 GetSubCoder(uint pos, byte prevByte)
 			{
 				return this.m_Coders[(int)(((pos & this.m_PosMask) << this.m_NumPrevBits) + (uint)(prevByte >> 8 - this.m_NumPrevBits))];
@@ -1636,13 +1636,13 @@ namespace SevenZip.Compression.LZMA
 			// Token: 0x0200001F RID: 31
 			public struct Encoder2
 			{
-				// Token: 0x060000AB RID: 171 RVA: 0x000023D7 File Offset: 0x000023D7
+				// Token: 0x060000AB RID: 171 RVA: 0x000023D7 File Offset: 0x000005D7
 				public void Create()
 				{
 					this.m_Encoders = new BitEncoder[768];
 				}
 
-				// Token: 0x060000AC RID: 172 RVA: 0x00009BE8 File Offset: 0x00009BE8
+				// Token: 0x060000AC RID: 172 RVA: 0x00009BE8 File Offset: 0x00007DE8
 				public void Init()
 				{
 					for (int i = 0; i < 768; i++)
@@ -1651,7 +1651,7 @@ namespace SevenZip.Compression.LZMA
 					}
 				}
 
-				// Token: 0x060000AD RID: 173 RVA: 0x00009C1C File Offset: 0x00009C1C
+				// Token: 0x060000AD RID: 173 RVA: 0x00009C1C File Offset: 0x00007E1C
 				public void Encode(Encoder rangeEncoder, byte symbol)
 				{
 					uint num = 1U;
@@ -1663,7 +1663,7 @@ namespace SevenZip.Compression.LZMA
 					}
 				}
 
-				// Token: 0x060000AE RID: 174 RVA: 0x00009C64 File Offset: 0x00009C64
+				// Token: 0x060000AE RID: 174 RVA: 0x00009C64 File Offset: 0x00007E64
 				public void EncodeMatched(Encoder rangeEncoder, byte matchByte, byte symbol)
 				{
 					uint num = 1U;
@@ -1684,7 +1684,7 @@ namespace SevenZip.Compression.LZMA
 					}
 				}
 
-				// Token: 0x060000AF RID: 175 RVA: 0x00009CD8 File Offset: 0x00009CD8
+				// Token: 0x060000AF RID: 175 RVA: 0x00009CD8 File Offset: 0x00007ED8
 				public uint GetPrice(bool matchMode, byte matchByte, byte symbol)
 				{
 					uint num = 0U;
@@ -1725,7 +1725,7 @@ namespace SevenZip.Compression.LZMA
 		// Token: 0x02000020 RID: 32
 		internal class LenEncoder
 		{
-			// Token: 0x060000B0 RID: 176 RVA: 0x00009D9C File Offset: 0x00009D9C
+			// Token: 0x060000B0 RID: 176 RVA: 0x00009D9C File Offset: 0x00007F9C
 			public LenEncoder()
 			{
 				for (uint num = 0U; num < 16U; num += 1U)
@@ -1735,7 +1735,7 @@ namespace SevenZip.Compression.LZMA
 				}
 			}
 
-			// Token: 0x060000B1 RID: 177 RVA: 0x00009E28 File Offset: 0x00009E28
+			// Token: 0x060000B1 RID: 177 RVA: 0x00009E28 File Offset: 0x00008028
 			public void Init(uint numPosStates)
 			{
 				this._choice.Init();
@@ -1748,7 +1748,7 @@ namespace SevenZip.Compression.LZMA
 				this._highCoder.Init();
 			}
 
-			// Token: 0x060000B2 RID: 178 RVA: 0x00009E90 File Offset: 0x00009E90
+			// Token: 0x060000B2 RID: 178 RVA: 0x00009E90 File Offset: 0x00008090
 			public void Encode(Encoder rangeEncoder, uint symbol, uint posState)
 			{
 				bool flag = symbol < 8U;
@@ -1775,7 +1775,7 @@ namespace SevenZip.Compression.LZMA
 				}
 			}
 
-			// Token: 0x060000B3 RID: 179 RVA: 0x00009F30 File Offset: 0x00009F30
+			// Token: 0x060000B3 RID: 179 RVA: 0x00009F30 File Offset: 0x00008130
 			public void SetPrices(uint posState, uint numSymbols, uint[] prices, uint st)
 			{
 				uint price = this._choice.GetPrice0();
@@ -1828,26 +1828,26 @@ namespace SevenZip.Compression.LZMA
 		// Token: 0x02000021 RID: 33
 		internal class LenPriceTableEncoder : Encoder.LenEncoder
 		{
-			// Token: 0x060000B4 RID: 180 RVA: 0x000023EA File Offset: 0x000023EA
+			// Token: 0x060000B4 RID: 180 RVA: 0x000023EA File Offset: 0x000005EA
 			public void SetTableSize(uint tableSize)
 			{
 				this._tableSize = tableSize;
 			}
 
-			// Token: 0x060000B5 RID: 181 RVA: 0x0000A030 File Offset: 0x0000A030
+			// Token: 0x060000B5 RID: 181 RVA: 0x0000A030 File Offset: 0x00008230
 			public uint GetPrice(uint symbol, uint posState)
 			{
 				return this._prices[(int)(posState * 272U + symbol)];
 			}
 
-			// Token: 0x060000B6 RID: 182 RVA: 0x000023F4 File Offset: 0x000023F4
+			// Token: 0x060000B6 RID: 182 RVA: 0x000023F4 File Offset: 0x000005F4
 			private void UpdateTable(uint posState)
 			{
 				base.SetPrices(posState, this._tableSize, this._prices, posState * 272U);
 				this._counters[(int)posState] = this._tableSize;
 			}
 
-			// Token: 0x060000B7 RID: 183 RVA: 0x0000A054 File Offset: 0x0000A054
+			// Token: 0x060000B7 RID: 183 RVA: 0x0000A054 File Offset: 0x00008254
 			public void UpdateTables(uint numPosStates)
 			{
 				for (uint num = 0U; num < numPosStates; num += 1U)
@@ -1856,7 +1856,7 @@ namespace SevenZip.Compression.LZMA
 				}
 			}
 
-			// Token: 0x060000B8 RID: 184 RVA: 0x0000A07C File Offset: 0x0000A07C
+			// Token: 0x060000B8 RID: 184 RVA: 0x0000A07C File Offset: 0x0000827C
 			public new void Encode(Encoder rangeEncoder, uint symbol, uint posState)
 			{
 				base.Encode(rangeEncoder, symbol, posState);
@@ -1883,21 +1883,21 @@ namespace SevenZip.Compression.LZMA
 		// Token: 0x02000022 RID: 34
 		internal class Optimal
 		{
-			// Token: 0x060000BA RID: 186 RVA: 0x00002446 File Offset: 0x00002446
+			// Token: 0x060000BA RID: 186 RVA: 0x00002446 File Offset: 0x00000646
 			public void MakeAsChar()
 			{
 				this.BackPrev = uint.MaxValue;
 				this.Prev1IsChar = false;
 			}
 
-			// Token: 0x060000BB RID: 187 RVA: 0x00002457 File Offset: 0x00002457
+			// Token: 0x060000BB RID: 187 RVA: 0x00002457 File Offset: 0x00000657
 			public void MakeAsShortRep()
 			{
 				this.BackPrev = 0U;
 				this.Prev1IsChar = false;
 			}
 
-			// Token: 0x060000BC RID: 188 RVA: 0x0000A0B8 File Offset: 0x0000A0B8
+			// Token: 0x060000BC RID: 188 RVA: 0x0000A0B8 File Offset: 0x000082B8
 			public bool IsShortRep()
 			{
 				return this.BackPrev == 0U;

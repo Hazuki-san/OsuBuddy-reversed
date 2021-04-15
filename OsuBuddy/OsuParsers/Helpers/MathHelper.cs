@@ -7,7 +7,7 @@ namespace OsuParsers.Helpers
 	// Token: 0x02000039 RID: 57
 	internal class MathHelper
 	{
-		// Token: 0x06000158 RID: 344 RVA: 0x0000AE5C File Offset: 0x0000AE5C
+		// Token: 0x06000158 RID: 344 RVA: 0x0000AE5C File Offset: 0x0000905C
 		public static double Clamp(double value, double min, double max)
 		{
 			bool flag = value > max;
@@ -31,7 +31,7 @@ namespace OsuParsers.Helpers
 			return result;
 		}
 
-		// Token: 0x06000159 RID: 345 RVA: 0x0000AE88 File Offset: 0x0000AE88
+		// Token: 0x06000159 RID: 345 RVA: 0x0000AE88 File Offset: 0x00009088
 		public static double CalculateBpmMultiplier(TimingPoint timingPoint)
 		{
 			bool flag = timingPoint.BeatLength >= 0.0;
@@ -47,7 +47,7 @@ namespace OsuParsers.Helpers
 			return result;
 		}
 
-		// Token: 0x0600015A RID: 346 RVA: 0x0000AEE8 File Offset: 0x0000AEE8
+		// Token: 0x0600015A RID: 346 RVA: 0x0000AEE8 File Offset: 0x000090E8
 		public static int CalculateEndTime(Beatmap beatmap, int startTime, int repeats, double pixelLength)
 		{
 			int num = (int)(pixelLength / (100.0 * beatmap.DifficultySection.SliderMultiplier) * (double)repeats * beatmap.BeatLengthAt(startTime));

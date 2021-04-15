@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using OsuParsers.Beatmaps.Objects;
 using OsuParsers.Beatmaps.Objects.Mania;
 using OsuParsers.Enums.Beatmaps;
@@ -16,7 +17,7 @@ namespace OsuParsers.Helpers
 	// Token: 0x0200003C RID: 60
 	internal class WriteHelper
 	{
-		// Token: 0x06000167 RID: 359 RVA: 0x0000B150 File Offset: 0x0000B150
+		// Token: 0x06000167 RID: 359 RVA: 0x0000B150 File Offset: 0x00009350
 		public static string TimingPoint(TimingPoint timingPoint)
 		{
 			int offset = timingPoint.Offset;
@@ -40,7 +41,7 @@ namespace OsuParsers.Helpers
 			});
 		}
 
-		// Token: 0x06000168 RID: 360 RVA: 0x0000B204 File Offset: 0x0000B204
+		// Token: 0x06000168 RID: 360 RVA: 0x0000B204 File Offset: 0x00009404
 		public static string Colour(Color colour)
 		{
 			byte r = colour.R;
@@ -49,7 +50,7 @@ namespace OsuParsers.Helpers
 			return string.Format("{0},{1},{2}", r, g, b);
 		}
 
-		// Token: 0x06000169 RID: 361 RVA: 0x0000B24C File Offset: 0x0000B24C
+		// Token: 0x06000169 RID: 361 RVA: 0x0000B24C File Offset: 0x0000944C
 		public static string HitObject(HitObject hitObject)
 		{
 			float x = hitObject.Position.X;
@@ -93,27 +94,23 @@ namespace OsuParsers.Helpers
 			return str + text2;
 		}
 
-		// Token: 0x0600016A RID: 362 RVA: 0x0000B3C8 File Offset: 0x0000B3C8
+		// Token: 0x0600016A RID: 362 RVA: 0x0000B3C8 File Offset: 0x000095C8
 		public static string SliderProperties(Slider slider)
 		{
+			WriteHelper.Ac__DisplayClass3_0 ac__DisplayClass3_ = new WriteHelper.Ac__DisplayClass3_0();
 			char c = WriteHelper.CurveType(slider.CurveType);
-			string sliderPoints = string.Empty;
-			slider.SliderPoints.ForEach(delegate(Vector2 pt)
-			{
-				sliderPoints += string.Format("|{0}:{1}", pt.X, pt.Y);
-			});
+			ac__DisplayClass3_.sliderPoints = string.Empty;
+			slider.SliderPoints.ForEach(new Action<Vector2>(ac__DisplayClass3_.ASliderPropertiesb__0));
 			int repeats = slider.Repeats;
 			string text = slider.PixelLength.Format();
 			bool flag = slider.EdgeHitSounds != null && slider.EdgeHitSounds.Any<HitSoundType>();
 			string result;
 			if (flag)
 			{
-				string edgeHitsounds = string.Empty;
-				slider.EdgeHitSounds.ForEach(delegate(HitSoundType sound)
-				{
-					edgeHitsounds += string.Format("{0}|", (int)sound);
-				});
-				edgeHitsounds = edgeHitsounds.TrimEnd(new char[]
+				WriteHelper.Ac__DisplayClass3_1 ac__DisplayClass3_2 = new WriteHelper.Ac__DisplayClass3_1();
+				ac__DisplayClass3_2.edgeHitsounds = string.Empty;
+				slider.EdgeHitSounds.ForEach(new Action<HitSoundType>(ac__DisplayClass3_2.ASliderPropertiesb__1));
+				ac__DisplayClass3_2.edgeHitsounds = ac__DisplayClass3_2.edgeHitsounds.TrimEnd(new char[]
 				{
 					'|'
 				});
@@ -123,31 +120,28 @@ namespace OsuParsers.Helpers
 					result = string.Format("{0}{1},{2},{3},{4}", new object[]
 					{
 						c,
-						sliderPoints,
+						ac__DisplayClass3_.sliderPoints,
 						repeats,
 						text,
-						edgeHitsounds
+						ac__DisplayClass3_2.edgeHitsounds
 					});
 				}
 				else
 				{
-					string edgeAdditions = string.Empty;
-					slider.EdgeAdditions.ToList<Tuple<SampleSet, SampleSet>>().ForEach(delegate(Tuple<SampleSet, SampleSet> e)
-					{
-						edgeAdditions += string.Format("{0}:{1}|", (int)e.Item1, (int)e.Item2);
-					});
-					edgeAdditions = edgeAdditions.Trim(new char[]
+					ac__DisplayClass3_2.edgeAdditions = string.Empty;
+					slider.EdgeAdditions.ToList<Tuple<SampleSet, SampleSet>>().ForEach(new Action<Tuple<SampleSet, SampleSet>>(ac__DisplayClass3_2.ASliderPropertiesb__2));
+					ac__DisplayClass3_2.edgeAdditions = ac__DisplayClass3_2.edgeAdditions.Trim(new char[]
 					{
 						'|'
 					});
 					result = string.Format("{0}{1},{2},{3},{4},{5}", new object[]
 					{
 						c,
-						sliderPoints,
+						ac__DisplayClass3_.sliderPoints,
 						repeats,
 						text,
-						edgeHitsounds,
-						edgeAdditions
+						ac__DisplayClass3_2.edgeHitsounds,
+						ac__DisplayClass3_2.edgeAdditions
 					});
 				}
 			}
@@ -156,7 +150,7 @@ namespace OsuParsers.Helpers
 				result = string.Format("{0}{1},{2},{3}", new object[]
 				{
 					c,
-					sliderPoints,
+					ac__DisplayClass3_.sliderPoints,
 					repeats,
 					text
 				});
@@ -164,7 +158,7 @@ namespace OsuParsers.Helpers
 			return result;
 		}
 
-		// Token: 0x0600016B RID: 363 RVA: 0x0000B59C File Offset: 0x0000B59C
+		// Token: 0x0600016B RID: 363 RVA: 0x0000B59C File Offset: 0x0000979C
 		public static char CurveType(CurveType value)
 		{
 			char result;
@@ -188,7 +182,7 @@ namespace OsuParsers.Helpers
 			return result;
 		}
 
-		// Token: 0x0600016C RID: 364 RVA: 0x0000B5E4 File Offset: 0x0000B5E4
+		// Token: 0x0600016C RID: 364 RVA: 0x0000B5E4 File Offset: 0x000097E4
 		public static int TypeByte(HitObject hitObject)
 		{
 			int num = 0;
@@ -216,7 +210,7 @@ namespace OsuParsers.Helpers
 			return num + (hitObject.ComboOffset << 4);
 		}
 
-		// Token: 0x0600016D RID: 365 RVA: 0x0000B670 File Offset: 0x0000B670
+		// Token: 0x0600016D RID: 365 RVA: 0x0000B670 File Offset: 0x00009870
 		public static string HitObjectExtras(Extras extras)
 		{
 			bool flag = extras == null;
@@ -244,7 +238,7 @@ namespace OsuParsers.Helpers
 			return result;
 		}
 
-		// Token: 0x0600016E RID: 366 RVA: 0x0000B700 File Offset: 0x0000B700
+		// Token: 0x0600016E RID: 366 RVA: 0x0000B700 File Offset: 0x00009900
 		public static List<string> StoryboardObject(IStoryboardObject storyboardObject, StoryboardLayer layer)
 		{
 			List<string> list = new List<string>();
@@ -400,7 +394,7 @@ namespace OsuParsers.Helpers
 			return list;
 		}
 
-		// Token: 0x0600016F RID: 367 RVA: 0x0000BD5C File Offset: 0x0000BD5C
+		// Token: 0x0600016F RID: 367 RVA: 0x0000BD5C File Offset: 0x00009F5C
 		private static string GetCommandArguments(Command command)
 		{
 			string result;
@@ -483,7 +477,7 @@ namespace OsuParsers.Helpers
 			return result;
 		}
 
-		// Token: 0x06000170 RID: 368 RVA: 0x0000BFEC File Offset: 0x0000BFEC
+		// Token: 0x06000170 RID: 368 RVA: 0x0000BFEC File Offset: 0x0000A1EC
 		public static List<string> BaseListFormat(string SectionName)
 		{
 			return new List<string>
@@ -491,6 +485,43 @@ namespace OsuParsers.Helpers
 				string.Empty,
 				"[" + SectionName + "]"
 			};
+		}
+
+		// Token: 0x0200003D RID: 61
+		[CompilerGenerated]
+		private sealed class Ac__DisplayClass3_0
+		{
+			// Token: 0x06000173 RID: 371 RVA: 0x00002A5C File Offset: 0x00000C5C
+			internal void ASliderPropertiesb__0(Vector2 pt)
+			{
+				this.sliderPoints += string.Format("|{0}:{1}", pt.X, pt.Y);
+			}
+
+			// Token: 0x04000145 RID: 325
+			public string sliderPoints;
+		}
+
+		// Token: 0x0200003E RID: 62
+		[CompilerGenerated]
+		private sealed class Ac__DisplayClass3_1
+		{
+			// Token: 0x06000175 RID: 373 RVA: 0x00002A8F File Offset: 0x00000C8F
+			internal void ASliderPropertiesb__1(HitSoundType sound)
+			{
+				this.edgeHitsounds += string.Format("{0}|", (int)sound);
+			}
+
+			// Token: 0x06000176 RID: 374 RVA: 0x00002AB2 File Offset: 0x00000CB2
+			internal void ASliderPropertiesb__2(Tuple<SampleSet, SampleSet> e)
+			{
+				this.edgeAdditions += string.Format("{0}:{1}|", (int)e.Item1, (int)e.Item2);
+			}
+
+			// Token: 0x04000146 RID: 326
+			public string edgeHitsounds;
+
+			// Token: 0x04000147 RID: 327
+			public string edgeAdditions;
 		}
 	}
 }

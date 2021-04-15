@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using osu.Enums;
 using osu.Memory.Objects.Player.Beatmaps;
 using osu.Memory.Objects.Player.Beatmaps.Objects;
@@ -10,7 +12,7 @@ namespace osu.Memory.Objects.Player
 	public class OsuPlayer : OsuObject
 	{
 		// Token: 0x17000125 RID: 293
-		// (get) Token: 0x060003FB RID: 1019 RVA: 0x00004190 File Offset: 0x00004190
+		// (get) Token: 0x060003FB RID: 1019 RVA: 0x00004190 File Offset: 0x00002390
 		private bool asyncLoadComplete
 		{
 			get
@@ -20,7 +22,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000126 RID: 294
-		// (get) Token: 0x060003FC RID: 1020 RVA: 0x000041AD File Offset: 0x000041AD
+		// (get) Token: 0x060003FC RID: 1020 RVA: 0x000041AD File Offset: 0x000023AD
 		public override bool IsLoaded
 		{
 			get
@@ -30,16 +32,16 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000127 RID: 295
-		// (get) Token: 0x060003FD RID: 1021 RVA: 0x000041C0 File Offset: 0x000041C0
-		// (set) Token: 0x060003FE RID: 1022 RVA: 0x000041C8 File Offset: 0x000041C8
+		// (get) Token: 0x060003FD RID: 1021 RVA: 0x000041C0 File Offset: 0x000023C0
+		// (set) Token: 0x060003FE RID: 1022 RVA: 0x000041C8 File Offset: 0x000023C8
 		public OsuRuleset Ruleset { get; private set; }
 
 		// Token: 0x17000128 RID: 296
-		// (get) Token: 0x060003FF RID: 1023 RVA: 0x000041D1 File Offset: 0x000041D1
-		// (set) Token: 0x06000400 RID: 1024 RVA: 0x000041D9 File Offset: 0x000041D9
+		// (get) Token: 0x060003FF RID: 1023 RVA: 0x000041D1 File Offset: 0x000023D1
+		// (set) Token: 0x06000400 RID: 1024 RVA: 0x000041D9 File Offset: 0x000023D9
 		public OsuHitObjectManager HitObjectManager { get; private set; }
 
-		// Token: 0x06000401 RID: 1025 RVA: 0x00011DB8 File Offset: 0x00011DB8
+		// Token: 0x06000401 RID: 1025 RVA: 0x00011DB8 File Offset: 0x0000FFB8
 		public OsuPlayer(UIntPtr pointerToBaseAddress) : base(new UIntPtr?(pointerToBaseAddress))
 		{
 			OsuObject[] array = new OsuObject[2];
@@ -59,7 +61,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x17000129 RID: 297
-		// (get) Token: 0x06000402 RID: 1026 RVA: 0x00011E14 File Offset: 0x00011E14
+		// (get) Token: 0x06000402 RID: 1026 RVA: 0x00011E14 File Offset: 0x00010014
 		public OsuBeatmap Beatmap
 		{
 			get
@@ -85,7 +87,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x1700012A RID: 298
-		// (get) Token: 0x06000403 RID: 1027 RVA: 0x000041E2 File Offset: 0x000041E2
+		// (get) Token: 0x06000403 RID: 1027 RVA: 0x000041E2 File Offset: 0x000023E2
 		public Ruleset CurrentRuleset
 		{
 			get
@@ -95,7 +97,7 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x1700012B RID: 299
-		// (get) Token: 0x06000404 RID: 1028 RVA: 0x000041FF File Offset: 0x000041FF
+		// (get) Token: 0x06000404 RID: 1028 RVA: 0x000041FF File Offset: 0x000023FF
 		public bool ReplayMode
 		{
 			get
@@ -105,8 +107,8 @@ namespace osu.Memory.Objects.Player
 		}
 
 		// Token: 0x1700012C RID: 300
-		// (get) Token: 0x06000405 RID: 1029 RVA: 0x0000421C File Offset: 0x0000421C
-		// (set) Token: 0x06000406 RID: 1030 RVA: 0x00004239 File Offset: 0x00004239
+		// (get) Token: 0x06000405 RID: 1029 RVA: 0x0000421C File Offset: 0x0000241C
+		// (set) Token: 0x06000406 RID: 1030 RVA: 0x00004239 File Offset: 0x00002439
 		public int AudioCheckCount
 		{
 			get
@@ -118,5 +120,15 @@ namespace osu.Memory.Objects.Player
 				this.OsuProcess.WriteMemory(this.BaseAddress + 332, BitConverter.GetBytes(value), 4U);
 			}
 		}
+
+		// Token: 0x04000346 RID: 838
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private OsuRuleset ARulesetk__BackingField;
+
+		// Token: 0x04000347 RID: 839
+		[CompilerGenerated]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private OsuHitObjectManager AHitObjectManagerk__BackingField;
 	}
 }

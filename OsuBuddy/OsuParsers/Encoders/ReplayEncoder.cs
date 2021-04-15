@@ -13,7 +13,7 @@ namespace OsuParsers.Encoders
 	// Token: 0x0200005F RID: 95
 	internal class ReplayEncoder
 	{
-		// Token: 0x060001A8 RID: 424 RVA: 0x0000D678 File Offset: 0x0000D678
+		// Token: 0x060001A8 RID: 424 RVA: 0x0000D678 File Offset: 0x0000B878
 		public static void Encode(Replay replay, string path)
 		{
 			using (SerializationWriter serializationWriter = new SerializationWriter(new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read)))

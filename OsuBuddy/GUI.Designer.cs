@@ -3,7 +3,7 @@
 	// Token: 0x020000AA RID: 170
 	public partial class GUI : global::System.Windows.Forms.Form
 	{
-		// Token: 0x06000466 RID: 1126 RVA: 0x00012FDC File Offset: 0x00012FDC
+		// Token: 0x06000466 RID: 1126 RVA: 0x00012FDC File Offset: 0x000111DC
 		protected override void Dispose(bool disposing)
 		{
 			bool flag = disposing && this.components != null;
@@ -14,7 +14,7 @@
 			base.Dispose(disposing);
 		}
 
-		// Token: 0x06000467 RID: 1127 RVA: 0x00013014 File Offset: 0x00013014
+		// Token: 0x06000467 RID: 1127 RVA: 0x00013014 File Offset: 0x00011214
 		private void InitializeComponent()
 		{
 			global::System.ComponentModel.ComponentResourceManager componentResourceManager = new global::System.ComponentModel.ComponentResourceManager(typeof(global::OsuBuddy.GUI));
