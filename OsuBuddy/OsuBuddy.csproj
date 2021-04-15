@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5A7458A-846E-43E7-A60B-C89EF5C958D1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OsuBuddy</RootNamespace>
+    <AssemblyName>OsuBuddy</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>OsuBuddy.ico</ApplicationIcon>
+    <StartupObject>OsuBuddy.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SimpleDependencyInjection">
+      <HintPath>..\..\stuff\OsuBuddy\Dumps\SimpleDependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsInput">
+      <HintPath>..\..\stuff\OsuBuddy\Dumps\WindowsInput.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="-Module-.cs" />
+    <Compile Include="AimAssist.cs" />
+    <Compile Include="Costura\AssemblyLoader.cs" />
+    <Compile Include="GUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI.Designer.cs">
+      <DependentUpon>GUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OsuBuddy.cs" />
+    <Compile Include="OsuBuddy_ProcessedByFody.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Beatmap.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Catch\CatchBananaRain.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Catch\CatchFruit.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Catch\CatchJuiceStream.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Extras.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\HitCircle.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\HitObject.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Mania\ManiaHoldNote.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Mania\ManiaNote.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Slider.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Spinner.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Taiko\TaikoDrumroll.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Taiko\TaikoHit.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\Taiko\TaikoSpinner.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Objects\TimingPoint.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\BeatmapColoursSection.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\BeatmapDifficultySection.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\BeatmapEditorSection.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\BeatmapEventsSection.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\BeatmapGeneralSection.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\BeatmapMetadataSection.cs" />
+    <Compile Include="OsuParsers\Beatmaps\Sections\Events\BeatmapBreakEvent.cs" />
+    <Compile Include="OsuParsers\Database\CollectionDatabase.cs" />
+    <Compile Include="OsuParsers\Database\Objects\Collection.cs" />
+    <Compile Include="OsuParsers\Database\Objects\DbBeatmap.cs" />
+    <Compile Include="OsuParsers\Database\Objects\DbTimingPoint.cs" />
+    <Compile Include="OsuParsers\Database\Objects\Player.cs" />
+    <Compile Include="OsuParsers\Database\Objects\Score.cs" />
+    <Compile Include="OsuParsers\Database\OsuDatabase.cs" />
+    <Compile Include="OsuParsers\Database\PresenceDatabase.cs" />
+    <Compile Include="OsuParsers\Database\ScoresDatabase.cs" />
+    <Compile Include="OsuParsers\Decoders\BeatmapDecoder.cs" />
+    <Compile Include="OsuParsers\Decoders\DatabaseDecoder.cs" />
+    <Compile Include="OsuParsers\Decoders\ReplayDecoder.cs" />
+    <Compile Include="OsuParsers\Decoders\StoryboardDecoder.cs" />
+    <Compile Include="OsuParsers\Encoders\BeatmapEncoder.cs" />
+    <Compile Include="OsuParsers\Encoders\DatabaseEncoder.cs" />
+    <Compile Include="OsuParsers\Encoders\ReplayEncoder.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\CurveType.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\Effects.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\HitObjectType.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\HitSoundType.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\SampleSet.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\TaikoColor.cs" />
+    <Compile Include="OsuParsers\Enums\Beatmaps\TimeSignature.cs" />
+    <Compile Include="OsuParsers\Enums\Database\Grade.cs" />
+    <Compile Include="OsuParsers\Enums\Database\Permissions.cs" />
+    <Compile Include="OsuParsers\Enums\Database\RankedStatus.cs" />
+    <Compile Include="OsuParsers\Enums\FileSections.cs" />
+    <Compile Include="OsuParsers\Enums\Mods.cs" />
+    <Compile Include="OsuParsers\Enums\Replays\CatchKeys.cs" />
+    <Compile Include="OsuParsers\Enums\Replays\ManiaKeys.cs" />
+    <Compile Include="OsuParsers\Enums\Replays\StandardKeys.cs" />
+    <Compile Include="OsuParsers\Enums\Replays\TaikoKeys.cs" />
+    <Compile Include="OsuParsers\Enums\Ruleset.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\BlendingMode.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\CommandType.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\Easing.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\EventType.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\LoopType.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\Origins.cs" />
+    <Compile Include="OsuParsers\Enums\Storyboards\StoryboardLayer.cs" />
+    <Compile Include="OsuParsers\Helpers\Extensions.cs" />
+    <Compile Include="OsuParsers\Helpers\MathHelper.cs" />
+    <Compile Include="OsuParsers\Helpers\ParseHelper.cs" />
+    <Compile Include="OsuParsers\Helpers\WriteHelper.cs" />
+    <Compile Include="OsuParsers\Replays\Objects\LifeFrame.cs" />
+    <Compile Include="OsuParsers\Replays\Objects\ReplayFrame.cs" />
+    <Compile Include="OsuParsers\Replays\Replay.cs" />
+    <Compile Include="OsuParsers\Replays\SevenZip\LZMAHelper.cs" />
+    <Compile Include="OsuParsers\Serialization\ObjType.cs" />
+    <Compile Include="OsuParsers\Serialization\SerializationReader.cs" />
+    <Compile Include="OsuParsers\Serialization\SerializationWriter.cs" />
+    <Compile Include="OsuParsers\Storyboards\Commands\Command.cs" />
+    <Compile Include="OsuParsers\Storyboards\Commands\CommandGroup.cs" />
+    <Compile Include="OsuParsers\Storyboards\Commands\LoopCommand.cs" />
+    <Compile Include="OsuParsers\Storyboards\Commands\TriggerCommand.cs" />
+    <Compile Include="OsuParsers\Storyboards\Interfaces\ICommand.cs" />
+    <Compile Include="OsuParsers\Storyboards\Interfaces\IHasCommands.cs" />
+    <Compile Include="OsuParsers\Storyboards\Interfaces\IStoryboardObject.cs" />
+    <Compile Include="OsuParsers\Storyboards\Objects\StoryboardAnimation.cs" />
+    <Compile Include="OsuParsers\Storyboards\Objects\StoryboardSample.cs" />
+    <Compile Include="OsuParsers\Storyboards\Objects\StoryboardSprite.cs" />
+    <Compile Include="OsuParsers\Storyboards\Storyboard.cs" />
+    <Compile Include="OsuParsers\Writers\StoryboardEncoder.cs" />
+    <Compile Include="osu\Enums\Beatmaps\CurveType.cs" />
+    <Compile Include="osu\Enums\Beatmaps\HitObjectType.cs" />
+    <Compile Include="osu\Enums\HitState.cs" />
+    <Compile Include="osu\Enums\Mods.cs" />
+    <Compile Include="osu\Enums\OsuModes.cs" />
+    <Compile Include="osu\Enums\Ruleset.cs" />
+    <Compile Include="osu\Helpers\Extensions.cs" />
+    <Compile Include="osu\Memory\Objects\Bindings\BindingManager.cs" />
+    <Compile Include="osu\Memory\Objects\Bindings\Bindings.cs" />
+    <Compile Include="osu\Memory\Objects\OsuObject.cs" />
+    <Compile Include="osu\Memory\Objects\Player\Beatmaps\Objects\OsuHitCircle.cs" />
+    <Compile Include="osu\Memory\Objects\Player\Beatmaps\Objects\OsuHitObject.cs" />
+    <Compile Include="osu\Memory\Objects\Player\Beatmaps\Objects\OsuSlider.cs" />
+    <Compile Include="osu\Memory\Objects\Player\Beatmaps\Objects\OsuSpinner.cs" />
+    <Compile Include="osu\Memory\Objects\Player\Beatmaps\OsuBeatmap.cs" />
+    <Compile Include="osu\Memory\Objects\Player\OsuHitObjectManager.cs" />
+    <Compile Include="osu\Memory\Objects\Player\OsuPlayer.cs" />
+    <Compile Include="osu\Memory\Objects\Player\OsuRuleset.cs" />
+    <Compile Include="osu\Memory\Objects\Window\OsuViewport.cs" />
+    <Compile Include="osu\Memory\Objects\Window\OsuWindowManager.cs" />
+    <Compile Include="osu\Memory\Processes\Enums\MemoryProtect.cs" />
+    <Compile Include="osu\Memory\Processes\Enums\MemoryState.cs" />
+    <Compile Include="osu\Memory\Processes\Enums\MemoryType.cs" />
+    <Compile Include="osu\Memory\Processes\MemoryBasicInformation.cs" />
+    <Compile Include="osu\Memory\Processes\MemoryRegion.cs" />
+    <Compile Include="osu\Memory\Processes\OsuProcess.cs" />
+    <Compile Include="osu\Memory\Processes\Pattern.cs" />
+    <Compile Include="osu\Memory\Processes\Rect.cs" />
+    <Compile Include="osu\Memory\Signature.cs" />
+    <Compile Include="osu\Memory\Signatures.cs" />
+    <Compile Include="osu\OsuManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Relax.cs" />
+    <Compile Include="ReplayPlayer.cs" />
+    <Compile Include="SevenZip\CoderPropID.cs" />
+    <Compile Include="SevenZip\Compression\LZMA\Base.cs" />
+    <Compile Include="SevenZip\Compression\LZMA\Decoder.cs" />
+    <Compile Include="SevenZip\Compression\LZMA\Encoder.cs" />
+    <Compile Include="SevenZip\Compression\LZ\BinTree.cs" />
+    <Compile Include="SevenZip\Compression\LZ\IInWindowStream.cs" />
+    <Compile Include="SevenZip\Compression\LZ\IMatchFinder.cs" />
+    <Compile Include="SevenZip\Compression\LZ\InWindow.cs" />
+    <Compile Include="SevenZip\Compression\LZ\OutWindow.cs" />
+    <Compile Include="SevenZip\Compression\RangeCoder\BitDecoder.cs" />
+    <Compile Include="SevenZip\Compression\RangeCoder\BitEncoder.cs" />
+    <Compile Include="SevenZip\Compression\RangeCoder\BitTreeDecoder.cs" />
+    <Compile Include="SevenZip\Compression\RangeCoder\BitTreeEncoder.cs" />
+    <Compile Include="SevenZip\Compression\RangeCoder\Decoder.cs" />
+    <Compile Include="SevenZip\Compression\RangeCoder\Encoder.cs" />
+    <Compile Include="SevenZip\CRC.cs" />
+    <Compile Include="SevenZip\DataErrorException.cs" />
+    <Compile Include="SevenZip\ICodeProgress.cs" />
+    <Compile Include="SevenZip\ICoder.cs" />
+    <Compile Include="SevenZip\InvalidParamException.cs" />
+    <Compile Include="SevenZip\ISetCoderProperties.cs" />
+    <Compile Include="SevenZip\ISetDecoderProperties.cs" />
+    <Compile Include="SevenZip\IWriteCoderProperties.cs" />
+    <Compile Include="TimingHelper.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Costura\costura\dll.compressed" />
+    <EmbeddedResource Include="Costura\costura\pdb.compressed" />
+    <EmbeddedResource Include="Costura\metadata" />
+    <EmbeddedResource Include="Costura\simpledependencyinjection\dll.compressed" />
+    <EmbeddedResource Include="Costura\system\diagnostics\diagnosticsource\dll.compressed" />
+    <EmbeddedResource Include="Costura\system\numerics\vectors\dll.compressed" />
+    <EmbeddedResource Include="Costura\windowsinput\dll.compressed" />
+    <EmbeddedResource Include="GUI.resources" />
+    <EmbeddedResource Include="Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
