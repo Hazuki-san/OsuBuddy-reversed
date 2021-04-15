@@ -1,71 +1,37 @@
-﻿using System;
-
-namespace osu.Enums
+﻿namespace osu.Enums
 {
-	// Token: 0x020000A5 RID: 165
-	public enum Mods
-	{
-		// Token: 0x040003AC RID: 940
-		None,
-		// Token: 0x040003AD RID: 941
-		NoFail,
-		// Token: 0x040003AE RID: 942
-		Easy,
-		// Token: 0x040003AF RID: 943
-		TouchDevice = 4,
-		// Token: 0x040003B0 RID: 944
-		Hidden = 8,
-		// Token: 0x040003B1 RID: 945
-		HardRock = 16,
-		// Token: 0x040003B2 RID: 946
-		SuddenDeath = 32,
-		// Token: 0x040003B3 RID: 947
-		DoubleTime = 64,
-		// Token: 0x040003B4 RID: 948
-		Relax = 128,
-		// Token: 0x040003B5 RID: 949
-		HalfTime = 256,
-		// Token: 0x040003B6 RID: 950
-		Nightcore = 512,
-		// Token: 0x040003B7 RID: 951
-		Flashlight = 1024,
-		// Token: 0x040003B8 RID: 952
-		Autoplay = 2048,
-		// Token: 0x040003B9 RID: 953
-		SpunOut = 4096,
-		// Token: 0x040003BA RID: 954
-		Relax2 = 8192,
-		// Token: 0x040003BB RID: 955
-		Perfect = 16384,
-		// Token: 0x040003BC RID: 956
-		Key4 = 32768,
-		// Token: 0x040003BD RID: 957
-		Key5 = 65536,
-		// Token: 0x040003BE RID: 958
-		Key6 = 131072,
-		// Token: 0x040003BF RID: 959
-		Key7 = 262144,
-		// Token: 0x040003C0 RID: 960
-		Key8 = 524288,
-		// Token: 0x040003C1 RID: 961
-		FadeIn = 1048576,
-		// Token: 0x040003C2 RID: 962
-		Random = 2097152,
-		// Token: 0x040003C3 RID: 963
-		Cinema = 4194304,
-		// Token: 0x040003C4 RID: 964
-		Target = 8388608,
-		// Token: 0x040003C5 RID: 965
-		Key9 = 16777216,
-		// Token: 0x040003C6 RID: 966
-		KeyCoop = 33554432,
-		// Token: 0x040003C7 RID: 967
-		Key1 = 67108864,
-		// Token: 0x040003C8 RID: 968
-		Key3 = 134217728,
-		// Token: 0x040003C9 RID: 969
-		Key2 = 268435456,
-		// Token: 0x040003CA RID: 970
-		ScoreV2 = 536870912
-	}
+    public enum Mods
+    {
+        None = 0,
+        NoFail = 1 << 0,
+        Easy = 1 << 1,
+        TouchDevice = 1 << 2,
+        Hidden = 1 << 3,
+        HardRock = 1 << 4,
+        SuddenDeath = 1 << 5,
+        DoubleTime = 1 << 6,
+        Relax = 1 << 7,
+        HalfTime = 1 << 8,
+        Nightcore = 1 << 9,
+        Flashlight = 1 << 10,
+        Autoplay = 1 << 11,
+        SpunOut = 1 << 12,
+        Relax2 = 1 << 13,
+        Perfect = 1 << 14,
+        Key4 = 1 << 15,
+        Key5 = 1 << 16,
+        Key6 = 1 << 17,
+        Key7 = 1 << 18,
+        Key8 = 1 << 19,
+        FadeIn = 1 << 20,
+        Random = 1 << 21,
+        Cinema = 1 << 22,
+        Target = 1 << 23,
+        Key9 = 1 << 24,
+        KeyCoop = 1 << 25,
+        Key1 = 1 << 26,
+        Key3 = 1 << 27,
+        Key2 = 1 << 28,
+        ScoreV2 = 1 << 29,
+    }
 }

@@ -3,49 +3,38 @@ using System.Collections.Generic;
 
 namespace osu.Memory.Objects.Bindings
 {
-	// Token: 0x0200009F RID: 159
-	public class BindingManager : OsuObject
-	{
-		// Token: 0x17000143 RID: 323
-		// (get) Token: 0x0600043B RID: 1083 RVA: 0x00012374 File Offset: 0x00010574
-		public Dictionary<Bindings, int> BindingDictionary
-		{
-			get
-			{
-				Dictionary<Bindings, int> dictionary = new Dictionary<Bindings, int>();
-				UIntPtr pointer = (UIntPtr)this.OsuProcess.ReadUInt32(this.BaseAddress + 8);
-				int num = this.OsuProcess.ReadInt32(this.BaseAddress + 28);
-				for (int i = 0; i < num; i++)
-				{
-					UIntPtr uintPtr = pointer + 8 + 8 * i;
-					Bindings key = (Bindings)this.OsuProcess.ReadInt32(uintPtr);
-					int value = this.OsuProcess.ReadInt32(uintPtr + 4);
-					dictionary[key] = value;
-				}
-				return dictionary;
-			}
-		}
+    public class BindingManager : OsuObject
+    {
+        public Dictionary<Bindings, int> BindingDictionary
+        {
+            get
+            {
+                var bindingDictionary = new Dictionary<Bindings, int>();
 
-		// Token: 0x0600043C RID: 1084 RVA: 0x0001241C File Offset: 0x0001061C
-		public int GetKeyCode(Bindings binding)
-		{
-			int num;
-			bool flag = !this.BindingDictionary.TryGetValue(binding, out num);
-			int result;
-			if (flag)
-			{
-				result = int.MinValue;
-			}
-			else
-			{
-				result = num;
-			}
-			return result;
-		}
+                UIntPtr items = (UIntPtr)OsuProcess.ReadUInt32(BaseAddress + 0x8);
+                int dictionaryLength = OsuProcess.ReadInt32(BaseAddress + 0x1C);
+                for (int i = 0; i < dictionaryLength; i++)
+                {
+                    UIntPtr currentItem = items + 0x8 + 0x8 * i;
+                    var key = (Bindings)OsuProcess.ReadInt32(currentItem);
+                    var value = (int)OsuProcess.ReadInt32(currentItem + 0x4);
 
-		// Token: 0x0600043D RID: 1085 RVA: 0x0000401C File Offset: 0x0000221C
-		public BindingManager(UIntPtr pointerToBaseAddress) : base(new UIntPtr?(pointerToBaseAddress))
-		{
-		}
-	}
+                    bindingDictionary[key] = value;
+                }
+
+                return bindingDictionary;
+            }
+        }
+
+        public int GetKeyCode(Bindings binding)
+        {
+            int key;
+            if (!BindingDictionary.TryGetValue(binding, out key))
+                return int.MinValue;
+
+            return key;
+        }
+
+        public BindingManager(UIntPtr pointerToBaseAddress) : base(pointerToBaseAddress) { }
+    }
 }
