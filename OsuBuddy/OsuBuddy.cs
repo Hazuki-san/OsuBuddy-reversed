@@ -17,7 +17,6 @@ namespace OsuBuddy
 		// Token: 0x0600049D RID: 1181 RVA: 0x00017A18 File Offset: 0x00015C18
 		public void run()
 		{
-			Application.EnableVisualStyles();
 			osu = new OsuManager();
 			getOsu();
 			DependencyContainer.Cache<OsuManager>(osu);

@@ -14,6 +14,7 @@ namespace OsuBuddy
 		public GUI(OsuBuddy osuBuddy)
 		{
 			this.osuBuddy = osuBuddy;
+			Application.EnableVisualStyles();
 			this.InitializeComponent();
 			this.initValues();
 		}
