@@ -1,5 +1,5 @@
 # OsuBuddy-reversed
-Thank you, kat. for the files.
+osu!STD A-I-O Cheat<br>Thank you, kat. for the *reversed* files.
 
 # What is OsuBuddy?
 OsuBuddy is an all in one cheat for osu!Standard, it's **UNDETECTABLE** if used properly.
