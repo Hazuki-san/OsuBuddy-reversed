@@ -18,20 +18,20 @@ namespace OsuBuddy
 		public void run()
 		{
 			Application.EnableVisualStyles();
-			OsuBuddy.osu = new OsuManager();
-			this.getOsu();
-			DependencyContainer.Cache<OsuManager>(OsuBuddy.osu);
-			this.aimAssist = new AimAssist();
-			this.relax = new Relax();
-			this.replayPlayer = new ReplayPlayer();
-			this.gui = new GUI(this);
-			this.user = new User("", "");
-			this.gui.Text = "OsuBuddyCrack - " + this.user.getUsername();
-			this.gui.updateLoginGui(this.user.getUsername(), this.user.getSubscriptionExpirationDate());
-			Thread thread = new Thread(new ThreadStart(this.Arunb__0_0));
+			osu = new OsuManager();
+			getOsu();
+			DependencyContainer.Cache<OsuManager>(osu);
+			aimAssist = new AimAssist();
+			relax = new Relax();
+			replayPlayer = new ReplayPlayer();
+			gui = new GUI(this);
+			Thread thread = new Thread((ThreadStart)delegate
+			{
+				gui.ShowDialog(null);
+			});
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.Start();
-			this.StartTasks();
+			StartTasks();
 		}
 
 		// Token: 0x0600049E RID: 1182 RVA: 0x00017AE8 File Offset: 0x00015CE8
@@ -172,13 +172,6 @@ namespace OsuBuddy
 		public ReplayPlayer getReplayPlayer()
 		{
 			return this.replayPlayer;
-		}
-
-		// Token: 0x060004A7 RID: 1191 RVA: 0x000046B2 File Offset: 0x000028B2
-		[CompilerGenerated]
-		private void Arunb__0_0()
-		{
-			this.gui.ShowDialog();
 		}
 
 		// Token: 0x0400047E RID: 1150
