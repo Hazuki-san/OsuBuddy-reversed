@@ -2,8 +2,8 @@
 using OsuParsers.Enums.Replays;
 using OsuParsers.Helpers;
 using OsuParsers.Replays;
-using OsuParsers.Replays.Objects;
 using OsuParsers.Replays.SevenZip;
+using OsuParsers.Replays.Objects;
 using OsuParsers.Serialization;
 using System;
 using System.IO;
