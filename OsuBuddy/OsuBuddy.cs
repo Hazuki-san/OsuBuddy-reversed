@@ -25,6 +25,9 @@ namespace OsuBuddy
 			relax = new Relax();
 			replayPlayer = new ReplayPlayer();
 			gui = new GUI(this);
+			user = new User("", "");
+			gui.Text = "OsuBuddyCrack - " + this.user.getUsername();
+			gui.updateLoginGui(this.user.getUsername(), this.user.getSubscriptionExpirationDate());
 			Thread thread = new Thread((ThreadStart)delegate
 			{
 				gui.ShowDialog(null);
