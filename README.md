@@ -23,4 +23,4 @@ Select the module's / settings you'd like enabled<br>
 Then play a map and enjoy!
 
 # Disclaimer
-This files are old version of OsuBuddy (Themida version) and I only clean it to make it compilable, this was already pre-cracked by kat. Files might contains left-over/unused code.
+These files are old version of OsuBuddy (Themida version) and I only clean it to make it compilable, this was already pre-cracked by kat. Files might contains left-over/unused code.
